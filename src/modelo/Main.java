@@ -8,7 +8,7 @@ public class Main {
 	public static Scanner ler = new Scanner(System.in);
 	
 public static void main(String[] args) {
-	
+	System.out.println("Hello World");
 	
 	Endereco end = new Endereco("Distrito federal","Brasília","Band","71710011","04");
 	Telefone tel = new Telefone(61,"99946-8480");
@@ -16,9 +16,9 @@ public static void main(String[] args) {
 	
 	Funcionario perillo = new Funcionario("Perillo",end,tel,"email@email.com",Cargo.Gerente,3565.88,"24/02/2001",10);
 	
-	System.out.println(tel);
-	tel.editar(tel);
-	System.out.println(tel);
+	System.out.println(end);
+	end.editar(end);
+	System.out.println(end);
 }
 
 
