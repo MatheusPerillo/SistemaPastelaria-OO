@@ -4,6 +4,7 @@ package modelo;
 public abstract class Pessoa {
 
 	private int id;
+	private static int contador=1;
 	private String nome;
 	private Endereco endereco;
 	private Telefone telefone;
@@ -40,12 +41,13 @@ public abstract class Pessoa {
 		this.email = email;
 	}
 	
-	public Pessoa(int id, String nome, Endereco endereco, Telefone telefone, String email) {
-		this.id = id;
+	public Pessoa(String nome, Endereco endereco, Telefone telefone, String email) {
+		this.id = Pessoa.contador;
 		this.nome = nome;
 		this.endereco = endereco;
 		this.telefone = telefone;
 		this.email = email;
+		Pessoa.contador++;
 	}
 	
 	
