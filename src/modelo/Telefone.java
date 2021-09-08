@@ -21,5 +21,11 @@ public class Telefone {
 		this.ddd = ddd;
 		this.numero = numero;
 	}
+	@Override
+	public String toString() {
+		return  this.getDdd() + " " + this.getNumero();
+		
+	}
+	
 	
 }
