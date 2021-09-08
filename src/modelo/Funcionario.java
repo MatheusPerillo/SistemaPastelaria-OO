@@ -56,6 +56,8 @@ public class Funcionario extends Pessoa {
 		+ "\nSalário: " + this.getSalario() + "\nVendas no mês: " + this.getVendasMes() ;
 	}	
 	
-	
+	public enum Cargo {
+		Trainee,Vendedor,Gerente;
+	}
 	
 }
