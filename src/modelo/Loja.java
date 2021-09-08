@@ -55,6 +55,10 @@ public class Loja {
 		this.clientes = clientes;
 		this.vendas = vendas;
 	}
+	public Loja() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	
 }
