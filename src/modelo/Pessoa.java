@@ -10,6 +10,16 @@ public abstract class Pessoa {
 	private Telefone telefone;
 	private String email;
 	
+	public Pessoa(String nome, Endereco endereco, Telefone telefone, String email) {
+		this.id = Pessoa.contador;
+		this.nome = nome;
+		this.endereco = endereco;
+		this.telefone = telefone;
+		this.email = email;
+		Pessoa.contador++;
+	}
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -41,14 +51,7 @@ public abstract class Pessoa {
 		this.email = email;
 	}
 	
-	public Pessoa(String nome, Endereco endereco, Telefone telefone, String email) {
-		this.id = Pessoa.contador;
-		this.nome = nome;
-		this.endereco = endereco;
-		this.telefone = telefone;
-		this.email = email;
-		Pessoa.contador++;
-	}
+
 	
 	
 

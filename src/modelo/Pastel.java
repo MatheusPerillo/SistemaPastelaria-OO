@@ -5,6 +5,12 @@ public class Pastel extends Produto{
 	private String tamanho;
 	private String sabor;
 	
+	public Pastel( String nome, Float valor, String descricao, int qtdEstoque, String tamanho, String sabor) {
+		super( nome, valor, descricao, qtdEstoque);
+		this.tamanho = tamanho;
+		this.sabor = sabor;
+	}
+	
 	public String getTamanho() {
 		return tamanho;
 	}
@@ -18,11 +24,7 @@ public class Pastel extends Produto{
 		this.sabor = sabor;
 	}
 	
-	public Pastel(int id, String nome, Float valor, String descricao, int qtdEstoque, String tamanho, String sabor) {
-		super(id, nome, valor, descricao, qtdEstoque);
-		this.tamanho = tamanho;
-		this.sabor = sabor;
-	}
+	
 	
 	
 }

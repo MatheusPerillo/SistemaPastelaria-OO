@@ -1,5 +1,7 @@
 package modelo;
 
+
+
 public class Cliente extends Pessoa {
 	
 	public Cliente(String nome, Endereco endereco, Telefone telefone, String email, String numCartao) {
@@ -15,6 +17,7 @@ public class Cliente extends Pessoa {
 
 	public void setNumCartao(String numCartao) {
 		this.numCartao = numCartao;
+		
 	}
 
 	@Override
@@ -23,6 +26,9 @@ public class Cliente extends Pessoa {
 		+ "\nTelefone:" + this.getTelefone() + "\nEmail:" + this.getEmail() + "\nNúmero do Cartao: " + this.getNumCartao();
 	}
 
+	
+	
+	
 	
 
 	
