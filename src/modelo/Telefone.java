@@ -17,5 +17,9 @@ public class Telefone {
 		this.numero = numero;
 	}
 	
-
+	public Telefone(int ddd, String numero) {
+		this.ddd = ddd;
+		this.numero = numero;
+	}
+	
 }

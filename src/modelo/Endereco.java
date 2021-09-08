@@ -37,5 +37,13 @@ public class Endereco {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
+	
+	public Endereco(String estado, String cidade, String bairro, String rua, String cep) {
+		this.estado = estado;
+		this.cidade = cidade;
+		this.bairro = bairro;
+		this.rua = rua;
+		this.cep = cep;
+	}
 
 }
