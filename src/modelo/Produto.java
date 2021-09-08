@@ -3,10 +3,21 @@ package modelo;
 public abstract class Produto {
 
 	private int id;
+	private static int contador = 1; 
 	private String nome;
 	private Float valor;
 	private String descricao;
 	private int qtdEstoque;
+	
+	
+	public Produto(String nome, Float valor, String descricao, int qtdEstoque) {
+		this.id = Produto.contador;
+		this.nome = nome;
+		this.valor = valor;
+		this.descricao = descricao;
+		this.qtdEstoque = qtdEstoque;
+		Produto.contador++;
+	}
 	
 	public int getId() {
 		return id;
@@ -38,13 +49,7 @@ public abstract class Produto {
 	public void setQtdEstoque(int qtdEstoque) {
 		this.qtdEstoque = qtdEstoque;
 	}
-	public Produto(int id, String nome, Float valor, String descricao, int qtdEstoque) {
-		this.id = id;
-		this.nome = nome;
-		this.valor = valor;
-		this.descricao = descricao;
-		this.qtdEstoque = qtdEstoque;
-	}
+	
 	
 	
 }
