@@ -1,7 +1,7 @@
 package modelo;
 import java.util.Date;
 
-public class Funcionario {
+public class Funcionario extends Pessoa {
 
 	private String cargo;
 	private Float salario;
@@ -32,6 +32,15 @@ public class Funcionario {
 	public void setVendasMes(int vendasMes) {
 		this.vendasMes = vendasMes;
 	}
-
+	
+	public Funcionario(int id, String nome, Endereco endereco, Telefone telefone, String email, String cargo,
+			Float salario, Date dateNasc, int vendasMes) {
+		super(id, nome, endereco, telefone, email);
+		this.cargo = cargo;
+		this.salario = salario;
+		this.dateNasc = dateNasc;
+		this.vendasMes = vendasMes;
+	}
+	
 	
 }

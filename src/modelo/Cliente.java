@@ -1,6 +1,6 @@
 package modelo;
 
-public class Cliente {
+public class Cliente extends Pessoa {
 
 	private String numCartao;
 
@@ -12,4 +12,10 @@ public class Cliente {
 		this.numCartao = numCartao;
 	}
 
+	public Cliente(int id, String nome, Endereco endereco, Telefone telefone, String email, String numCartao) {
+		super(id, nome, endereco, telefone, email);
+		this.numCartao = numCartao;
+	}
+
+	
 }
