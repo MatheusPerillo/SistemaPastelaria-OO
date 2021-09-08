@@ -38,6 +38,13 @@ public abstract class Produto {
 	public void setQtdEstoque(int qtdEstoque) {
 		this.qtdEstoque = qtdEstoque;
 	}
+	public Produto(int id, String nome, Float valor, String descricao, int qtdEstoque) {
+		this.id = id;
+		this.nome = nome;
+		this.valor = valor;
+		this.descricao = descricao;
+		this.qtdEstoque = qtdEstoque;
+	}
 	
 	
 }
