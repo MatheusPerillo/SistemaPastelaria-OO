@@ -25,5 +25,11 @@ public class Venda {
 		this.dataPagamento = dataPagamento;
 	}
 	
+	public Venda(Pedido pedido, String formaPagamento, Date dataPagamento) {
+		this.pedido = pedido;
+		this.formaPagamento = formaPagamento;
+		this.dataPagamento = dataPagamento;
+	}
+	
 
 }

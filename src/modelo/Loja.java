@@ -46,7 +46,15 @@ public class Loja {
 		this.vendas = vendas;
 	}
 	
-	
-	
+	public Loja(String nome, Endereco endereco, Telefone telefone, Funcionario funcionarios,
+			ArrayList<Cliente> clientes, ArrayList<Venda> vendas) {
+		this.nome = nome;
+		this.endereco = endereco;
+		this.telefone = telefone;
+		this.funcionarios = funcionarios;
+		this.clientes = clientes;
+		this.vendas = vendas;
+	}
 
+	
 }

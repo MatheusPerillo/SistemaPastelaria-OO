@@ -61,5 +61,17 @@ public class Pedido {
 		this.dataPedido = dataPedido;
 	}
 	
+	public Pedido(int id, ArrayList<Pastel> pastel, ArrayList<Bebida> bebida, int qtdPedida, Float valorTotal,
+			Cliente cliente, Funcionario vendedor, Date dataPedido) {
+		this.id = id;
+		this.pastel = pastel;
+		this.bebida = bebida;
+		this.qtdPedida = qtdPedida;
+		this.valorTotal = valorTotal;
+		this.cliente = cliente;
+		this.vendedor = vendedor;
+		this.dataPedido = dataPedido;
+	}
+	
 	
 }
