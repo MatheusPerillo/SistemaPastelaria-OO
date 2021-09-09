@@ -1,5 +1,8 @@
 package modelo;
 
+import java.util.Map;
+import java.util.Optional;
+
 import helper.Util;
 
 public class Bebida extends Produto{
@@ -29,9 +32,11 @@ public class Bebida extends Produto{
 	@Override
 	public String toString() {
 		return "\nNome: " + this.getNome() + "\nTipo: " + this.getTipo() + "\nVolume: " + Integer.toString(getVolume())
-				+ "\nDescrição: " + this.getDescricao() + "\nValor: " + Util.doubleParaString(this.getValor()) + "\nEm estoque: " 
+				+ "\nDescrição: " + this.getDescricao() + "\nValor: " + Util.doubleParaString(this.getValor()) + "\nQtd em estoque: " 
 				+ Integer.toString(getQtdEstoque());
 	}
+	
+	
 
 	public void editar(Bebida bebida) {
 		System.out.println("1- Editar Nome");
