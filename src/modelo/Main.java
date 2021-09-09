@@ -16,9 +16,11 @@ public static void main(String[] args) {
 	Bebida coca = new Bebida("coca", 7.99, "geladinha", 100, 2000, "garrafa");
 	Funcionario perillo = new Funcionario("Perillo",end,tel,"email@email.com",Cargo.Gerente,3565.88,"24/02/2001",10);
 	
-	System.out.println(joao);
-	joao.editar(joao);
-	System.out.println(joao);
+
+	System.out.println(perillo);
+	
+	perillo.editar(perillo);;
+	System.out.println(perillo);
 	
 }
 
