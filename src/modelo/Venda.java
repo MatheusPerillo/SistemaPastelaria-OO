@@ -6,6 +6,12 @@ public class Venda {
 	private String formaPagamento;
 	private Date dataPagamento;
 	
+	public Venda(Pedido pedido, String formaPagamento, Date dataPagamento) {
+		this.pedido = pedido;
+		this.formaPagamento = formaPagamento;
+		this.dataPagamento = dataPagamento;
+	}
+	
 	public Pedido getPedido() {
 		return pedido;
 	}
@@ -25,11 +31,7 @@ public class Venda {
 		this.dataPagamento = dataPagamento;
 	}
 	
-	public Venda(Pedido pedido, String formaPagamento, Date dataPagamento) {
-		this.pedido = pedido;
-		this.formaPagamento = formaPagamento;
-		this.dataPagamento = dataPagamento;
-	}
+	
 	
 
 }
