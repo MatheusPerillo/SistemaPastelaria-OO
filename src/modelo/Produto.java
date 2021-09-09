@@ -1,5 +1,7 @@
 package modelo;
 
+import helper.Util;
+
 public abstract class Produto {
 
 	private int id;
@@ -50,6 +52,37 @@ public abstract class Produto {
 		this.qtdEstoque = qtdEstoque;
 	}
 	
+	public void verifDisponiblidade() {
+
+		if (getQtdEstoque() > 0) {
+			System.out.println("Quantidade em estoque disponível: " + this.getQtdEstoque());
+		} else {
+			System.out.println("\nNecessita-se de reposição");
+			Util.pausar(2);
+			System.out.println("\nDeseja repor a quantidade em estoque deste produto?\n1- Sim\n2- Não");
+			int aux1 = Main.ler.nextInt();
+			Main.ler.nextLine();
+
+			if (aux1 == 1) {
+				this.repor();
+			} else {
+				System.out.println("\nOperação cancelada pelo usuário");
+				Util.pausar(1);
+			}
+
+		}
+	}
+
+	public void repor() {
+		System.out.println("\nDigite a quantidade para repor o produto: ");
+		int rep = Main.ler.nextInt();
+		Main.ler.nextLine();
+
+		this.setQtdEstoque(rep);
+		System.out.println("\nReposição feita com sucesso!");
+		Util.pausar(2);
+
+	}
 	
 	
 }
