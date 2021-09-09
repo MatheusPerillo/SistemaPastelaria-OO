@@ -3,13 +3,13 @@ package modelo;
 import helper.Util;
 
 public class Telefone {
-	private int ddd;
+	private String ddd;
 	private String numero;
 	
-	public int getDdd() {
+	public String getDdd() {
 		return ddd;
 	}
-	public void setDdd(int ddd) {
+	public void setDdd(String ddd) {
 		this.ddd = ddd;
 	}
 	public String getNumero() {
@@ -19,13 +19,13 @@ public class Telefone {
 		this.numero = numero;
 	}
 	
-	public Telefone(int ddd, String numero) {
+	public Telefone(String ddd, String numero) {
 		this.ddd = ddd;
 		this.numero = numero;
 	}
 	@Override
 	public String toString() {
-		return  this.getDdd() + " " + this.getNumero();
+		return  "(" + this.getDdd() + ") " + this.getNumero(); 
 		
 	}
 	
@@ -41,8 +41,7 @@ public class Telefone {
 		switch (aux) {
 		case 1:
 			System.out.println("Informe o DDD ");
-			int ddd = Main.ler.nextInt();
-			Main.ler.nextLine();
+			String ddd = Main.ler.nextLine();
 			telefone.setDdd(ddd);
 			System.out.println("Campo alterado com sucesso");
 			Util.pausar(2);
@@ -58,8 +57,7 @@ public class Telefone {
 			break;
 		case 3:
 			System.out.println("Informe o DDD ");
-			ddd = Main.ler.nextInt();
-			Main.ler.nextLine();
+			ddd = Main.ler.nextLine();
 			
 			System.out.println("Informe o Número ");
 			num = Main.ler.nextLine();
