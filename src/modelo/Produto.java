@@ -5,12 +5,12 @@ public abstract class Produto {
 	private int id;
 	private static int contador = 1; 
 	private String nome;
-	private Float valor;
+	private Double valor;
 	private String descricao;
 	private int qtdEstoque;
 	
 	
-	public Produto(String nome, Float valor, String descricao, int qtdEstoque) {
+	public Produto(String nome, Double valor, String descricao, int qtdEstoque) {
 		this.id = Produto.contador;
 		this.nome = nome;
 		this.valor = valor;
@@ -31,10 +31,10 @@ public abstract class Produto {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Float getValor() {
+	public Double getValor() {
 		return valor;
 	}
-	public void setValor(Float valor) {
+	public void setValor(Double valor) {
 		this.valor = valor;
 	}
 	public String getDescricao() {
