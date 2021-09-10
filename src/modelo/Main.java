@@ -9,130 +9,159 @@ import modelo.Funcionario.Cargo;
 public class Main {
 	public static Scanner ler = new Scanner(System.in);
 	public static int aux;
-
+	private static Endereco end = new Endereco("Distrito federal", "Brasília", "Guará", "71020274", "24");
+	private static Telefone tel = new Telefone("61", "3086-2469");
+	private static Loja perillao = new Loja("Perillão", end, tel);
 	public static void main(String[] args) {
 		int auxMenu;
 
 		GregorianCalendar dataDeInscricao = new GregorianCalendar();
 		Endereco end = new Endereco("Distrito federal", "Brasília", "Band", "71710011", "04");
 		Telefone tel = new Telefone("61", "99946-8480");
-		Loja perillao = new Loja("Os brasbos", end, tel);
+		
 		Cliente joao = new Cliente("Joao", end, tel, "ui@ui.com", "123");
 		Pastel flango = new Pastel("frangod", 10.00, "frango de Deus", 4, "G", "frango");
-		Pastel flango2 = new Pastel("frangod2", 20.00, "frango de Deus", 2, "G", "frango");
+		Pastel flango2 = new Pastel("frangod2", 20.00, "frango de Deus", 0, "G", "frango");
 		Bebida coca = new Bebida("coca", 7.99, "geladinha", 2, 2000, "garrafa");
 		Funcionario perillo = new Funcionario("Perillo", end, tel, "email@email.com", Cargo.Gerente, 3565.88,
-				"24/02/2001", 10);
+				"24/02/2001");
 		Pedido pedido1 = new Pedido(200.0, joao, perillo, dataDeInscricao.getTime());
 
-		// System.out.println(pedido1.getValorTotal());
-		// pedido1.pedirBebida(coca, 2);
-		// pedido1.pedirPastel(flango, 2);
-		// pedido1.pedirPastel(flango2, 3);
-		// pedido1.calcularValorTotal();
+Main.perillao.cadastrarCliente(joao);
 
-		// pedido1.listarBebidasPedidas();
-		// pedido1.listarPasteisPedidos();
-
-		// System.out.println("\n\n"+pedido1.getValorTotal());
-
-		// --------------------------------- MENU INICIAL
-		// ---------------------------------------
+Main.perillao.cadastrarPastel(flango2);
+Main.perillao.cadastrarBebida(coca);
+Main.perillao.cadastrarPastel(flango);
 
 		do {
 			System.out.println("MENU DE OPÇÕES\n");
-			System.out.println("1. Cliente\n2. Funcionário\n" + "3. Pastel\n4. Bebida" + "\n5. Produtos\n"
-					+ "6. Pedido\n7. Venda\n8. Sair");
+			System.out.println("1.Loja \n2.Cliente\n3.Funcionário" + "\n4.Pastel\n5.Bebida" + "\n6.Produtos"
+					+ "\n7.Pedido\n8.Venda\n9.Sair");
 
 			auxMenu = Main.ler.nextInt();
 			Main.ler.nextLine();
 			switch (auxMenu) {
 
-			case 1: // Cliente
+			case 1: // Loja
+				Main.menuLoja();
+				break;
+			case 2: // Cliente
 				Main.menuClientes();
 
 				break;
 
-			case 2: // Funcionário
+			case 3: // Funcionário
 				Main.menuFuncionario();
 
 				break;
 
-			case 3: // Pastel
+			case 4: // Pastel
 				Main.menuPastel();
 
 				break;
 
-			case 4: // Bebida
+			case 5: // Bebida
 				Main.menuBebida();
 
 				break;
 
-			case 5: // Produto
+			case 6: // Produto
 				Main.menuProduto();
 
 				break;
 
-			case 6: // Pedido
+			case 7: // Pedido
 				Main.menuPedido();
 
 				break;
 
-			case 7: // Venda
+			case 8: // Venda
 				Main.menuVenda();
 				break;
 
-			case 8: // Sair
+			case 9: // Sair
 				Main.menuSair();
 
 				break;
 
 			}
 
-		} while (auxMenu != 8);
+		} while (auxMenu != 9);
 
 	}
 
 // ------------------------------- MÉTODOS MENU --------------------------------
 
-	public static void menuClientes() {
-
+	
+	public static void menuLoja() {
 		do {
-			System.out.println("\n1- Cadastrar \n2- Buscar \n3- Listar " + "\n4- Editar\n5- Excluir\n6- Sair");
-
+			System.out.println("\n1- Exibir dados \n2- Sair");
 			aux = Main.ler.nextInt();
 			Main.ler.nextLine();
 			switch (aux) {
 
 			case 1: // Cadastro
 
-				System.out.println("\nCadastro de cliente realizado com sucesso!");
+				System.out.println(Main.perillao);
+				break;
+
+			case 2: // Sair
+				System.out.println("\nAguarde..");
+				Util.pausar(2);
+				System.out.println("");
+				break;
+
+			}
+
+		} while (aux != 2);
+	}
+	
+	public static void menuClientes() {
+			
+		do {
+			
+			System.out.println("\n=== Menu de clientes ===");
+			System.out.println("\n1- Cadastrar \n2- Listar \n3- Buscar" + "\n4- Editar\n5- Excluir\n6- Sair");
+
+			aux = Main.ler.nextInt();
+			Main.ler.nextLine();
+			switch (aux) {
+
+			case 1: // Cadastro
+				Cliente c= Cliente.cadastrarCliente();
+				System.out.println("Cliente cadastrado com sucesso");
+				Util.pausar(1);
+				Main.perillao.cadastrarCliente(c);
+				break;
+
+			case 2: // Listar Cliente
+
+				Main.perillao.listarClientes();
 				Util.pausar(1);
 				break;
 
-			case 2: // Buscar Cliente
-
-				System.out.println("Digite o nome do cliente: ");
-				Main.ler.nextLine();
-				// Método buscar
-
-				break;
-
-			case 3: // Listar Cliente
-				// Método listar
-
+			case 3: // Buscar Cliente
+				c = Cliente.buscarPorID(Main.perillao.getClientes());
+				if(c != null) {System.out.println(c);
+				}else{ System.out.println("\nCliente não encontrado");
+				}
+				Util.pausar(1);
 				break;
 
 			case 4: // Editar
-				// Método editar Cliente
-
+				c = Cliente.buscarPorID(Main.perillao.getClientes());
+				if(c != null) {Cliente.editar(c);
+				}else{ System.out.println("\nCliente não encontrado");
+				}
 				break;
 
 			case 5: // Excluir
-
-				System.out.println("Digite o ID do cliente a ser excluído");
-				Main.ler.nextInt();
-				Main.ler.nextLine();
+				c = Cliente.buscarPorID(Main.perillao.getClientes());
+				if(c != null) {Main.perillao.removerCliente(c);
+				System.out.println("Cliente removido com sucesso!");
+				}else{ System.out.println("\nCliente não encontrado");
+				}
+				
 
 				break;
 
@@ -150,6 +179,7 @@ public class Main {
 
 	public static void menuFuncionario() {
 		do {
+			System.out.println("\n=== Menu de funcionário ===");
 			System.out.println("\n1- Cadastrar \n2- Buscar \n3- Listar " + "\n4- Editar\n5- Demitir\n6- Sair");
 
 			aux = Main.ler.nextInt();
@@ -157,34 +187,43 @@ public class Main {
 			switch (aux) {
 
 			case 1: // Cadastro
-
+				Funcionario f= Funcionario.cadastrarFuncionario();
+				Main.perillao.cadastrarFuncionario(f);
 				System.out.println("\nCadastro de funcionário realizado com sucesso!");
 				Util.pausar(1);
 				break;
 
 			case 2: // Buscar funcionario
 
-				System.out.println("Digite o nome do funcionário: ");
-				Main.ler.nextLine();
-				// Método buscar
-
+				f = Funcionario.buscarPorID(Main.perillao.getFuncionarios());
+				if(f != null) {System.out.println(f);
+				}else{ System.out.println("\nFuncionário não encontrado");
+				}
+				Util.pausar(1);
 				break;
 
+				
+
 			case 3: // Listar funcionario
-				// Método listar
+				Main.perillao.listarFuncionarios();
 
 				break;
 
 			case 4: // Editar
-				// Método editar funcionario
-
+				f = Funcionario.buscarPorID(Main.perillao.getFuncionarios());
+				if(f != null) {Funcionario.editar(f);
+				}else{ System.out.println("\nFuncionário não encontrado");
+				}
 				break;
+
 
 			case 5: // Demitir
 
-				System.out.println("Digite o ID do funcionário a ser excluído");
-				Main.ler.nextInt();
-				Main.ler.nextLine();
+				f = Funcionario.buscarPorID(Main.perillao.getFuncionarios());
+				if(f != null) {Main.perillao.removerFuncionario(f);
+				System.out.println("Funcionário demitido com sucesso!");
+				}else{ System.out.println("\nFuncionário não encontrado");
+				}
 
 				break;
 
@@ -201,6 +240,7 @@ public class Main {
 
 	public static void menuPastel() {
 		do {
+			System.out.println("\n=== Menu de Pastel ===");
 			System.out.println("\n1- Cadastrar \n2- Buscar \n3- Listar " + "\n4- Editar\n5- Remover\n6- Sair");
 
 			aux = Main.ler.nextInt();
@@ -209,33 +249,44 @@ public class Main {
 
 			case 1: // Cadastro
 
-				System.out.println("\nPastel cadastrado com sucesso!");
+				Pastel p = Pastel.cadastrarPastel();
+				Main.perillao.cadastrarPastel(p);
+				System.out.println("\nCadastro de pastel realizado com sucesso!");
 				Util.pausar(1);
 				break;
 
 			case 2: // Buscar pastel
 
-				System.out.println("Digite o nome do pastel: ");
-				Main.ler.nextLine();
+				p = Pastel.buscarPorNome(Main.perillao.getPasteis());
+				if(p != null) {System.out.println(p);
+				}else{ System.out.println("\nPastel não encontrado");
+				}
+				Util.pausar(1);
 				// Método buscar
 
 				break;
 
 			case 3: // Listar pastel
-				// Método listar
+				Main.perillao.listarPasteis();
 
 				break;
 
-			case 4: // Editar
-				// Método editar pastel
+			case 4: //Editar pastel 
+				p = Pastel.buscarPorNome(Main.perillao.getPasteis());
+			if(p != null) {Pastel.editar(p);
+			}else{ System.out.println("\nPastel não encontrado");
+			}
+			break;
 
-				break;
+				
 
 			case 5: // Remover
 
-				System.out.println("Digite o nome do pastel a ser excluído");
-				Main.ler.nextInt();
-				Main.ler.nextLine();
+				p = Pastel.buscarPorNome(Main.perillao.getPasteis());
+				if(p != null) {Main.perillao.removerPastel(p);
+				System.out.println("Pastel removido com sucesso!");
+				}else{ System.out.println("\nPastel não encontrado");
+				}
 
 				break;
 
@@ -244,7 +295,6 @@ public class Main {
 				Util.pausar(2);
 				System.out.println("");
 				break;
-
 			}
 
 		} while (aux != 6);
@@ -252,6 +302,7 @@ public class Main {
 
 	public static void menuBebida() {
 		do {
+			System.out.println("\n=== Menu de bebida ===");
 			System.out.println("\n1- Cadastrar \n2- Buscar \n3- Listar " + "\n4- Editar\n5- Remover\n6- Sair");
 
 			aux = Main.ler.nextInt();
@@ -260,35 +311,45 @@ public class Main {
 
 			case 1: // Cadastro
 
-				System.out.println("\nBebida cadastrada com sucesso!");
+				Bebida b= Bebida.cadastrar();
+				Main.perillao.cadastrarBebida(b);
+				System.out.println("\nBebida cadastrada com sucesso");
 				Util.pausar(1);
 				break;
 
 			case 2: // Buscar bebida
 
-				System.out.println("Digite o nome da bebida: ");
-				Main.ler.nextLine();
-				// Método buscar
+				b = Bebida.buscarPorNome(Main.perillao.getBebidas());
+				if(b != null) {System.out.println(b);
+				}else{ System.out.println("\nBebida não encontrada");
+				}
+				Util.pausar(1);
 
 				break;
 
 			case 3: // Listar bebida
-				// Método listar
+				Main.perillao.listarBebidas();
 
 				break;
 
 			case 4: // Editar
-				// Método editar bebida
-
+				b = Bebida.buscarPorNome(Main.perillao.getBebidas());
+				if(b != null) {Bebida.editar(b);
+				}else{ System.out.println("\nBebida não encontrada");
+				}
 				break;
+
 
 			case 5: // Remover
 
-				System.out.println("Digite o nome da bebida a ser removida");
-				Main.ler.nextInt();
-				Main.ler.nextLine();
+				b = Bebida.buscarPorNome(Main.perillao.getBebidas());
+				if(b != null) {Main.perillao.removerBebida(b);
+				System.out.println("Bebida removida com sucesso!");
+				}else{ System.out.println("\nBebida não encontrada");
+				}
 
 				break;
+
 
 			case 6: // Sair
 				System.out.println("\nAguarde..");
@@ -303,20 +364,33 @@ public class Main {
 
 	public static void menuProduto() {
 		do {
+			System.out.println("\n=== Menu de produto ===");
 			System.out.println(
-					"\n1- Lista de Pasteis e Bebidas\n2- Estoque dos produtos\n3- Reposição" + " de Produtos\n4- Sair");
+					"\n1- Lista de Pastéis e Bebidas\n2- Estoque dos produtos\n3- Reposição" + " de Produtos\n4- Sair");
 
 			aux = Main.ler.nextInt();
 			Main.ler.nextLine();
 			switch (aux) {
 
 			case 1: // Lista dos produtos
+				System.out.println("\nPastéis:");
+				Main.perillao.listarPasteis();
+				System.out.println("\nBebidas:");
+				Main.perillao.listarBebidas();
+				Util.pausar(1);
 				break;
 
-			case 2: // Estoque
+			case 2: //Estoque dos produtos
+				for(Pastel p: Main.perillao.getPasteis()) {
+					p.verifDisponiblidade();
+				}
+				for(Bebida b: Main.perillao.getBebidas()) {
+					b.verifDisponiblidade();
+				}
 				break;
 
 			case 3: // Reposição
+				Main.menuReposicao();
 				break;
 
 			case 4: // Sair
@@ -330,8 +404,42 @@ public class Main {
 		} while (aux != 4);
 	}
 
+	public static void menuReposicao() {
+		
+		do {
+			System.out.println("\n1- Repor Pasteln\n2- Repor Bebida\n3- Sair");
+			aux = Main.ler.nextInt();
+			Main.ler.nextLine();
+			switch(aux) {
+			case 1:
+				Pastel p = Pastel.buscarPorNome(Main.perillao.getPasteis());
+				if(p != null) {p.repor();
+				}else{ System.out.println("\nPastel não encontrado");
+				}
+				
+				break;
+			case 2:
+				Bebida b = Bebida.buscarPorNome(Main.perillao.getBebidas());
+				if(b != null) {b.repor();
+				}else{ System.out.println("\nPastel não encontrado");
+				}
+				
+			break;
+			case 3: // Sair
+				System.out.println("\nAguarde..");
+				Util.pausar(2);
+				System.out.println("");
+				break;
+			}
+			
+			
+		}while(aux!=3);
+	}
+	
+	
 	public static void menuPedido() {
 		do {
+			System.out.println("\n=== Menu de produto ===");
 			System.out.println("\n1- Cadastrar pedido\n2- Editar pedido\n3- Sair");
 
 			aux = Main.ler.nextInt();
@@ -357,6 +465,7 @@ public class Main {
 
 	public static void menuVenda() {
 		do {
+			System.out.println("\n=== Menu de venda ===");
 			System.out.println("\n1- Cadastrar\n2- Listar \n3- Editar\n4- Cancelar\n5- Sair");
 
 			aux = Main.ler.nextInt();
