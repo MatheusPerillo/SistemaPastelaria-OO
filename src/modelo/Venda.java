@@ -47,7 +47,7 @@ public class Venda {
 		this.dataPagamento = dataPagamento;
 	}
 
-	public Venda buscarVendasPorID(ArrayList<Venda> lista) {
+	public Venda buscarPorID(ArrayList<Venda> lista) {
 		System.out.println("Digite o ID");
 		Integer id = Main.ler.nextInt(); 
 		Main.ler.nextLine();

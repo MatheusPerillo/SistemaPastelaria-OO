@@ -130,7 +130,7 @@ public class Funcionario extends Pessoa {
 				 }
 			 }
 		} catch (Exception e) {
-			System.out.println("Venda não encontrada");
+			System.out.println("Funcionário não encontrada");
 		}
 		return null;
 	}

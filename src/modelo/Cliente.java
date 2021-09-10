@@ -38,7 +38,7 @@ public class Cliente extends Pessoa {
 				 }
 			 }
 		} catch (Exception e) {
-			System.out.println("Venda não encontrada");
+			System.out.println("Cliente não encontrada");
 		}
 		return null;
 	}
