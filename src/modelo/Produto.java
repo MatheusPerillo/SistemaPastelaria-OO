@@ -61,37 +61,25 @@ public abstract class Produto {
 	}
 
 	public void verifDisponiblidade() {
-
+		System.out.println("\nProduto: " +this.nome);
 		if (getQtdEstoque() > 0) {
 			System.out.println("Quantidade em estoque disponível: " + this.getQtdEstoque());
 		} else {
-			System.out.println("\nNecessita-se de reposição");
-			Util.pausar(1);
-			System.out.println("\nDeseja repor a quantidade em estoque deste produto?\n1- Sim\n2- Não");
-			int aux1 = Main.ler.nextInt();
-			Main.ler.nextLine();
-
-			if (aux1 == 1) {
-				this.repor();
-			} else {
-				System.out.println("\nOperação cancelada pelo usuário");
-				Util.pausar(1);
-			}
+			System.out.println("Necessita-se de reposição");			
 
 		}
 	}
 
 	public void repor() {
-		System.out.println("\nDigite a quantidade para repor o produto: ");
-		int rep = Main.ler.nextInt();
-		Main.ler.nextLine();
-
+		
+		int rep;
 		do {
+			System.out.println("\nDigite a quantidade para repor o produto: ");
+			 rep = Main.ler.nextInt();
+			Main.ler.nextLine();
+			if(rep>0) {break;}
 			System.out.println("\nQuantidade inválida!");
 			Util.pausar(1);
-			System.out.println("\nDigite a quantidade para repor o produto: ");
-			rep = Main.ler.nextInt();
-			Main.ler.nextLine();
 
 		} while (rep <= 0);
 

@@ -7,11 +7,11 @@ public class Loja {
 	private String nome;
 	private Endereco endereco;
 	private Telefone telefone;
-	private ArrayList<Cliente> clientes;
-	private ArrayList<Funcionario>  funcionarios;
-	private ArrayList<Pastel> pasteis;
-	private ArrayList<Bebida> bebidas;	
-	private ArrayList<Venda> vendas;	
+	private ArrayList<Cliente> clientes = new ArrayList<>();
+	private ArrayList<Funcionario>  funcionarios= new ArrayList<>();
+	private ArrayList<Pastel> pasteis= new ArrayList<>();
+	private ArrayList<Bebida> bebidas= new ArrayList<>();	
+	private ArrayList<Venda> vendas= new ArrayList<>();	
 		
 	
 	public Loja(String nome, Endereco endereco, Telefone telefone) {
@@ -20,48 +20,113 @@ public class Loja {
 		this.telefone = telefone;
 	}
 	
+	
+
 	public String getNome() {
 		return nome;
 	}
+
+
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+
+
 	public Endereco getEndereco() {
 		return endereco;
 	}
+
+
+
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+
+
+
 	public Telefone getTelefone() {
 		return telefone;
 	}
+
+
+
 	public void setTelefone(Telefone telefone) {
 		this.telefone = telefone;
 	}
-	
+
+
+
+	public ArrayList<Cliente> getClientes() {
+		return clientes;
+	}
+
+
+
+	public void setClientes(ArrayList<Cliente> clientes) {
+		this.clientes = clientes;
+	}
+
+
+
+	public ArrayList<Funcionario> getFuncionarios() {
+		return funcionarios;
+	}
+
+
+
+	public void setFuncionarios(ArrayList<Funcionario> funcionarios) {
+		this.funcionarios = funcionarios;
+	}
+
+
+
 	public ArrayList<Pastel> getPasteis() {
 		return pasteis;
 	}
+
+
 
 	public void setPasteis(ArrayList<Pastel> pasteis) {
 		this.pasteis = pasteis;
 	}
 
+
+
 	public ArrayList<Bebida> getBebidas() {
 		return bebidas;
 	}
+
+
 
 	public void setBebidas(ArrayList<Bebida> bebidas) {
 		this.bebidas = bebidas;
 	}
 
+
+
+	public ArrayList<Venda> getVendas() {
+		return vendas;
+	}
+
+
+
+	public void setVendas(ArrayList<Venda> vendas) {
+		this.vendas = vendas;
+	}
+
+
+
 	public void cadastrarCliente(Cliente cliente) {
 		this.clientes.add(cliente);
 	}
 	public void listarClientes() {
+		if(!this.clientes.isEmpty()) {
 		for(Cliente c: this.clientes) {
 			System.out.println(c);
 		}
+		}else {System.out.println("Não existem clientes cadastrados");}
 	}
 	public void removerCliente(Cliente cliente) {
 		this.clientes.remove(cliente);
@@ -70,9 +135,11 @@ public class Loja {
 		this.funcionarios.add(funcionario);
 	}
 	public void listarFuncionarios() {
-		for(Funcionario f: this.funcionarios) {
-			System.out.println(f);
-		}
+		if(!this.funcionarios.isEmpty()) {
+			for(Funcionario f: this.funcionarios) {
+				System.out.println(f);
+			}
+			}else {System.out.println("Não existem funcionários cadastrados");}
 	}
 	public void removerFuncionario(Funcionario func) {
 		this.funcionarios.remove(func);
@@ -81,9 +148,11 @@ public class Loja {
 		this.pasteis.add(pastel);
 	}
 	public void listarPasteis() {
-		for(Pastel p: this.pasteis) {
-			System.out.println(p);
-		}
+		if(!this.pasteis.isEmpty()) {
+			for(Pastel p: this.pasteis) {
+				System.out.println(p);
+			}
+			}else {System.out.println("Não existem pastéis cadastrados");}
 	}
 	public void removerPastel(Pastel pastel) {
 		this.pasteis.remove(pastel);
@@ -93,9 +162,11 @@ public class Loja {
 		this.bebidas.add(bebida);
 	}
 	public void listarBebidas() {
-		for(Bebida b: this.bebidas) {
-			System.out.println(b);
-		}
+		if(!this.bebidas.isEmpty()) {
+			for(Bebida b: this.bebidas) {
+				System.out.println(b);
+			}
+			}else {System.out.println("Não existem bebidas cadastradas");}
 	}
 	
 	public void removerBebida(Bebida bebida) {
@@ -105,20 +176,17 @@ public class Loja {
 		this.vendas.add(venda);
 	}
 	public void listarVendas() {
-		for(Venda v: this.vendas) {
-			System.out.println(v);
-			
-		}
+		if(!this.vendas.isEmpty()) {
+			for(Venda v: this.vendas) {
+				System.out.println(v);
+			}
+			}else {System.out.println("Não existem vendas cadastradas");}
 	}
 
-	
-	
-
-	
-	
-	
-	
-
+	@Override
+	public String toString() {
+		return "Nome da loja: " + nome + "\nEndereço: " + endereco + "\nTelefone: " + telefone;
+	}
 
 	
 }

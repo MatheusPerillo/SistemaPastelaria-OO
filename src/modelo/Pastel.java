@@ -54,7 +54,7 @@ public class Pastel extends Produto {
 		return null;
 	}
 	
-	public Pastel buscarPorNome(ArrayList<Pastel> lista) {
+	public static Pastel buscarPorNome(ArrayList<Pastel> lista) {
 		System.out.println("Digite o Nome");
 		String nome= Main.ler.nextLine();
 		try {
@@ -64,13 +64,35 @@ public class Pastel extends Produto {
 				 }
 			 }
 		} catch (Exception e) {
-			System.out.println("Bebida não encontrada");
+			System.out.println("Pastel não encontrada");
 		}
 		return null;
 	}
 	
-	
-	public void editar(Pastel pastel) {
+	public static Pastel cadastrarPastel() {
+		System.out.println("Informe o Nome: ");
+		String nome = Main.ler.nextLine();
+
+		System.out.println("Informe o Sabor: ");
+		String sabor = Main.ler.nextLine();
+
+		System.out.println("Informe o Tamanho: ");
+		String tamanho = Main.ler.nextLine();
+
+		System.out.println("Informe a Descrição: ");
+		String descricao = Main.ler.nextLine();
+
+		System.out.println("Informe o Valor: ");
+		Double valor = Main.ler.nextDouble();
+		Main.ler.nextLine();
+
+		System.out.println("Informe o Estoque: ");
+		int qtdEstoque = Main.ler.nextInt();
+		Main.ler.nextLine();
+		Pastel p = new Pastel( nome,  valor,  descricao, qtdEstoque,  tamanho,sabor);
+		return p;
+	}
+	public static void editar(Pastel pastel) {
 		System.out.println("1- Editar Nome");
 		System.out.println("2- Editar Sabor");
 		System.out.println("3- Editar Tamanho");
@@ -167,7 +189,7 @@ public class Pastel extends Produto {
 		default:
 			System.out.println("Opção inválida");
 			Util.pausar(2);
-			this.editar(pastel);
+			Pastel.editar(pastel);
 			break;
 		}
 

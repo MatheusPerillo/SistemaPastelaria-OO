@@ -27,7 +27,7 @@ public class Cliente extends Pessoa {
 		+ "\nTelefone: " + this.getTelefone() + "\nEmail: " + this.getEmail() + "\nNúmero do Cartao: " + this.getNumCartao();
 	}
 	
-	public Cliente buscarPorID(ArrayList<Cliente> lista) {
+	public static Cliente buscarPorID(ArrayList<Cliente> lista) {
 		System.out.println("Digite o ID");
 		Integer id = Main.ler.nextInt(); 
 		Main.ler.nextLine();
@@ -42,8 +42,24 @@ public class Cliente extends Pessoa {
 		}
 		return null;
 	}
-	
-	public void editar(Cliente cliente) {
+	public static Cliente cadastrarCliente() {
+		System.out.print("Digite o nome do cliente: ");
+		String nome = Main.ler.nextLine();
+		System.out.println();
+		
+		Endereco end = Endereco.cadastrarEndereco();
+		Telefone tel= Telefone.cadastrarTelefone();
+		
+		System.out.print("Digite o email: ");
+		String email= Main.ler.nextLine();
+		
+		System.out.print("Digite o número do Cartão: ");
+		String numCartao= Main.ler.nextLine();
+		Cliente cliente= new Cliente(nome,end,tel,email,numCartao);
+		return cliente;
+		
+	}
+	public static void editar(Cliente cliente) {
 
 		System.out.println("1- Editar Nome ");
 		System.out.println("2- Editar Endereço ");
@@ -110,14 +126,15 @@ public class Cliente extends Pessoa {
 
 			break;
 		default:
-			System.out.println("Opção inválida");
+			System.out.println("Opção inválida\n");
 			Util.pausar(2);
-			this.editar(cliente);
+			Cliente.editar(cliente);
 			break;
 		}
 
 	}
-
+		
+	
 
 	
 }

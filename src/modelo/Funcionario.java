@@ -18,20 +18,36 @@ public class Funcionario extends Pessoa {
 				System.out.println(i+"- " + list.get(i));
 			}
 		}
+		public static Cargo cadastrarCargo() {
+			Cargo.listarCargos();
+			int aux= Main.ler.nextInt();
+			Main.ler.nextLine();
+			switch(aux) {
+			case 0: 
+				return Cargo.Trainee;
+				
+			case 1:
+				return Cargo.Vendedor;
+			case 2:
+				return Cargo.Gerente;
+			default:
+				return null;
+			}
+		}
 	}
 	
 	private Cargo cargo;
 	private Double salario;
 	private String dateNasc;
-	private int vendasMes;
+	private int vendas =0;
 	
 	public Funcionario(String nome, Endereco endereco, Telefone telefone, String email, Cargo cargo,
-			Double salario,String dateNasc, int vendasMes) {
+			Double salario,String dateNasc) {
 		super(nome, endereco, telefone, email);
 		this.cargo = cargo;
 		this.salario = salario;
 		this.dateNasc = dateNasc;
-		this.vendasMes = vendasMes;
+		
 	}
 
 	public Cargo getCargo() {
@@ -58,12 +74,12 @@ public class Funcionario extends Pessoa {
 		this.dateNasc = dateNasc;
 	}
 
-	public int getVendasMes() {
-		return vendasMes;
+	public int getVendas() {
+		return vendas;
 	}
 
-	public void setVendasMes(int vendasMes) {
-		this.vendasMes = vendasMes;
+	public void setVendas(int vendas) {
+		this.vendas = vendas;
 	}
 	
 	public void promover() {
@@ -104,7 +120,7 @@ public class Funcionario extends Pessoa {
 	public String toString() {
 		return "\nID:" + this.getId() + "\nNome: " + this.getNome() + "\nEndereco: " + this.getEndereco() 
 		+"\nData de Nascimento: "+ this.getDateNasc()+ "\nTelefone: " + this.getTelefone() + "\nEmail: " + this.getEmail() + "\nCargo: " + this.getCargo()
-		+ "\nSalário: " + this.getSalario() + "\nVendas no mês: " + this.getVendasMes() ;
+		+ "\nSalário: " + this.getSalario() + "\nVendas no mês: " + this.getVendas() ;
 	}
 	
 	public void editarCargo() {
@@ -119,7 +135,7 @@ public class Funcionario extends Pessoa {
 		this.editar(this);}
 	}
 	
-	public Funcionario buscarPorID(ArrayList<Funcionario> lista) {
+	public static Funcionario buscarPorID(ArrayList<Funcionario> lista) {
 		System.out.println("Digite o ID");
 		Integer id = Main.ler.nextInt(); 
 		Main.ler.nextLine();
@@ -135,8 +151,33 @@ public class Funcionario extends Pessoa {
 		return null;
 	}
 	
+	public static Funcionario cadastrarFuncionario() {
+		System.out.println("Informe o Nome ");
+		String nome = Main.ler.nextLine();
+		
+		Endereco end = Endereco.cadastrarEndereco();
+		Telefone tel= Telefone.cadastrarTelefone();
+		
+		System.out.println("Informe o Email ");
+		String email = Main.ler.nextLine();
+		
+		Cargo car = Cargo.cadastrarCargo();
+		if(car ==null) {
+			System.out.println("Opção inválida");
+			Cargo.cadastrarCargo();
+		}
+		System.out.println("Informe o salário");
+		 Double sal = Main.ler.nextDouble();
+		 Main.ler.nextLine();
+		System.out.println("Informe a data de nascimento");
+		String data = Main.ler.nextLine();
+		Funcionario func = new Funcionario(nome,end,tel,email,car,sal,data);
+		
+		return func;
+		
+	}
 	
-	public void editar(Funcionario funcionario) {
+	public static void editar(Funcionario funcionario) {
 
 		System.out.println("\n1- Editar Nome ");
 		System.out.println("2- Editar Endereço ");
@@ -145,7 +186,7 @@ public class Funcionario extends Pessoa {
 		System.out.println("5- Editar Cargo ");
 		System.out.println("6- Editar salário ");
 		System.out.println("7- Editar data de nascimento ");
-		System.out.println("8- Editar vendas no mês");
+		System.out.println("8- Editar vendas ");
 		System.out.println("9- Editar tudo");
 
 		int aux = Main.ler.nextInt();
@@ -201,7 +242,7 @@ public class Funcionario extends Pessoa {
 			System.out.println("Informe o número de vendas no mês ");
 			int venda = Main.ler.nextInt();
 			Main.ler.nextLine();
-			funcionario.setVendasMes(venda);
+			funcionario.setVendas(venda);
 			System.out.println("Campo alterado com sucesso");
 			Util.pausar(2);
 			//Main.menu();
@@ -231,7 +272,7 @@ public class Funcionario extends Pessoa {
 			funcionario.setEmail(email);
 			funcionario.setSalario(sal);
 			funcionario.setDateNasc(data);
-			funcionario.setVendasMes(venda);
+			funcionario.setVendas(venda);
 			System.out.println("Funcionário alterado com sucesso");
 			Util.pausar(2);
 			//Main.menu();
@@ -240,7 +281,7 @@ public class Funcionario extends Pessoa {
 		default:
 			System.out.println("Opção inválida");
 			Util.pausar(2);
-			this.editar(funcionario);
+			Funcionario.editar(funcionario);
 			break;
 		}
 

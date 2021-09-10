@@ -29,6 +29,19 @@ public class Telefone {
 		
 	}
 	
+	public static Telefone cadastrarTelefone() {
+		System.out.println("Informe o DDD ");
+		String ddd = Main.ler.nextLine();
+		
+		System.out.println("Informe o Número ");
+		String num = Main.ler.nextLine();
+		
+		Telefone tel = new Telefone(ddd,num);
+		return tel;
+		
+		
+	}
+	
 	public void editar(Telefone telefone) {
 
 		System.out.println("1- Editar DDD ");

@@ -64,6 +64,24 @@ public class Endereco {
 				+ numero  ;
 	}
 	
+	public static Endereco cadastrarEndereco() {
+		System.out.println("Informe o estado ");
+		String estado = Main.ler.nextLine();
+
+		System.out.println("Informe a cidade ");
+		String cidade = Main.ler.nextLine();
+
+		System.out.println("Informe o bairro");
+		String bairro = Main.ler.nextLine();
+		System.out.println("Informe o cep");
+		String cep = Main.ler.nextLine();
+		System.out.println("Informe o Número");
+		String num = Main.ler.nextLine();
+		
+		 Endereco endereco = new Endereco(estado,cidade,bairro,cep,num);
+		 return endereco;
+	} 
+	
 	public void editar(Endereco endereco) {
 
 		System.out.println("1- Editar Estado ");

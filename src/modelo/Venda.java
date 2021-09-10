@@ -1,7 +1,7 @@
 package modelo;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Optional;
+
 
 import helper.Util;
 
@@ -18,6 +18,7 @@ public class Venda {
 		this.formaPagamento = formaPagamento;
 		this.dataPagamento = dataPagamento;
 		Venda.contador++;
+		this.pedido.getVendedor().setVendas(pedido.getVendedor().getVendas()+1);
 	}
 	
 	public int getId() {

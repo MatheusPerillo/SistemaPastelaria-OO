@@ -49,7 +49,7 @@ public class Bebida extends Produto{
 		}
 		return null;
 	}
-	public Bebida buscarPorNome(ArrayList<Bebida> lista) {
+	public static Bebida buscarPorNome(ArrayList<Bebida> lista) {
 		System.out.println("Digite o Nome");
 		String nome= Main.ler.nextLine();
 		try {
@@ -63,8 +63,34 @@ public class Bebida extends Produto{
 		}
 		return null;
 	}
-
-	public void editar(Bebida bebida) {
+	public static Bebida cadastrar() {
+		System.out.println("Informe o Nome: ");
+		String nome = Main.ler.nextLine();
+		
+		System.out.println("Informe o Tipo: ");
+		String tipo = Main.ler.nextLine();
+		
+		System.out.println("Informe o Volume: ");
+		int volume = Main.ler.nextInt();
+		Main.ler.nextLine();
+		
+		System.out.println("Informe a Descrição: ");
+		String descricao = Main.ler.nextLine();
+		
+		System.out.println("Informe o Valor: ");
+		Double valor = Main.ler.nextDouble();
+		Main.ler.nextLine();
+		
+		System.out.println("Informe o Estoque: ");
+		int qtdEstoque = Main.ler.nextInt();
+		Main.ler.nextLine();
+		
+		Bebida beb= new Bebida( nome,  valor,  descricao,  qtdEstoque, volume, tipo);
+		return beb;
+	}
+	
+	
+	public static void editar(Bebida bebida) {
 		System.out.println("1- Editar Nome");
 		System.out.println("2- Editar Tipo");
 		System.out.println("3- Editar Volume");
@@ -163,7 +189,7 @@ public class Bebida extends Produto{
 		default:
 			System.out.println("Opção inválida");
 			Util.pausar(2);
-			this.editar(bebida);
+			Bebida.editar(bebida);
 			break;
 		}
 			
