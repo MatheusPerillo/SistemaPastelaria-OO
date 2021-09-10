@@ -4,8 +4,8 @@ import helper.Util;
 
 public abstract class Produto {
 
-	private int id;
 	private static int contador = 1;
+	private int id;
 	private String nome;
 	private Double valor;
 	private String descricao;

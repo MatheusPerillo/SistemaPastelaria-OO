@@ -2,12 +2,13 @@ package modelo;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import helper.Util;
 
 public class Venda {
-	private Integer Id;
 	private static int contador=1;
+	private Integer Id;
 	private Pedido pedido;
 	private String formaPagamento;
 	private Date dataPagamento;
@@ -48,7 +49,7 @@ public class Venda {
 		this.dataPagamento = dataPagamento;
 	}
 
-	public static Venda buscarPorID(ArrayList<Venda> lista) {
+	public static Venda buscarPorId(ArrayList<Venda> lista) {
 		System.out.println("Digite o ID");
 		Integer id = Main.ler.nextInt(); 
 		Main.ler.nextLine();
@@ -63,16 +64,26 @@ public class Venda {
 		}
 		return null;
 	}
-	public static Venda cadastrarVenda(Pedido pedido) {
+	public static void cadastrar(Pedido pedido ,List<Venda> lista) {
 		System.out.println("\nDigite a forma de pagamento: ");
 		String pag = Main.ler.nextLine(); 
 		System.out.println();
 		GregorianCalendar data = new GregorianCalendar();
 		Venda v= new Venda(pedido,pag, data.getTime());
-		return v;
+		lista.add(v);
 	}
 	
-	public static void editarVenda(Venda v) {
+	public static void cancelar(List lista) {
+		Venda v = Venda.buscarPorId(Main.perillao.getVendas());
+		if (v != null) {
+			lista.remove(v);
+			System.out.println("\nVenda removida com sucesso!");
+		} else {
+			System.out.println("\nVenda não encontrada");
+		}
+	}
+	
+	public static void editar(Venda v) {
 		System.out.println("\nNão é permitido editar o pedido,caso deseje fazer isso exclua a venda e a cadastre novamente xD");
 		System.out.println("\nDigite a nova forma de pagamento");
 		String pag = Main.ler.nextLine();
@@ -81,7 +92,7 @@ public class Venda {
 	
 	@Override
 	public String toString() {
-		this.pedido.listarPedido();
+		this.pedido.exibir();;
 		return "\nVenda: "  +"\nForma de Pagemento: " + formaPagamento + "\nDataPagamento: " + Util.dateParaString(dataPagamento);
 	}
 	

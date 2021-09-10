@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Optional;
@@ -68,7 +69,7 @@ public class Bebida extends Produto {
 		return null;
 	}
 
-	public static Bebida cadastrar() {
+	public static void cadastrar(List<Bebida> lista) {
 		System.out.println("Informe o Nome: ");
 		String nome = Main.ler.nextLine();
 
@@ -91,7 +92,18 @@ public class Bebida extends Produto {
 		Main.ler.nextLine();
 
 		Bebida beb = new Bebida(nome, valor, descricao, qtdEstoque, volume, tipo);
-		return beb;
+		lista.add(beb);
+	}
+
+	public static void remover(List<Bebida> lista) {
+		Bebida b = Bebida.buscarPorNome(Main.perillao.getBebidas());
+		if (b != null) {
+			lista.remove(b);
+			System.out.println("Bebida removida com sucesso!");
+		} else {
+			System.out.println("\nBebida não encontrada");
+		}
+
 	}
 
 	public static void editar(Bebida bebida) {

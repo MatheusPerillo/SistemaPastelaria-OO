@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import helper.Util;
 
@@ -28,7 +29,7 @@ public class Cliente extends Pessoa {
 	}
 	
 	public static Cliente buscarPorID(ArrayList<Cliente> lista) {
-		System.out.print("\nDigite o ID: ");
+		System.out.print("\nDigite o ID do cliente: ");
 		Integer id = Main.ler.nextInt(); 
 		Main.ler.nextLine();
 		try {
@@ -42,12 +43,12 @@ public class Cliente extends Pessoa {
 		}
 		return null;
 	}
-	public static Cliente cadastrarCliente() {
+	public static void cadastrar(List<Cliente> lista) {
 		System.out.print("Digite o nome do cliente: ");
 		String nome = Main.ler.nextLine();
 		System.out.println();
 		
-		Endereco end = Endereco.cadastrarEndereco();
+		Endereco end = Endereco.cadastrar();
 		Telefone tel= Telefone.cadastrarTelefone();
 		
 		System.out.print("Digite o email: ");
@@ -56,8 +57,18 @@ public class Cliente extends Pessoa {
 		System.out.print("Digite o número do Cartão: ");
 		String numCartao= Main.ler.nextLine();
 		Cliente cliente= new Cliente(nome,end,tel,email,numCartao);
-		return cliente;
+		lista.add(cliente);
 		
+	}
+	
+	public static void remover(List<Cliente> lista) {
+		Cliente c = Cliente.buscarPorID(Main.perillao.getClientes());
+		if (c != null) {
+			lista.remove(c);
+			System.out.println("\nCliente removido com sucesso!");
+		} else {
+			System.out.println("\nCliente não encontrado");
+		}
 	}
 	public static void editar(Cliente cliente) {
 

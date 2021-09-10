@@ -86,8 +86,9 @@ public class Loja {
 		this.vendas = vendas;
 	}
 
-	public void cadastrarCliente(Cliente cliente) {
-		this.clientes.add(cliente);
+	@Override
+	public String toString() {
+		return "Nome da loja: " + nome + "\nEndereço: " + endereco + "\nTelefone: " + telefone;
 	}
 
 	public void listarClientes() {
@@ -98,14 +99,6 @@ public class Loja {
 		} else {
 			System.out.println("\nNão existem clientes cadastrados");
 		}
-	}
-
-	public void removerCliente(Cliente cliente) {
-		this.clientes.remove(cliente);
-	}
-
-	public void cadastrarFuncionario(Funcionario funcionario) {
-		this.funcionarios.add(funcionario);
 	}
 
 	public void listarFuncionarios() {
@@ -119,14 +112,6 @@ public class Loja {
 		}
 	}
 
-	public void removerFuncionario(Funcionario func) {
-		this.funcionarios.remove(func);
-	}
-
-	public void cadastrarPastel(Pastel pastel) {
-		this.pasteis.add(pastel);
-	}
-
 	public void listarPasteis() {
 		if (!this.pasteis.isEmpty()) {
 			for (Pastel p : this.pasteis) {
@@ -136,14 +121,6 @@ public class Loja {
 			System.out.println("\nNão existem pastéis cadastrados");
 			Util.pausar(1);
 		}
-	}
-
-	public void removerPastel(Pastel pastel) {
-		this.pasteis.remove(pastel);
-	}
-
-	public void cadastrarBebida(Bebida bebida) {
-		this.bebidas.add(bebida);
 	}
 
 	public void listarBebidas() {
@@ -157,14 +134,6 @@ public class Loja {
 		}
 	}
 
-	public void removerBebida(Bebida bebida) {
-		this.bebidas.remove(bebida);
-	}
-
-	public void cadastrarVenda(Venda venda) {
-		this.vendas.add(venda);
-	}
-
 	public void listarVendas() {
 		if (!this.vendas.isEmpty()) {
 			for (Venda v : this.vendas) {
@@ -174,15 +143,6 @@ public class Loja {
 			System.out.println("\nNão existem vendas cadastradas");
 			Util.pausar(1);
 		}
-	}
-	
-	public void removerVenda(Venda venda) {
-		this.vendas.remove(venda);
-	}
-
-	@Override
-	public String toString() {
-		return "Nome da loja: " + nome + "\nEndereço: " + endereco + "\nTelefone: " + telefone;
 	}
 
 }

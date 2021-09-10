@@ -2,6 +2,7 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -70,7 +71,7 @@ public class Pastel extends Produto {
 		return null;
 	}
 	
-	public static Pastel cadastrarPastel() {
+	public static void cadastrar(List<Pastel> lista) {
 		System.out.println("Informe o Nome: ");
 		String nome = Main.ler.nextLine();
 
@@ -91,7 +92,17 @@ public class Pastel extends Produto {
 		int qtdEstoque = Main.ler.nextInt();
 		Main.ler.nextLine();
 		Pastel p = new Pastel( nome,  valor,  descricao, qtdEstoque,  tamanho,sabor);
-		return p;
+		lista.add(p);
+	}
+	
+	public static void remover(List<Pastel> lista) {
+		Pastel p = Pastel.buscarPorNome(Main.perillao.getPasteis());
+		if (p != null) {
+			lista.remove(p);
+			System.out.println("Pastel removido com sucesso!");
+		} else {
+			System.out.println("\nPastel não encontrado");
+		}
 	}
 	public static void editar(Pastel pastel) {
 		System.out.println("1- Editar Nome");

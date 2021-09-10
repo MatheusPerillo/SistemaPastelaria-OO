@@ -29,11 +29,11 @@ public class Main {
 				"24/02/2001");
 		Pedido pedido1 = new Pedido(200.0, joao, perillo, dataDeInscricao.getTime());
 
-		Main.perillao.cadastrarCliente(joao);
-		Main.perillao.cadastrarFuncionario(perillo);
-		Main.perillao.cadastrarPastel(flango2);
-		Main.perillao.cadastrarBebida(coca);
-		Main.perillao.cadastrarPastel(flango);
+		Main.perillao.getClientes().add(joao);
+		Main.perillao.getFuncionarios().add(perillo);
+		Main.perillao.getPasteis().add(flango2);
+		Main.perillao.getBebidas().add(coca);
+		Main.perillao.getPasteis().add(flango);
 
 		do {
 			System.out.println("MENU DE OPÇÕES\n");
@@ -129,10 +129,10 @@ public class Main {
 			switch (aux) {
 
 			case 1: // Cadastro
-				Cliente c = Cliente.cadastrarCliente();
+				 Cliente.cadastrar(Main.perillao.getClientes());
 				System.out.println("Cliente cadastrado com sucesso");
 				Util.pausar(1);
-				Main.perillao.cadastrarCliente(c);
+				
 				break;
 
 			case 2: // Listar Cliente
@@ -142,7 +142,7 @@ public class Main {
 				break;
 
 			case 3: // Buscar Cliente
-				c = Cliente.buscarPorID(Main.perillao.getClientes());
+				Cliente c = Cliente.buscarPorID(Main.perillao.getClientes());
 				if (c != null) {
 					System.out.println(c);
 				} else {
@@ -161,13 +161,7 @@ public class Main {
 				break;
 
 			case 5: // Excluir
-				c = Cliente.buscarPorID(Main.perillao.getClientes());
-				if (c != null) {
-					Main.perillao.removerCliente(c);
-					System.out.println("\nCliente removido com sucesso!");
-				} else {
-					System.out.println("\nCliente não encontrado");
-				}
+				Cliente.remover(Main.perillao.getClientes());
 
 				break;
 
@@ -193,15 +187,14 @@ public class Main {
 			switch (aux) {
 
 			case 1: // Cadastro
-				Funcionario f = Funcionario.cadastrarFuncionario();
-				Main.perillao.cadastrarFuncionario(f);
+				Funcionario.cadastrar(Main.perillao.getFuncionarios());
 				System.out.println("\nCadastro de funcionário realizado com sucesso!");
 				Util.pausar(1);
 				break;
 
 			case 2: // Buscar funcionario
 
-				f = Funcionario.buscarPorID(Main.perillao.getFuncionarios());
+				Funcionario f = Funcionario.buscarPorID(Main.perillao.getFuncionarios());
 				if (f != null) {
 					System.out.println(f);
 				} else {
@@ -226,13 +219,7 @@ public class Main {
 
 			case 5: // Demitir
 
-				f = Funcionario.buscarPorID(Main.perillao.getFuncionarios());
-				if (f != null) {
-					Main.perillao.removerFuncionario(f);
-					System.out.println("Funcionário demitido com sucesso!");
-				} else {
-					System.out.println("\nFuncionário não encontrado");
-				}
+				Funcionario.demitir(Main.perillao.getFuncionarios());
 
 				break;
 
@@ -258,15 +245,14 @@ public class Main {
 
 			case 1: // Cadastro
 
-				Pastel p = Pastel.cadastrarPastel();
-				Main.perillao.cadastrarPastel(p);
+				 Pastel.cadastrar(Main.perillao.getPasteis());
 				System.out.println("\nCadastro de pastel realizado com sucesso!");
 				Util.pausar(1);
 				break;
 
 			case 2: // Buscar pastel
 
-				p = Pastel.buscarPorNome(Main.perillao.getPasteis());
+				Pastel p = Pastel.buscarPorNome(Main.perillao.getPasteis());
 				if (p != null) {
 					System.out.println(p);
 				} else {
@@ -293,13 +279,7 @@ public class Main {
 
 			case 5: // Remover
 
-				p = Pastel.buscarPorNome(Main.perillao.getPasteis());
-				if (p != null) {
-					Main.perillao.removerPastel(p);
-					System.out.println("Pastel removido com sucesso!");
-				} else {
-					System.out.println("\nPastel não encontrado");
-				}
+				Pastel.remover(Main.perillao.getPasteis());
 
 				break;
 
@@ -324,15 +304,14 @@ public class Main {
 
 			case 1: // Cadastro
 
-				Bebida b = Bebida.cadastrar();
-				Main.perillao.cadastrarBebida(b);
+				Bebida.cadastrar(Main.perillao.getBebidas());
 				System.out.println("\nBebida cadastrada com sucesso");
 				Util.pausar(1);
 				break;
 
 			case 2: // Buscar bebida
 
-				b = Bebida.buscarPorNome(Main.perillao.getBebidas());
+				Bebida b = Bebida.buscarPorNome(Main.perillao.getBebidas());
 				if (b != null) {
 					System.out.println(b);
 				} else {
@@ -357,14 +336,7 @@ public class Main {
 				break;
 
 			case 5: // Remover
-
-				b = Bebida.buscarPorNome(Main.perillao.getBebidas());
-				if (b != null) {
-					Main.perillao.removerBebida(b);
-					System.out.println("Bebida removida com sucesso!");
-				} else {
-					System.out.println("\nBebida não encontrada");
-				}
+				Bebida.remover(Main.perillao.getBebidas());
 
 				break;
 
@@ -468,12 +440,12 @@ public class Main {
 
 			case 1: // Cadastro
 
-				pedidoAtual.cadastrarPedido();
-				pedidoAtual.listarPedido();
+				pedidoAtual.cadastrar();
+				pedidoAtual.exibir();
 				break;
 
 			case 2:
-				pedidoAtual.editarPedido();
+				pedidoAtual.editar();
 
 				break;
 
@@ -498,10 +470,9 @@ public class Main {
 			switch (aux) {
 
 			case 1:
-				System.out.println("Pedido a ser cadastrado");
-				pedidoAtual.listarPedido();
-				Venda v = Venda.cadastrarVenda(pedidoAtual);
-				Main.perillao.cadastrarVenda(v);
+				System.out.println("Pedido a ser cadastrado na venda");
+				pedidoAtual.exibir();
+				Venda.cadastrar(pedidoAtual, Main.perillao.getVendas());
 				break;
 
 			case 2:
@@ -509,9 +480,9 @@ public class Main {
 				break;
 
 			case 3: // Editar
-				v = Venda.buscarPorID(Main.perillao.getVendas());
+				Venda v = Venda.buscarPorId(Main.perillao.getVendas());
 				if (v != null) {
-					Venda.editarVenda(v);
+					Venda.editar(v);
 				} else {
 					System.out.println("\nVenda não encontrada");
 				}
@@ -519,13 +490,7 @@ public class Main {
 				
 
 			case 4: // Cancelar
-				v = Venda.buscarPorID(Main.perillao.getVendas());
-				if (v != null) {
-					Main.perillao.removerVenda(v);;
-					System.out.println("\nVenda removida com sucesso!");
-				} else {
-					System.out.println("\nVenda não encontrada");
-				}
+				Venda.cancelar(Main.perillao.getVendas());
 				break;
 
 			case 5: // Sair

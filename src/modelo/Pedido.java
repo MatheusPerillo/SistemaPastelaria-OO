@@ -9,8 +9,8 @@ import java.util.Map;
 import helper.Util;
 
 public class Pedido {
-	private int id;
 	private static int contador = 1;
+	private int id;
 	private HashMap<Pastel, Integer> pasteis = new HashMap<>();
 	private HashMap<Bebida, Integer> bebidas = new HashMap<>();
 	private Double valorTotal;
@@ -127,7 +127,7 @@ public class Pedido {
 		}
 	}
 
-	public void listarPedido() {
+	public void exibir() {
 		System.out.println("\nPedido: ");
 		this.listarBebidasPedidas();
 		this.listarPasteisPedidos();
@@ -180,7 +180,7 @@ public class Pedido {
 		this.setDataPedido(data.getTime());
 	}
 
-	public void cadastrarPedido() {
+	public void cadastrar() {
 		System.out.println("\nQual o funcionário que realizou o pedido?");
 		Main.perillao.listarFuncionarios();
 
@@ -243,7 +243,7 @@ public class Pedido {
 
 	}
 
-	public void editarPedido() {
+	public void editar() {
 		System.out.println("1- Alterar pastel escolhido ");
 		System.out.println("2- Alterar bebida escolhida ");
 		System.out.println("3- Alterar tudo");
@@ -301,7 +301,7 @@ public class Pedido {
 		default:
 			System.out.println("\nOpção inválida");
 			Util.pausar(2);
-			this.editarPedido();
+			this.editar();
 			break;
 		}
 
