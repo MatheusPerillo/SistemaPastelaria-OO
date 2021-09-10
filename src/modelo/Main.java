@@ -52,46 +52,41 @@ public class Main {
 				Main.menuClientes();
 
 				break;
-//----------------------------------------------------------------------------			
 
 			case 2: // Funcionário
 				Main.menuFuncionario();
 
 				break;
-//------------------------------------------------------------------------------			
 
 			case 3: // Pastel
 				Main.menuPastel();
 
 				break;
-//------------------------------------------------------------------------------
 
 			case 4: // Bebida
 				Main.menuBebida();
 
 				break;
-//------------------------------------------------------------------------------	
 
 			case 5: // Produto
 				Main.menuProduto();
 
 				break;
-//------------------------------------------------------------------------------
 
 			case 6: // Pedido
 				Main.menuPedido();
 
 				break;
-//------------------------------------------------------------------------------			
-			case 7: // Venda
 
+			case 7: // Venda
+				Main.menuVenda();
 				break;
-//------------------------------------------------------------------------------
+
 			case 8: // Sair
 				Main.menuSair();
 
 				break;
-//------------------------------------------------------------------------------
+
 			}
 
 		} while (auxMenu != 8);
@@ -103,8 +98,7 @@ public class Main {
 	public static void menuClientes() {
 
 		do {
-			System.out.println("\n1- Cadastrar \n2- Buscar \n3- Listar " + 
-					"\n4- Editar\n5- Excluir\n6- Sair");
+			System.out.println("\n1- Cadastrar \n2- Buscar \n3- Listar " + "\n4- Editar\n5- Excluir\n6- Sair");
 
 			aux = Main.ler.nextInt();
 			Main.ler.nextLine();
@@ -156,8 +150,7 @@ public class Main {
 
 	public static void menuFuncionario() {
 		do {
-			System.out.println("\n1- Cadastrar \n2- Buscar \n3- Listar " 
-					+ "\n4- Editar\n5- Demitir\n6- Sair");
+			System.out.println("\n1- Cadastrar \n2- Buscar \n3- Listar " + "\n4- Editar\n5- Demitir\n6- Sair");
 
 			aux = Main.ler.nextInt();
 			Main.ler.nextLine();
@@ -208,8 +201,7 @@ public class Main {
 
 	public static void menuPastel() {
 		do {
-			System.out.println("\n1- Cadastrar \n2- Buscar \n3- Listar " 
-					+ "\n4- Editar\n5- Remover\n6- Sair");
+			System.out.println("\n1- Cadastrar \n2- Buscar \n3- Listar " + "\n4- Editar\n5- Remover\n6- Sair");
 
 			aux = Main.ler.nextInt();
 			Main.ler.nextLine();
@@ -260,8 +252,7 @@ public class Main {
 
 	public static void menuBebida() {
 		do {
-			System.out.println("\n1- Cadastrar \n2- Buscar \n3- Listar " 
-					+ "\n4- Editar\n5- Remover\n6- Sair");
+			System.out.println("\n1- Cadastrar \n2- Buscar \n3- Listar " + "\n4- Editar\n5- Remover\n6- Sair");
 
 			aux = Main.ler.nextInt();
 			Main.ler.nextLine();
@@ -362,6 +353,37 @@ public class Main {
 			}
 
 		} while (aux != 3);
+	}
+
+	public static void menuVenda() {
+		do {
+			System.out.println("\n1- Cadastrar\n2- Listar \n3- Editar\n4- Cancelar\n5- Sair");
+
+			aux = Main.ler.nextInt();
+			Main.ler.nextLine();
+			switch (aux) {
+
+			case 1: // Cadastro
+				break;
+
+			case 2: // Listar
+				break;
+
+			case 3: // Editar
+				break;
+
+			case 4: // Cancelar
+				break;
+
+			case 5: // Sair
+				System.out.println("\nAguarde..");
+				Util.pausar(2);
+				System.out.println("");
+				break;
+
+			}
+
+		} while (aux != 5);
 	}
 
 	public static void menuSair() {
