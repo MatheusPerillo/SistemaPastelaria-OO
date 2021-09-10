@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 import java.util.Map;
@@ -9,7 +10,7 @@ import helper.Util;
 
 public class Pedido {
 	private int id;
-	private static int contador;
+	private static int contador = 1;
 	private HashMap<Pastel, Integer> pasteis = new HashMap<>();
 	private HashMap<Bebida, Integer> bebidas = new HashMap<>();
 	private Double valorTotal;
@@ -24,6 +25,9 @@ public class Pedido {
 		this.vendedor = vendedor;
 		this.dataPedido = dataPedido;
 		contador++;
+	}
+
+	public Pedido() {
 	}
 
 	public int getId() {
@@ -81,13 +85,11 @@ public class Pedido {
 	public void setDataPedido(Date dataPedido) {
 		this.dataPedido = dataPedido;
 	}
-	
-	
 
 	public void pedirPastel(Pastel pastel, int qtd) {
 		if (pastel.getQtdEstoque() >= qtd) {
 			this.pasteis.put(pastel, qtd);
-			pastel.setQtdEstoque(pastel.getQtdEstoque()- 1);
+			pastel.setQtdEstoque(pastel.getQtdEstoque() - qtd);
 			System.out.println("Pastel: " + pastel.getNome() + " Pedido com sucesso" + "\nQtd pedida: " + qtd);
 			Util.pausar(1);
 		} else {
@@ -99,15 +101,15 @@ public class Pedido {
 
 	public void pedirBebida(Bebida bebida, int qtd) {
 		if (bebida.getQtdEstoque() >= qtd) {
-		this.bebidas.put(bebida, qtd);
-		bebida.setQtdEstoque(bebida.getQtdEstoque()- 1);
-		System.out.println("Bebida: " + bebida.getNome() + " Pedida com sucesso" + "\nQtd pedida: " + qtd);
-		Util.pausar(1);
-		}else {
+			this.bebidas.put(bebida, qtd);
+			bebida.setQtdEstoque(bebida.getQtdEstoque() - qtd);
+			System.out.println("Bebida: " + bebida.getNome() + " Pedida com sucesso" + "\nQtd pedida: " + qtd);
+			Util.pausar(1);
+		} else {
 			System.out.println("\nNão há produto em estoque suficiente para o pedido");
 			Util.pausar(1);
 		}
-		
+
 	}
 
 	public void listarPasteisPedidos() {
@@ -115,7 +117,7 @@ public class Pedido {
 		for (Map.Entry<Pastel, Integer> entrada : pasteis.entrySet()) {
 			System.out.println(entrada.getKey() + "\nQtd Pedida: " + entrada.getValue());
 		}
-		
+
 	}
 
 	public void listarBebidasPedidas() {
@@ -129,10 +131,12 @@ public class Pedido {
 		System.out.println("\nPedido: ");
 		this.listarBebidasPedidas();
 		this.listarPasteisPedidos();
-		System.out.println("\nID do Pedido: "+ this.id);
-		System.out.println("Valor total: " +this.getValorTotal());
+		System.out.println("\nID do Pedido: " + this.id);
+		System.out.println("Valor total: " + this.getValorTotal());
 		System.out.println("Cliente: " + this.cliente.getNome() + " ID: " + this.cliente.getId());
 		System.out.println("Funcionário: " + this.vendedor.getNome() + " ID: " + this.vendedor.getId());
+		System.out.println("Data do pedido:" + Util.dateParaString(this.getDataPedido()));
+		Util.pausar(2);
 	}
 
 	public void alterarPastelPedido(Pastel pastel, Pastel novoPastel) {
@@ -172,41 +176,70 @@ public class Pedido {
 		}
 		valorTotal = valorBebidas + valorPasteis;
 		this.setValorTotal(valorTotal);
+		GregorianCalendar data = new GregorianCalendar();
+		this.setDataPedido(data.getTime());
 	}
 
 	public void cadastrarPedido() {
-		System.out.println("Digite o nome do pastel escolhido: ");
-		String nomePastel = Main.ler.nextLine();
-		Util.pausar(1);
-		System.out.println("Digite quantos pasteis foram pedidos: ");
-		int qtdEstoque = Main.ler.nextInt();
-		Main.ler.nextLine();
-		this.pedirPastel(null, qtdEstoque);
-		Util.pausar(1);
+		System.out.println("\nQual o funcionário que realizou o pedido?");
+		Main.perillao.listarFuncionarios();
 
-		System.out.println("Digite o nome da bebida escolhida: ");
-		String nomeBebida = Main.ler.nextLine();
-		Util.pausar(1);
-		System.out.println("Digite quantas bebidas foram pedidas: ");
-		qtdEstoque = Main.ler.nextInt();
-		Main.ler.nextLine();
-		this.pedirBebida(null, qtdEstoque);
-		Util.pausar(1);
+		if (!Main.perillao.getFuncionarios().isEmpty()) {
+			Funcionario f = Funcionario.buscarPorID(Main.perillao.getFuncionarios());
+			this.setVendedor(f);
+		}
 
-		System.out.println("Digite o nome do cliente que realizou o pedido: ");
-		String nomeCliente = Main.ler.nextLine();
-		Util.pausar(1);
-		cliente.getNome();
+		System.out.println("\nQual o cliente que realizou o pedido? ");
+		Main.perillao.listarClientes();
+		if (!Main.perillao.getClientes().isEmpty()) {
+			Cliente c = Cliente.buscarPorID(Main.perillao.getClientes());
+			this.setCliente(c);
+		}
+		int aux;
+		do {
+			System.out.println("\n1- Pedir pastel \n2-Sair");
+			aux = Main.ler.nextInt();
+			Main.ler.nextLine();
+			if (aux == 1) {
+				System.out.println("\nEscolha um pastel da lista para realizar o pedido");
+				Main.perillao.listarPasteis();
+				Pastel p = Pastel.buscarPorNome(Main.perillao.getPasteis());
 
-		System.out.println("Digite o nome do funcionário que realizou o pedido: ");
-		String nomeFuncionario = Main.ler.nextLine();
-		Util.pausar(1);
-		vendedor.getNome();
+				System.out.println("Digite quantos pasteis foram pedidos: ");
+				int qtdEstoque = Main.ler.nextInt();
+				Main.ler.nextLine();
+				this.pedirPastel(p, qtdEstoque);
+				Util.pausar(1);
+			} else if (aux > 2 || aux < 1) {
+				System.out.println("\nOpção inválida");
+				Util.pausar(1);
+			}
+		} while (aux != 2);
+		do {
+			System.out.println("\n1- Pedir bebida \n2-Sair");
+			aux = Main.ler.nextInt();
+			Main.ler.nextLine();
+			if (aux == 1) {
+				System.out.println("\nEscolha uma bebida da lista para realizar o pedido");
+				Main.perillao.listarBebidas();
+				Bebida b = Bebida.buscarPorNome(Main.perillao.getBebidas());
 
-		System.out.println("Valor total do pedido: ");
+				System.out.println("Digite quantas bebidas foram pedidas: ");
+				int qtdEstoque = Main.ler.nextInt();
+				Main.ler.nextLine();
+				this.pedirBebida(b, qtdEstoque);
+				Util.pausar(1);
+			} else if (aux > 2 || aux < 1) {
+				System.out.println("\nOpção inválida");
+				Util.pausar(1);
+			}
+		} while (aux != 2);
+
+		this.calcularValorTotal();
+		System.out.println("\nValor total do pedido: ");
 		System.out.println(this.getValorTotal());
 		Util.pausar(1);
-		System.out.println("Pedido realizado com sucesso!");
+		System.out.println("\nPedido realizado com sucesso!");
 
 	}
 
@@ -219,45 +252,54 @@ public class Pedido {
 		Main.ler.nextLine();
 		switch (aux) {
 		case 1:
-			System.out.println("Digite o novo pastel escolhido: ");
-			String nomePastelNovo = Main.ler.nextLine();
+			System.out.println("\nEscolha um pastel da lista para substituir o do pedido atual");
+			Main.perillao.listarPasteis();
+			Pastel p = Pastel.buscarPorNome(Main.perillao.getPasteis());
+			p.setQtdEstoque(p.getQtdEstoque()+ p.getQtdEstoque());
+			Pastel p2 = Pastel.buscarPorNome(this.pasteis);
+
+			this.alterarPastelPedido(p2, p);
+			System.out.println("\nPastel alterado com sucesso!");
 			Util.pausar(1);
-			//Pedido.AlterarPastelPedido(nomePastel, nomePastelNovo);
-			System.out.println("Pastel alterado com sucesso!");
-			
-			// falta passar o novo valor
 
 			break;
 
 		case 2:
-			System.out.println("Digite a nova bebida escolhida: ");
-			String nomeBebidaNova = Main.ler.nextLine();
+			System.out.println("\nEscolha uma bebida da lista para substituir a do pedido atual");
+			Main.perillao.listarPasteis();
+			Bebida b = Bebida.buscarPorNome(Main.perillao.getBebidas());
+			b.setQtdEstoque(b.getQtdEstoque()+ b.getQtdEstoque());
+			Bebida b2 = Bebida.buscarPorNome(this.bebidas);
+
+			this.alterarBebidaPedida(b, b2);
+			System.out.println("\nBebida alterada com sucesso!");
 			Util.pausar(1);
-			//Pedido.AlterarBebidaPedida(nomeBebida, nomeBebidaNova);
-			System.out.println("Bebida alterada com sucesso!");
-			
-			// falta passar o novo valor
 
 			break;
 
 		case 3:
-			System.out.println("Digite o novo pastel escolhido: ");
-			nomePastelNovo = Main.ler.nextLine();
+			System.out.println("\nEscolha um pastel da lista para substituir o do pedido atual");
+			Main.perillao.listarPasteis();
+			p = Pastel.buscarPorNome(Main.perillao.getPasteis());
+			p.setQtdEstoque(p.getQtdEstoque()+ p.getQtdEstoque());
+			p2 = Pastel.buscarPorNome(this.pasteis);
+
+			this.alterarPastelPedido(p2, p);
 			Util.pausar(1);
+			System.out.println("\nPastel alterado com sucesso!");
+			System.out.println("\nEscolha uma bebida da lista para substituir a do pedido atual");
+			Main.perillao.listarPasteis();
+			b = Bebida.buscarPorNome(Main.perillao.getBebidas());
 
-			System.out.println("Digite a nova bebida escolhida: ");
-			nomeBebidaNova = Main.ler.nextLine();
+			b2 = Bebida.buscarPorNome(this.bebidas);
 
-			//Pedido.AlterarPastelPedido(nomePastel, nomePastelNovo);
-			//Pedido.AlterarBebidaPedida(nomeBebida, nomeBebidaNova);
-
-			// falta passar o novo valor
+			this.alterarBebidaPedida(b, b2);
 			Util.pausar(1);
-			System.out.println("Pedido alterado com sucesso!");
+			System.out.println("\nBebida alterada com sucesso!");
 			break;
 
 		default:
-			System.out.println("Opção inválida");
+			System.out.println("\nOpção inválida");
 			Util.pausar(2);
 			this.editarPedido();
 			break;

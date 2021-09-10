@@ -1,7 +1,7 @@
 package modelo;
 import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.GregorianCalendar;
 
 import helper.Util;
 
@@ -48,7 +48,7 @@ public class Venda {
 		this.dataPagamento = dataPagamento;
 	}
 
-	public Venda buscarPorID(ArrayList<Venda> lista) {
+	public static Venda buscarPorID(ArrayList<Venda> lista) {
 		System.out.println("Digite o ID");
 		Integer id = Main.ler.nextInt(); 
 		Main.ler.nextLine();
@@ -62,6 +62,21 @@ public class Venda {
 			System.out.println("Venda não encontrada");
 		}
 		return null;
+	}
+	public static Venda cadastrarVenda(Pedido pedido) {
+		System.out.println("\nDigite a forma de pagamento: ");
+		String pag = Main.ler.nextLine(); 
+		System.out.println();
+		GregorianCalendar data = new GregorianCalendar();
+		Venda v= new Venda(pedido,pag, data.getTime());
+		return v;
+	}
+	
+	public static void editarVenda(Venda v) {
+		System.out.println("\nNão é permitido editar o pedido,caso deseje fazer isso exclua a venda e a cadastre novamente xD");
+		System.out.println("\nDigite a nova forma de pagamento");
+		String pag = Main.ler.nextLine();
+		v.setFormaPagamento(pag);
 	}
 	
 	@Override
