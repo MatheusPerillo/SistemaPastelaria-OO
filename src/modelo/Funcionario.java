@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -116,6 +117,22 @@ public class Funcionario extends Pessoa {
 		}else {System.out.println("Opção inválida");
 		Util.pausar(2);
 		this.editar(this);}
+	}
+	
+	public Funcionario buscarFuncionarioPorID(ArrayList<Funcionario> lista) {
+		System.out.println("Digite o ID");
+		Integer id = Main.ler.nextInt(); 
+		Main.ler.nextLine();
+		try {
+			 for(Funcionario f: lista) {
+				 if(f.getId() == id) {
+					 return f;
+				 }
+			 }
+		} catch (Exception e) {
+			System.out.println("Venda não encontrada");
+		}
+		return null;
 	}
 	
 	

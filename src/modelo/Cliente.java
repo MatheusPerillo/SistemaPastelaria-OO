@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.ArrayList;
+
 import helper.Util;
 
 public class Cliente extends Pessoa {
@@ -23,6 +25,22 @@ public class Cliente extends Pessoa {
 	public String toString() {
 		return "\nID: " + this.getId() + "\nNome: " + this.getNome() + "\nEndereco: " + this.getEndereco() 
 		+ "\nTelefone: " + this.getTelefone() + "\nEmail: " + this.getEmail() + "\nNúmero do Cartao: " + this.getNumCartao();
+	}
+	
+	public Cliente buscarClientePorID(ArrayList<Cliente> lista) {
+		System.out.println("Digite o ID");
+		Integer id = Main.ler.nextInt(); 
+		Main.ler.nextLine();
+		try {
+			 for(Cliente c: lista) {
+				 if(c.getId() == id) {
+					 return c;
+				 }
+			 }
+		} catch (Exception e) {
+			System.out.println("Venda não encontrada");
+		}
+		return null;
 	}
 	
 	public void editar(Cliente cliente) {
