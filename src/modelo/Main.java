@@ -158,7 +158,7 @@ Main.perillao.cadastrarPastel(flango);
 			case 5: // Excluir
 				c = Cliente.buscarPorID(Main.perillao.getClientes());
 				if(c != null) {Main.perillao.removerCliente(c);
-				System.out.println("Cliente removido com sucesso!");
+				System.out.println("\nCliente removido com sucesso!");
 				}else{ System.out.println("\nCliente não encontrado");
 				}
 				

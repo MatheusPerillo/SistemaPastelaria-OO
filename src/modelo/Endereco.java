@@ -65,17 +65,17 @@ public class Endereco {
 	}
 	
 	public static Endereco cadastrarEndereco() {
-		System.out.println("Informe o estado ");
+		System.out.print("Informe o estado: ");
 		String estado = Main.ler.nextLine();
 
-		System.out.println("Informe a cidade ");
+		System.out.print("Informe a cidade: ");
 		String cidade = Main.ler.nextLine();
 
-		System.out.println("Informe o bairro");
+		System.out.print("Informe o bairro: ");
 		String bairro = Main.ler.nextLine();
-		System.out.println("Informe o cep");
+		System.out.print("Informe o cep: ");
 		String cep = Main.ler.nextLine();
-		System.out.println("Informe o Número");
+		System.out.print("Informe o Número: ");
 		String num = Main.ler.nextLine();
 		
 		 Endereco endereco = new Endereco(estado,cidade,bairro,cep,num);
@@ -84,7 +84,7 @@ public class Endereco {
 	
 	public void editar(Endereco endereco) {
 
-		System.out.println("1- Editar Estado ");
+		System.out.println("\n1- Editar Estado ");
 		System.out.println("2- Editar Cidade ");
 		System.out.println("3- Editar Bairro ");
 		System.out.println("4- Editar CEP ");
@@ -95,55 +95,55 @@ public class Endereco {
 		Main.ler.nextLine();
 		switch (aux) {
 		case 1:
-			System.out.println("Informe o estado ");
+			System.out.print("Informe o estado: ");
 			String estado = Main.ler.nextLine();
 			endereco.setEstado(estado);
-			System.out.println("Campo alterado com sucesso");
+			System.out.println("\nCampo alterado com sucesso!");
 			Util.pausar(2);
 			//Main.menu();
 			break;
 		case 2:
-			System.out.println("Informe a Cidade");
+			System.out.print("\nInforme a Cidade: ");
 			String cidade = Main.ler.nextLine();
 			endereco.setCidade(cidade);;
-			System.out.println("Campo alterado com sucesso");
+			System.out.println("\nCampo alterado com sucesso!");
 			Util.pausar(2);
 			//Main.menu();
 			break;
 		case 3:
-			System.out.println("Informe o bairro ");
+			System.out.print("\nInforme o bairro: ");
 			String bairro = Main.ler.nextLine();
 			endereco.setBairro(bairro);;
-			System.out.println("Campo alterado com sucesso");
+			System.out.println("\nCampo alterado com sucesso!");
 			Util.pausar(2);
 			//Main.menu();
 		case 4:
-			System.out.println("Informe o CEP ");
+			System.out.print("\nInforme o CEP: ");
 			String cep = Main.ler.nextLine();
 			endereco.setCep(cep);
-			System.out.println("Campo alterado com sucesso");
+			System.out.println("\nCampo alterado com sucesso!");
 			Util.pausar(2);
 			//Main.menu();
 		case 5:
-			System.out.println("Informe o Número ");
+			System.out.print("\nInforme o Número: ");
 			String num = Main.ler.nextLine();
 			endereco.setNumero(num);
-			System.out.println("Campo alterado com sucesso");
+			System.out.println("\nCampo alterado com sucesso!");
 			Util.pausar(2);
 			//Main.menu();
 			break;
 		case 6:
-			System.out.println("Informe o estado ");
+			System.out.print("\nInforme o estado: ");
 			estado = Main.ler.nextLine();
 
-			System.out.println("Informe a cidade ");
+			System.out.print("Informe a cidade: ");
 			cidade = Main.ler.nextLine();
 
-			System.out.println("Informe o bairro");
+			System.out.print("Informe o bairro: ");
 			bairro = Main.ler.nextLine();
-			System.out.println("Informe o cep");
+			System.out.print("Informe o cep: ");
 			cep = Main.ler.nextLine();
-			System.out.println("Informe o Número");
+			System.out.print("Informe o Número: ");
 			num = Main.ler.nextLine();
 			
 			endereco.setEstado(estado);
@@ -152,7 +152,7 @@ public class Endereco {
 			endereco.setCep(cep);
 			endereco.setNumero(num);
 			
-			System.out.println("Endereço alterado com sucesso");
+			System.out.println("\nEndereço alterado com sucesso!");
 			Util.pausar(2);
 			//Main.menu();
 

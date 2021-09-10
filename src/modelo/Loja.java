@@ -126,7 +126,7 @@ public class Loja {
 		for(Cliente c: this.clientes) {
 			System.out.println(c);
 		}
-		}else {System.out.println("Não existem clientes cadastrados");}
+		}else {System.out.println("\nNão existem clientes cadastrados");}
 	}
 	public void removerCliente(Cliente cliente) {
 		this.clientes.remove(cliente);
@@ -139,7 +139,7 @@ public class Loja {
 			for(Funcionario f: this.funcionarios) {
 				System.out.println(f);
 			}
-			}else {System.out.println("Não existem funcionários cadastrados");}
+			}else {System.out.println("\nNão existem funcionários cadastrados");}
 	}
 	public void removerFuncionario(Funcionario func) {
 		this.funcionarios.remove(func);
@@ -152,7 +152,7 @@ public class Loja {
 			for(Pastel p: this.pasteis) {
 				System.out.println(p);
 			}
-			}else {System.out.println("Não existem pastéis cadastrados");}
+			}else {System.out.println("\nNão existem pastéis cadastrados");}
 	}
 	public void removerPastel(Pastel pastel) {
 		this.pasteis.remove(pastel);
@@ -166,7 +166,7 @@ public class Loja {
 			for(Bebida b: this.bebidas) {
 				System.out.println(b);
 			}
-			}else {System.out.println("Não existem bebidas cadastradas");}
+			}else {System.out.println("\nNão existem bebidas cadastradas");}
 	}
 	
 	public void removerBebida(Bebida bebida) {
@@ -180,7 +180,7 @@ public class Loja {
 			for(Venda v: this.vendas) {
 				System.out.println(v);
 			}
-			}else {System.out.println("Não existem vendas cadastradas");}
+			}else {System.out.println("\nNão existem vendas cadastradas");}
 	}
 
 	@Override

@@ -19,6 +19,7 @@ public class Funcionario extends Pessoa {
 			}
 		}
 		public static Cargo cadastrarCargo() {
+			System.out.println("\nDigite o nº do cargo: ");
 			Cargo.listarCargos();
 			int aux= Main.ler.nextInt();
 			Main.ler.nextLine();
@@ -136,7 +137,7 @@ public class Funcionario extends Pessoa {
 	}
 	
 	public static Funcionario buscarPorID(ArrayList<Funcionario> lista) {
-		System.out.println("Digite o ID");
+		System.out.print("\nDigite o ID: ");
 		Integer id = Main.ler.nextInt(); 
 		Main.ler.nextLine();
 		try {
@@ -146,30 +147,30 @@ public class Funcionario extends Pessoa {
 				 }
 			 }
 		} catch (Exception e) {
-			System.out.println("Funcionário não encontrada");
+			System.out.println("Funcionário não encontrado");
 		}
 		return null;
 	}
 	
 	public static Funcionario cadastrarFuncionario() {
-		System.out.println("Informe o Nome ");
+		System.out.print("\nInforme o Nome: ");
 		String nome = Main.ler.nextLine();
 		
 		Endereco end = Endereco.cadastrarEndereco();
 		Telefone tel= Telefone.cadastrarTelefone();
 		
-		System.out.println("Informe o Email ");
+		System.out.print("Informe o Email: ");
 		String email = Main.ler.nextLine();
 		
 		Cargo car = Cargo.cadastrarCargo();
 		if(car ==null) {
-			System.out.println("Opção inválida");
+			System.out.println("Opção inválida!");
 			Cargo.cadastrarCargo();
 		}
-		System.out.println("Informe o salário");
+		System.out.print("\nInforme o salário: ");
 		 Double sal = Main.ler.nextDouble();
 		 Main.ler.nextLine();
-		System.out.println("Informe a data de nascimento");
+		System.out.print("Informe a data de nascimento: ");
 		String data = Main.ler.nextLine();
 		Funcionario func = new Funcionario(nome,end,tel,email,car,sal,data);
 		
@@ -209,10 +210,10 @@ public class Funcionario extends Pessoa {
 			//Main.menu();
 			break;
 		case 4:
-			System.out.println("Informe o Email ");
+			System.out.println("Informe o Email: ");
 			String email = Main.ler.nextLine();
 			funcionario.setEmail(email);
-			System.out.println("Campo alterado com sucesso");
+			System.out.println("Campo alterado com sucesso!");
 			Util.pausar(2);
 			//Main.menu();
 			break;

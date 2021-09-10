@@ -28,7 +28,7 @@ public class Cliente extends Pessoa {
 	}
 	
 	public static Cliente buscarPorID(ArrayList<Cliente> lista) {
-		System.out.println("Digite o ID");
+		System.out.print("\nDigite o ID: ");
 		Integer id = Main.ler.nextInt(); 
 		Main.ler.nextLine();
 		try {
@@ -61,7 +61,7 @@ public class Cliente extends Pessoa {
 	}
 	public static void editar(Cliente cliente) {
 
-		System.out.println("1- Editar Nome ");
+		System.out.println("\n1- Editar Nome ");
 		System.out.println("2- Editar Endereço ");
 		System.out.println("3- Editar Telefone ");
 		System.out.println("4- Editar Email ");
@@ -72,10 +72,10 @@ public class Cliente extends Pessoa {
 		Main.ler.nextLine();
 		switch (aux) {
 		case 1:
-			System.out.println("Informe o Nome ");
+			System.out.print("\nInforme o Nome: ");
 			String nome = Main.ler.nextLine();
 			cliente.setNome(nome);
-			System.out.println("Campo alterado com sucesso");
+			System.out.println("\nCampo alterado com sucesso");
 			Util.pausar(2);
 			//Main.menu();
 			break;
@@ -88,39 +88,39 @@ public class Cliente extends Pessoa {
 			//Main.menu();
 			break;
 		case 4:
-			System.out.println("Informe o Email ");
+			System.out.print("\nInforme o Email: ");
 			String email = Main.ler.nextLine();
 			cliente.setEmail(email);
-			System.out.println("Campo alterado com sucesso");
+			System.out.println("\nCampo alterado com sucesso");
 			Util.pausar(2);
 			//Main.menu();
 			break;
 		case 5:
-			System.out.println("Informe o Número do Cartão ");
+			System.out.print("\nInforme o Número do Cartão: ");
 			String num = Main.ler.nextLine();
 			cliente.setNumCartao(num);
-			System.out.println("Campo alterado com sucesso");
+			System.out.println("\nCampo alterado com sucesso");
 			Util.pausar(2);
 			//Main.menu();
 			break;
 		case 6:
-			System.out.println("Informe o Nome ");
+			System.out.print("\nInforme o Nome: ");
 			nome = Main.ler.nextLine();
 			
 			cliente.getEndereco().editar(cliente.getEndereco());
 			cliente.getTelefone().editar(cliente.getTelefone());
 			
-			System.out.println("Informe o Email ");
+			System.out.print("\nInforme o Email: ");
 			email = Main.ler.nextLine();
 			
-			System.out.println("Informe o Número do Cartão ");
+			System.out.print("\nInforme o Número do Cartão: ");
 			num = Main.ler.nextLine();
 			
 			cliente.setNome(nome);
 			cliente.setEmail(email);
 			cliente.setNumCartao(num);
 			
-			System.out.println("Cliente alterado com sucesso");
+			System.out.println("\nCliente alterado com sucesso!");
 			Util.pausar(2);
 			//Main.menu();
 
