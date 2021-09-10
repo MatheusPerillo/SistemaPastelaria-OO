@@ -8,11 +8,11 @@ import modelo.Funcionario.Cargo;
 
 public class Main {
 	public static Scanner ler = new Scanner(System.in);
-
+	public static int aux;
 	public static void main(String[] args) {
 		int auxMenu;
-		int aux1;
-		int aux2;
+		
+		
 		int aux3;
 		int aux4;
 		int aux5;
@@ -55,63 +55,14 @@ public class Main {
 		switch(auxMenu) {
 		
 		case 1: //Cliente
-			do {
-				System.out.println("\n1- Cadastrar cliente\n2- Editar cliente\n3- Sair");
-				
-			aux1 = Main.ler.nextInt();
-			Main.ler.nextLine();
-			switch(aux1) {
-			
-			case 1: //Cadastro
-				
-				System.out.println("\nCadastro de cliente realizado com sucesso!");
-				Util.pausar(1);
-				break;
-				
-			case 2: //Editar
-				
-				break;
-				
-			case 3: //Sair
-				System.out.println("\nAguarde..");
-				Util.pausar(2);
-				System.out.println("");
-				break;
-			
-			}
-				
-			}while(aux1 != 3);
+			Main.menuClientes();
 			
 			break;
 //----------------------------------------------------------------------------			
 			
 		case 2: //Funcionário
-			do {
-			System.out.println("\n1- Cadastrar funcionário\n2- Editar funcionário\n3- Sair");
 			
-			aux2 = Main.ler.nextInt();
-			Main.ler.nextLine();
-			switch(aux2) {
-			
-			case 1: //Cadastro
-				
-				System.out.println("\nCadastro de funcionário realizado com sucesso!");
-				Util.pausar(1);
-				break;
-				
-			case 2: //Editar
-				break;
-				
-			case 3: //Sair
-				System.out.println("\nAguarde..");
-				Util.pausar(2);
-				System.out.println("");
-				break;
-			
-			}
-			
-			}while(aux2 != 3);
-			
+			Main.menuFuncionario();
 			break;
 //------------------------------------------------------------------------------			
 			
@@ -249,4 +200,63 @@ public class Main {
 
 	}
 
+	public static void menuClientes() {
+		
+		do {
+			System.out.println("\n1- Cadastrar cliente\n2- Editar cliente\n3- Sair");
+			
+		aux = Main.ler.nextInt();
+		Main.ler.nextLine();
+		switch(aux) {
+		
+		case 1: //Cadastro
+			
+			System.out.println("\nCadastro de cliente realizado com sucesso!");
+			Util.pausar(1);
+			break;
+			
+		case 2: //Editar
+			
+			break;
+			
+		case 3: //Sair
+			System.out.println("\nAguarde..");
+			Util.pausar(2);
+			System.out.println("");
+			break;
+		
+		}
+			
+		}while(aux != 3);
+		
+	}
+	
+	public static void menuFuncionario() {
+		do {
+			System.out.println("\n1- Cadastrar funcionário\n2- Editar funcionário\n3- Sair");
+			
+			aux = Main.ler.nextInt();
+			Main.ler.nextLine();
+			switch(aux) {
+			
+			case 1: //Cadastro
+				
+				System.out.println("\nCadastro de funcionário realizado com sucesso!");
+				Util.pausar(1);
+				break;
+				
+			case 2: //Editar
+				break;
+				
+			case 3: //Sair
+				System.out.println("\nAguarde..");
+				Util.pausar(2);
+				System.out.println("");
+				break;
+			
+			}
+			
+			}while(aux != 3);
+	}
+	
 }
