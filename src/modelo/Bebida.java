@@ -54,7 +54,7 @@ public class Bebida extends Produto{
 		String nome= Main.ler.nextLine();
 		try {
 			 for(Bebida b: lista) {
-				 if(b.getNome().equals(nome)) {
+				 if(b.getNome().toUpperCase().equals(nome.toUpperCase())) {
 					 return b;
 				 }
 			 }

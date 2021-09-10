@@ -59,7 +59,7 @@ public class Pastel extends Produto {
 		String nome= Main.ler.nextLine();
 		try {
 			 for(Pastel p: lista) {
-				 if(p.getNome().equals(nome)) {
+				 if(p.getNome().toUpperCase().equals(nome.toUpperCase())) {
 					 return p;
 				 }
 			 }

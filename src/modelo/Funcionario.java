@@ -119,7 +119,7 @@ public class Funcionario extends Pessoa {
 		this.editar(this);}
 	}
 	
-	public Funcionario buscarFuncionarioPorID(ArrayList<Funcionario> lista) {
+	public Funcionario buscarPorID(ArrayList<Funcionario> lista) {
 		System.out.println("Digite o ID");
 		Integer id = Main.ler.nextInt(); 
 		Main.ler.nextLine();
