@@ -4,7 +4,6 @@ import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 import helper.Util;
-import modelo.Funcionario.Cargo;
 
 public class Main {
 	public static Scanner ler = new Scanner(System.in);
