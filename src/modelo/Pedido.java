@@ -81,21 +81,33 @@ public class Pedido {
 	public void setDataPedido(Date dataPedido) {
 		this.dataPedido = dataPedido;
 	}
+	
+	
 
 	public void pedirPastel(Pastel pastel, int qtd) {
 		if (pastel.getQtdEstoque() >= qtd) {
 			this.pasteis.put(pastel, qtd);
+			pastel.setQtdEstoque(pastel.getQtdEstoque()- 1);
 			System.out.println("Pastel: " + pastel.getNome() + " Pedido com sucesso" + "\nQtd pedida: " + qtd);
 			Util.pausar(1);
 		} else {
 			System.out.println("\nNão há produto em estoque suficiente para o pedido");
+			Util.pausar(1);
 		}
 
 	}
 
 	public void pedirBebida(Bebida bebida, int qtd) {
+		if (bebida.getQtdEstoque() >= qtd) {
 		this.bebidas.put(bebida, qtd);
+		bebida.setQtdEstoque(bebida.getQtdEstoque()- 1);
 		System.out.println("Bebida: " + bebida.getNome() + " Pedida com sucesso" + "\nQtd pedida: " + qtd);
+		Util.pausar(1);
+		}else {
+			System.out.println("\nNão há produto em estoque suficiente para o pedido");
+			Util.pausar(1);
+		}
+		
 	}
 
 	public void listarPasteisPedidos() {
@@ -103,6 +115,7 @@ public class Pedido {
 		for (Map.Entry<Pastel, Integer> entrada : pasteis.entrySet()) {
 			System.out.println(entrada.getKey() + "\nQtd Pedida: " + entrada.getValue());
 		}
+		
 	}
 
 	public void listarBebidasPedidas() {
@@ -112,12 +125,17 @@ public class Pedido {
 		}
 	}
 
-	public void listarProdutosPedidos() {
+	public void listarPedido() {
+		System.out.println("\nPedido: ");
 		this.listarBebidasPedidas();
 		this.listarPasteisPedidos();
+		System.out.println("\nID do Pedido: "+ this.id);
+		System.out.println("Valor total: " +this.getValorTotal());
+		System.out.println("Cliente: " + this.cliente.getNome() + " ID: " + this.cliente.getId());
+		System.out.println("Funcionário: " + this.vendedor.getNome() + " ID: " + this.vendedor.getId());
 	}
 
-	public void AlterarPastelPedido(Pastel pastel, Pastel novoPastel) {
+	public void alterarPastelPedido(Pastel pastel, Pastel novoPastel) {
 		for (Map.Entry<Pastel, Integer> entrada : pasteis.entrySet()) {
 			if (pastel.equals(entrada.getKey())) {
 				pasteis.remove(entrada.getKey());
@@ -130,7 +148,7 @@ public class Pedido {
 
 	}
 
-	public void AlterarBebidaPedida(Bebida bebida, Bebida novaBebida) {
+	public void alterarBebidaPedida(Bebida bebida, Bebida novaBebida) {
 		for (Map.Entry<Bebida, Integer> entrada : bebidas.entrySet()) {
 			if (bebida.equals(entrada.getKey())) {
 				bebidas.remove(entrada.getKey());
@@ -156,7 +174,7 @@ public class Pedido {
 		this.setValorTotal(valorTotal);
 	}
 
-	public void menuCadastrarPedido() {
+	public void cadastrarPedido() {
 		System.out.println("Digite o nome do pastel escolhido: ");
 		String nomePastel = Main.ler.nextLine();
 		Util.pausar(1);
@@ -186,7 +204,7 @@ public class Pedido {
 		vendedor.getNome();
 
 		System.out.println("Valor total do pedido: ");
-		//System.out.println(this.pedido.getValorTotal());
+		System.out.println(this.getValorTotal());
 		Util.pausar(1);
 		System.out.println("Pedido realizado com sucesso!");
 
