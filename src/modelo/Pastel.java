@@ -1,5 +1,9 @@
 package modelo;
 
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Optional;
+
 import helper.Util;
 
 public class Pastel extends Produto {
@@ -33,9 +37,39 @@ public class Pastel extends Produto {
 	public String toString() {
 		return "\nNome: " + this.getNome() + "\nSabor: " + this.getSabor() + "\nTamanho: " + this.getTamanho()
 				+ "\nDescrição: " + this.getDescricao() + "\nValor: " + Util.doubleParaString(this.getValor())
-				+ "\nEm estoque: " + Integer.toString(getQtdEstoque());
+				+ "\nQuantidade Em estoque: " + this.getQtdEstoque();
 	}
 
+	
+	public Pastel buscarPastelPedido(Map <Pastel,Integer> lista) {
+		System.out.println("Digite o nome da bebida");
+		String nome= Main.ler.nextLine();
+		try {
+			 Optional<Pastel> x = lista.keySet().stream()
+					.filter(p -> p.getNome().toUpperCase().equals(nome.toUpperCase())).findFirst();
+			return x.get();
+		} catch (Exception e) {
+			System.out.println("Pastel não encontrado");
+		}
+		return null;
+	}
+	
+	public Pastel buscarPorNome(ArrayList<Pastel> lista) {
+		System.out.println("Digite o Nome");
+		String nome= Main.ler.nextLine();
+		try {
+			 for(Pastel p: lista) {
+				 if(p.getNome().equals(nome)) {
+					 return p;
+				 }
+			 }
+		} catch (Exception e) {
+			System.out.println("Bebida não encontrada");
+		}
+		return null;
+	}
+	
+	
 	public void editar(Pastel pastel) {
 		System.out.println("1- Editar Nome");
 		System.out.println("2- Editar Sabor");

@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Optional;
 
@@ -36,7 +37,32 @@ public class Bebida extends Produto{
 				+ Integer.toString(getQtdEstoque());
 	}
 	
-	
+	public Bebida buscarBebidaPedido(Map <Bebida,Integer> lista) {
+		System.out.println("Digite o nome da bebida");
+		String nome= Main.ler.nextLine();
+		try {
+			 Optional<Bebida> x = lista.keySet().stream()
+					.filter(p -> p.getNome().toUpperCase().equals(nome.toUpperCase())).findFirst();
+			return x.get();
+		} catch (Exception e) {
+			System.out.println("Bebida não encontrada");
+		}
+		return null;
+	}
+	public Bebida buscarPorNome(ArrayList<Bebida> lista) {
+		System.out.println("Digite o Nome");
+		String nome= Main.ler.nextLine();
+		try {
+			 for(Bebida b: lista) {
+				 if(b.getNome().equals(nome)) {
+					 return b;
+				 }
+			 }
+		} catch (Exception e) {
+			System.out.println("Bebida não encontrada");
+		}
+		return null;
+	}
 
 	public void editar(Bebida bebida) {
 		System.out.println("1- Editar Nome");
