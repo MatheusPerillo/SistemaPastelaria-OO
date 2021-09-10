@@ -16,24 +16,7 @@ public class Main {
 	public static void main(String[] args) {
 		int auxMenu;
 
-		GregorianCalendar dataDeInscricao = new GregorianCalendar();
-		Endereco end = new Endereco("Distrito federal", "Brasília", "Band", "71710011", "04");
-		Telefone tel = new Telefone("61", "99946-8480");
-
-		Cliente joao = new Cliente("Joao", end, tel, "ui@ui.com", "123");
-		Pastel flango = new Pastel("frangod", 10.00, "frango de Deus", 4, "G", "frango");
-		Pastel flango2 = new Pastel("frangod2", 20.00, "frango de Deus", 0, "G", "frango");
-		Bebida coca = new Bebida("coca", 7.99, "geladinha", 2, 2000, "garrafa");
-		Funcionario perillo = new Funcionario("Perillo", end, tel, "email@email.com", Cargo.Gerente, 3565.88,
-				"24/02/2001");
-		Pedido pedido1 = new Pedido(200.0, joao, perillo, dataDeInscricao.getTime());
-
-		Main.perillao.getClientes().add(joao);
-		Main.perillao.getFuncionarios().add(perillo);
-		Main.perillao.getPasteis().add(flango2);
-		Main.perillao.getBebidas().add(coca);
-		Main.perillao.getPasteis().add(flango);
-
+		Main.gerarDados();
 		do {
 			System.out.println("MENU DE OPÇÕES\n");
 			System.out.println("1.Loja \n2.Cliente\n3.Funcionário" + "\n4.Pastel\n5.Bebida" + "\n6.Produtos"
@@ -515,5 +498,62 @@ public class Main {
 		System.out.print(" 1..\n");
 		Util.pausar(1);
 		System.out.println("\nPrograma encerrado!");
+	}
+	public static void gerarDados() {
+		GregorianCalendar dataDeInscricao = new GregorianCalendar();
+		
+		Cliente joao = new Cliente("Joao",new Endereco("Distrito federal", "Brasília", "Bandeirante", "7171525", "04"),new Telefone("61", "9986-3229"), "joao@joao.com", "1234");
+		Cliente victor = new Cliente("Victor", new Endereco("Pernambuco", "Petrolina", "Guaramirá", "71346274", "02"),new Telefone("21", "8286-2329"), "victor@victor.com", "1233454");
+		Cliente eduardo = new Cliente("Eduardo", new Endereco("Alagoas", "Maceio", "Bairro 27", "71234274", "02"),new Telefone("11", "9286-2329"), "eduardo@dudu.com", "1233454");
+
+		
+		Pastel carne = new Pastel("Carnivoro", 7.44, "Pastel de carne", 14, "M", "carne");
+		Pastel carne2 = new Pastel("Carnivoro Big", 9.75, "Pastel de carne", 14, "G", "carne");
+		Pastel frango = new Pastel("Minas", 7.44, "Pastel de queijo", 9, "M", "frango");
+		Pastel doce = new Pastel("ChocoLove", 12.50, "Pastel de chocolate com morango", 6, "M", "chocolate");
+		Pastel frango2 = new Pastel("Minas de Ouro", 9.75, "Pastel de queijo", 3, "GG", "frango");
+		
+		
+		Bebida coca = new Bebida("Coca-cola", 7.99, "Refrigerante 2L", 30, 2000, "garrafa");
+		Bebida suco = new Bebida("Suco", 5.90, "suco de uva", 8, 300, "copo");
+		Bebida caldo = new Bebida("Caldo de cana", 3.59, "Caldo de cana feito na hora", 15, 300, "copo");
+		
+		Funcionario perillo = new Funcionario("Perillo", new Endereco("Distrito federal", "Brasília", "Guara", "7365643", "14"),new Telefone("61", "9231-2521"), "perillo@email.com", Cargo.Gerente, 5565.88,"24/02/1999");
+		Funcionario josue = new Funcionario("Josué", new Endereco("Distrito federal", "Brasília", "Asa Sul", "7154643", "13"),new Telefone("61", "9231-2521"), "josue@email.com", Cargo.Vendedor, 2560.98,"03/07/1987");
+		Funcionario kiara = new Funcionario("Kiara", new Endereco("Distrito federal", "Brasília", "Gama", "7175433", "02"),new Telefone("61", "9231-2521"), "kiara@email.com", Cargo.Vendedor, 2800.00,"16/09/2001");
+		Funcionario bernardo = new Funcionario("Bernardo", new Endereco("Distrito federal", "Brasília", "Ceilândia", "7112343", "244"),new Telefone("61", "9231-2521"), "bernardo@email.com", Cargo.Trainee, 1000.00,"24/02/2002");
+
+		Pedido pedido1 = new Pedido(200.0, joao, perillo, dataDeInscricao.getTime());
+		Pedido pedido2 = new Pedido(30.0, victor, josue, dataDeInscricao.getTime());
+		Pedido pedido3 = new Pedido(44.0, eduardo, kiara, dataDeInscricao.getTime());
+		
+		Venda v= new Venda(pedido1,"Dinheiro",dataDeInscricao.getTime());
+		Venda v2= new Venda(pedido2,"Cartão de crédito",dataDeInscricao.getTime());
+		Venda v3= new Venda(pedido3,"Pix",dataDeInscricao.getTime());
+		
+		
+		
+	Main.perillao.getClientes().add(joao);
+	Main.perillao.getClientes().add(victor);
+	Main.perillao.getClientes().add(eduardo);
+	
+	Main.perillao.getFuncionarios().add(perillo);
+	Main.perillao.getFuncionarios().add(josue);
+	Main.perillao.getFuncionarios().add(kiara);
+	Main.perillao.getFuncionarios().add(bernardo);
+	
+	Main.perillao.getPasteis().add(carne);
+	Main.perillao.getPasteis().add(carne2);
+	Main.perillao.getPasteis().add(frango);
+	Main.perillao.getPasteis().add(doce);
+	Main.perillao.getPasteis().add(frango2);
+	
+	Main.perillao.getBebidas().add(coca);
+	Main.perillao.getBebidas().add(suco);
+	Main.perillao.getBebidas().add(caldo);
+	
+	Main.perillao.getVendas().add(v);
+	Main.perillao.getVendas().add(v2);
+	Main.perillao.getVendas().add(v3);
 	}
 }
