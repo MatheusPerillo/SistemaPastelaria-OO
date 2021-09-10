@@ -73,7 +73,7 @@ public class Venda {
 		lista.add(v);
 	}
 	
-	public static void cancelar(List lista) {
+	public static void cancelar(List<Venda> lista) {
 		Venda v = Venda.buscarPorId(Main.perillao.getVendas());
 		if (v != null) {
 			lista.remove(v);
