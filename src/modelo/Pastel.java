@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -41,8 +42,8 @@ public class Pastel extends Produto {
 	}
 
 	
-	public Pastel buscarPastelPedido(Map <Pastel,Integer> lista) {
-		System.out.println("Digite o nome da bebida");
+	public static Pastel buscarPorNome(HashMap <Pastel,Integer> lista) {
+		System.out.println("\nDigite o nome do Pastel");
 		String nome= Main.ler.nextLine();
 		try {
 			 Optional<Pastel> x = lista.keySet().stream()
@@ -55,7 +56,7 @@ public class Pastel extends Produto {
 	}
 	
 	public static Pastel buscarPorNome(ArrayList<Pastel> lista) {
-		System.out.println("Digite o Nome");
+		System.out.println("\nDigite o Nome do pastel");
 		String nome= Main.ler.nextLine();
 		try {
 			 for(Pastel p: lista) {
@@ -64,7 +65,7 @@ public class Pastel extends Produto {
 				 }
 			 }
 		} catch (Exception e) {
-			System.out.println("Pastel não encontrada");
+			System.out.println("Pastel não encontrado");
 		}
 		return null;
 	}
