@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import controle.ControleDados;
+
 public class TelaMenu implements ActionListener {
 	
 	private static JFrame janela = new JFrame("Controle de Curso");
@@ -14,6 +16,7 @@ public class TelaMenu implements ActionListener {
 	private static JButton pastel = new JButton("Pastel");
 	private static JButton bebida = new JButton("Bebida");
 	private static JButton loja = new JButton("Loja");
+	public static ControleDados dados = new ControleDados();
 
 	
 	public TelaMenu() {
@@ -55,17 +58,17 @@ public class TelaMenu implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
-		if(src == aluno)
-			//new TelaPessoa().mostrarDados(dados, 1);
+		if(src == cliente)
+			new TelaPessoa().mostrarDados(dados, 1);
 		
-		if(src == prof)
-			//new TelaPessoa().mostrarDados(dados, 2);
+		if(src == funcionario)
+			new TelaPessoa().mostrarDados(dados, 2);
 		
-		if(src == curso)
-			JOptionPane.showMessageDialog(null, 
-					"Ainda precisam ser implementadas as funcionalidades\n"
-					+ "relacionadas a curso e a matrícula", null, 
-					JOptionPane.INFORMATION_MESSAGE);
+//		if(src == curso)
+//			JOptionPane.showMessageDialog(null, 
+//					"Ainda precisam ser implementadas as funcionalidades\n"
+//					+ "relacionadas a curso e a matrícula", null, 
+//					JOptionPane.INFORMATION_MESSAGE);
 	}
 }
 
