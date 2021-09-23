@@ -64,6 +64,12 @@ public class TelaMenu implements ActionListener {
 		if(src == funcionario)
 			new TelaPessoa().mostrarDados(dados, 2);
 		
+		if(src == pastel)
+			new TelaProduto().mostrarDados(dados, 3);
+		
+		if(src == bebida)
+			new TelaProduto().mostrarDados(dados, 4);
+		
 //		if(src == curso)
 //			JOptionPane.showMessageDialog(null, 
 //					"Ainda precisam ser implementadas as funcionalidades\n"

@@ -16,7 +16,7 @@ public class Main {
 	public static void main(String[] args) {
 		int auxMenu;
 
-		Main.gerarDados();
+
 		do {
 			System.out.println("MENU DE OPÇÕES\n");
 			System.out.println("1.Loja \n2.Cliente\n3.Funcionário" + "\n4.Pastel\n5.Bebida" + "\n6.Produtos"
