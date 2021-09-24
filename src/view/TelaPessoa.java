@@ -58,8 +58,8 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 		case 2:// Mostrar dados de professores cadastrados (JList)
 			listaNomes = new ControleFuncionario(dados).getNomeFuncionarios();
 			listaFuncionariosCadastrados = new JList<String>(listaNomes);
-			janela = new JFrame("Funcionarioes");
-			titulo = new JLabel("Funcionarioes Cadastrados");
+			janela = new JFrame("Funcionários");
+			titulo = new JLabel("Funcionários Cadastrados");
 			cadastroFunc = new JButton("Cadastrar");
 			refreshFunc = new JButton("Refresh");
 
@@ -101,19 +101,19 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
-//		//Cadastro de novo aluno
-//		if(src == cadastroCliente)
-//			new TelaDetalhePessoa().inserirEditar(1, dados, this, 0);
-//
+		//Cadastro de novo cliente
+		if(src == cadastroCliente)
+			new TelaDetalhePessoa().cadastrarEditar(1, dados, 0);
+
 //		//Cadastro de novo professor
 //		if(src == cadastroProf)
 //			new TelaDetalhePessoa().inserirEditar(2, dados, this, 0);
 //
 //		// Atualiza a lista de nomes de alunos mostrada no JList
-//		if(src == refreshCliente) {
-//			listaClientesCadastrados.setListData(new ControleCliente(dados).getNomeCliente());			
-//			listaClientesCadastrados.updateUI();
-//		}
+		if(src == refreshCliente) {
+			listaClientesCadastrados.setListData(new ControleCliente(dados).getNomeClientes());			
+			listaClientesCadastrados.updateUI();
+		}
 //
 //		// Atualiza a lista de nomes de professores mostrada no JList
 //		if(src == refreshProf) {
@@ -127,10 +127,11 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 	public void valueChanged(ListSelectionEvent e) {
 		Object src = e.getSource();
 
-//		if(e.getValueIsAdjusting() && src == listaClientesCadastrados) {
-//			new TelaDetalhePessoa().inserirEditar(3, dados, this, 
-//					listaClientesCadastrados.getSelectedIndex());
-//		}
+		if(e.getValueIsAdjusting() && src == listaClientesCadastrados) {
+			new TelaDetalhePessoa().cadastrarEditar(3, dados,
+					listaClientesCadastrados.getSelectedIndex());
+					
+		}
 //
 //		if(e.getValueIsAdjusting() && src == listaProfsCadastrados) {
 //			new TelaDetalhePessoa().inserirEditar(4, dados, this, 
