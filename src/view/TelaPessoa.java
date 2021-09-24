@@ -1,12 +1,12 @@
 package view;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 import controle.*;
 
-
-public class TelaPessoa implements ActionListener, ListSelectionListener {		
+public class TelaPessoa implements ActionListener, ListSelectionListener {
 	private JFrame janela;
 	private JLabel titulo;
 	private JButton cadastroCliente;
@@ -18,7 +18,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 	private JList<String> listaFuncionariosCadastrados;
 	private String[] listaNomes = new String[50];
 
-	public void mostrarDados(ControleDados d, int op){
+	public void mostrarDados(ControleDados d, int op) {
 		dados = d;
 
 		switch (op) {
@@ -69,7 +69,6 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 			listaFuncionariosCadastrados.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 			listaFuncionariosCadastrados.setVisibleRowCount(10);
 
-
 			cadastroFunc.setBounds(70, 177, 100, 30);
 			refreshFunc.setBounds(200, 177, 100, 30);
 
@@ -89,54 +88,49 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 			break;
 
 		default:
-			JOptionPane.showMessageDialog(null,"Opção não encontrada!", null, 
-					JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Opção não encontrada!", null, JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
 
-
-
-	//Captura eventos relacionados aos botões da interface
+	// Captura eventos relacionados aos botões da interface
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
-		
-		//Cadastro de novo cliente
-		if(src == cadastroCliente)
+
+		// Cadastro de novo cliente
+		if (src == cadastroCliente)
 			new TelaDetalhePessoa().cadastrarEditar(1, dados, 0);
 
-//		//Cadastro de novo professor
-//		if(src == cadastroProf)
-//			new TelaDetalhePessoa().inserirEditar(2, dados, this, 0);
-//
-//		// Atualiza a lista de nomes de alunos mostrada no JList
-		if(src == refreshCliente) {
-			listaClientesCadastrados.setListData(new ControleCliente(dados).getNomeClientes());			
+		// Cadastro de novo funcionário
+		if (src == cadastroFunc)
+			new TelaDetalhePessoa().cadastrarEditar(2, dados, 0);
+
+		// Atualiza a lista de nomes de clientes mostrada no JList
+		if (src == refreshCliente) {
+			listaClientesCadastrados.setListData(new ControleCliente(dados).getNomeClientes());
 			listaClientesCadastrados.updateUI();
 		}
-//
-//		// Atualiza a lista de nomes de professores mostrada no JList
-//		if(src == refreshProf) {
-//			listaProfsCadastrados.setListData(new ControleFuncionario(dados).getNomeProf());
-//			listaProfsCadastrados.updateUI();
-//		}
+
+		// Atualiza a lista de nomes de funcionários mostrada no JList
+		if (src == refreshFunc) {
+			listaFuncionariosCadastrados.setListData(new ControleFuncionario(dados).getNomeFuncionarios());
+			listaFuncionariosCadastrados.updateUI();
+		}
 
 	}
 
-	//Captura eventos relacionados ao JList
+	// Captura eventos relacionados ao JList
 	public void valueChanged(ListSelectionEvent e) {
 		Object src = e.getSource();
 
-		if(e.getValueIsAdjusting() && src == listaClientesCadastrados) {
-			new TelaDetalhePessoa().cadastrarEditar(3, dados,
-					listaClientesCadastrados.getSelectedIndex());
-					
+		if (e.getValueIsAdjusting() && src == listaClientesCadastrados) {
+			new TelaDetalhePessoa().cadastrarEditar(3, dados, listaClientesCadastrados.getSelectedIndex());
+
 		}
-//
-//		if(e.getValueIsAdjusting() && src == listaProfsCadastrados) {
-//			new TelaDetalhePessoa().inserirEditar(4, dados, this, 
-//					listaProfsCadastrados.getSelectedIndex());
-//		}
+
+		if (e.getValueIsAdjusting() && src == listaFuncionariosCadastrados) {
+			new TelaDetalhePessoa().cadastrarEditar(4, dados, listaFuncionariosCadastrados.getSelectedIndex());
+		}
 	}
 
 }

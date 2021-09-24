@@ -63,4 +63,14 @@ public class ControleDados {
 			return false;
 		}
 	}
+	
+	public boolean inserirFuncionario(Funcionario f) {
+		try {
+			this.getFuncionarios().add(f);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
 }
