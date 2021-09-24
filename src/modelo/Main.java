@@ -9,7 +9,7 @@ public class Main {
 	public static Scanner ler = new Scanner(System.in);
 	public static int aux;
 	public static Pedido pedidoAtual = new Pedido();
-	private static Endereco end = new Endereco("Distrito federal", "Brasília", "Guará", "71020274", "24");
+	private static Endereco end = new Endereco("Distrito federal", "Brasília", "Guará", "71020274", 24);
 	private static Telefone tel = new Telefone("61", "3086-2469");
 	public static Loja perillao = new Loja("Perillão", end, tel);
 
