@@ -16,11 +16,12 @@ public class Funcionario extends Pessoa {
 	private int vendas = 0;
 
 	public Funcionario(String nome, Endereco endereco, Telefone telefone, String email, Cargo cargo, Double salario,
-			String dateNasc) {
+			String dateNasc, int vendas) {
 		super(nome, endereco, telefone, email);
 		this.cargo = cargo;
 		this.salario = salario;
 		this.dateNasc = dateNasc;
+		this.vendas = vendas;
 
 	}
 

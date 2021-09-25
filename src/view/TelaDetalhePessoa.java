@@ -4,13 +4,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import controle.*;
+import modelo.Cargo;
 import modelo.Cliente;
 import modelo.Endereco;
+import modelo.Funcionario;
 import modelo.Telefone;
 
 public class TelaDetalhePessoa implements ActionListener {
@@ -36,7 +39,7 @@ public class TelaDetalhePessoa implements ActionListener {
 	private JLabel labelNumCartao = new JLabel("Número do Cartão: ");
 	private JTextField valorNumCartao;
 	private JLabel labelCargo = new JLabel("Cargo: ");
-	private JTextField valorCargo;
+	private JComboBox<Cargo> valorCargo;
 	private JLabel labelSalario = new JLabel("Salário: ");
 	private JTextField valorSalario;
 	private JLabel labelDateNasc = new JLabel("Data de nascimento(dd/mm/aaaa): ");
@@ -46,6 +49,7 @@ public class TelaDetalhePessoa implements ActionListener {
 	private JButton botaoExcluir = new JButton("Excluir");
 	private JButton botaoSalvar = new JButton("Salvar");
 	private static ControleDados dados;
+	private static Cargo cargos;
 	private int posicao;
 	private int opcao;
 	private String s;
@@ -79,7 +83,7 @@ public class TelaDetalhePessoa implements ActionListener {
 			valorNumCartao = new JTextField(dados.getClientes().get(pos).getNumCartao(), 200);
 			valorDDD = new JTextField(dados.getClientes().get(pos).getTelefone().getDdd(), 3);
 			valorTelefone = new JTextField(dados.getClientes().get(pos).getTelefone().getNumero(), 10);
-			valorCargo = new JTextField(200);
+			valorCargo = new JComboBox<Cargo>(Cargo.values());
 			valorSalario = new JTextField(200);
 			valorDateNasc = new JTextField(200);
 			valorVendas = new JTextField(200);
@@ -96,7 +100,8 @@ public class TelaDetalhePessoa implements ActionListener {
 			valorNumCartao = new JTextField(200);
 			valorDDD = new JTextField(dados.getFuncionarios().get(pos).getTelefone().getDdd(), 3);
 			valorTelefone = new JTextField(dados.getFuncionarios().get(pos).getTelefone().getNumero(), 10);
-			valorCargo = new JTextField(dados.getFuncionarios().get(pos).getCargo().toString(), 200);
+			valorCargo = new JComboBox<Cargo>(Cargo.values());
+			valorCargo.setSelectedItem(dados.getFuncionarios().get(pos).getCargo());
 			valorSalario = new JTextField(String.valueOf(dados.getFuncionarios().get(pos).getSalario()), 200);
 			valorDateNasc = new JTextField(dados.getFuncionarios().get(pos).getDateNasc(), 200);
 			valorVendas = new JTextField(String.valueOf(dados.getFuncionarios().get(pos).getVendas()), 200);
@@ -113,7 +118,7 @@ public class TelaDetalhePessoa implements ActionListener {
 			valorNumCartao = new JTextField(200);
 			valorDDD = new JTextField(3);
 			valorTelefone = new JTextField(10);
-			valorCargo = new JTextField(200);
+			valorCargo = new JComboBox<Cargo>(Cargo.values());
 			valorSalario = new JTextField(200);
 			valorDateNasc = new JTextField(200);
 			valorVendas = new JTextField(200);
@@ -204,8 +209,11 @@ public class TelaDetalhePessoa implements ActionListener {
 
 		this.janela.setLayout(null);
 
-		if(op== 2 || op==4) {this.janela.setSize(500, 470);}
-		else if(op==1 || op==3) {this.janela.setSize(500, 385);}
+		if (op == 2 || op == 4) {
+			this.janela.setSize(500, 470);
+		} else if (op == 1 || op == 3) {
+			this.janela.setSize(500, 385);
+		}
 		this.janela.setVisible(true);
 
 		botaoSalvar.addActionListener(this);
@@ -237,16 +245,30 @@ public class TelaDetalhePessoa implements ActionListener {
 					String numCart = valorNumCartao.getText();
 					Cliente c = new Cliente(nome, end, tel, email, numCart);
 					res = dados.inserirCliente(c);
+					
 
 				} else if (opcao == 3) {
 					String numCart = valorNumCartao.getText();
 					Cliente c = new Cliente(nome, end, tel, email, numCart);
 					res = dados.editarCliente(posicao, c);
+					
 				}
-//				} else {
-//					novoDado[2] =  valorHoraAula.getText();
-//					res = dados.inserirEditarProf(novoDado);
-//				}
+				if (opcao == 2) {
+					String dateNasc = valorDateNasc.getText();
+					Cargo cargo = (Cargo) valorCargo.getSelectedItem();
+					Double salario = Double.valueOf(valorSalario.getText());
+					int vendas = Integer.valueOf(valorVendas.getText());
+					Funcionario f = new Funcionario(nome, end, tel, email, cargo,salario,dateNasc,vendas);
+					res = dados.inserirFuncionario(f);
+
+			} else if (opcao == 4) {
+				String dateNasc = valorDateNasc.getText();
+				Cargo cargo = (Cargo) valorCargo.getSelectedItem();
+				Double salario = Double.valueOf(valorSalario.getText());
+				int vendas = Integer.valueOf(valorVendas.getText());
+				Funcionario f = new Funcionario(nome, end, tel, email, cargo,salario,dateNasc,vendas);
+				res = dados.editarFuncionario(posicao,f);
+			}
 				if (res) {
 					mensagemSucessoCadastro();
 				} else
@@ -262,7 +284,7 @@ public class TelaDetalhePessoa implements ActionListener {
 		if (src == botaoExcluir) {
 			boolean res = false;
 
-			if (opcao == 3) {// exclui aluno
+			if (opcao == 3) {// exclui cliente
 				res = dados.removerCliente(posicao);
 				if (res)
 					mensagemSucessoExclusao();
@@ -270,11 +292,11 @@ public class TelaDetalhePessoa implements ActionListener {
 					mensagemErroExclusaoAluno();
 			}
 
-//			if (opcao == 4){ //exclui professor
-//				res = dados.removerProfessor(posicao);
-//				if (res) mensagemSucessoExclusao(); 
-//				else mensagemErroExclusaoProf(); 
-//			}
+			if (opcao == 4){ //exclui funcionário
+				res = dados.removerFuncionario(posicao);
+				if (res) mensagemSucessoExclusao(); 
+				else mensagemErroExclusaoProf(); 
+			}
 
 		}
 	}
