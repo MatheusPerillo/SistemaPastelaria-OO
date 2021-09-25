@@ -73,4 +73,29 @@ public class ControleDados {
 		}
 	}
 	
+	public boolean editarFuncionario(int i ,Funcionario f) {
+		try {
+			this.getFuncionarios().get(i).setNome(f.getNome());
+			this.getFuncionarios().get(i).setEmail(f.getEmail());
+			this.getFuncionarios().get(i).setEndereco(f.getEndereco());
+			this.getFuncionarios().get(i).setTelefone(f.getTelefone());
+			this.getFuncionarios().get(i).setCargo(f.getCargo());
+			this.getFuncionarios().get(i).setDateNasc(f.getDateNasc());
+			this.getFuncionarios().get(i).setSalario(f.getSalario());
+			this.getFuncionarios().get(i).setVendas(f.getVendas());
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	public boolean removerFuncionario(int i) {
+		try {
+			this.getFuncionarios().remove(i);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
 }
