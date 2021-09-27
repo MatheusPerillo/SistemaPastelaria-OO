@@ -49,7 +49,6 @@ public class TelaDetalhePessoa implements ActionListener {
 	private JButton botaoExcluir = new JButton("Excluir");
 	private JButton botaoSalvar = new JButton("Salvar");
 	private static ControleDados dados;
-	private static Cargo cargos;
 	private int posicao;
 	private int opcao;
 	private String s;
