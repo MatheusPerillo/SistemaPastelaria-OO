@@ -90,11 +90,8 @@ public class Pedido {
 		if (pastel.getQtdEstoque() >= qtd) {
 			this.pasteis.put(pastel, qtd);
 			pastel.setQtdEstoque(pastel.getQtdEstoque() - qtd);
-			System.out.println("Pastel: " + pastel.getNome() + " Pedido com sucesso" + "\nQtd pedida: " + qtd);
-			Util.pausar(1);
 		} else {
-			System.out.println("\nNão há produto em estoque suficiente para o pedido");
-			Util.pausar(1);
+			throw new StringIndexOutOfBoundsException ();
 		}
 
 	}
@@ -103,11 +100,8 @@ public class Pedido {
 		if (bebida.getQtdEstoque() >= qtd) {
 			this.bebidas.put(bebida, qtd);
 			bebida.setQtdEstoque(bebida.getQtdEstoque() - qtd);
-			System.out.println("Bebida: " + bebida.getNome() + " Pedida com sucesso" + "\nQtd pedida: " + qtd);
-			Util.pausar(1);
 		} else {
-			System.out.println("\nNão há produto em estoque suficiente para o pedido");
-			Util.pausar(1);
+			throw new StringIndexOutOfBoundsException ();
 		}
 
 	}
@@ -139,30 +133,8 @@ public class Pedido {
 		Util.pausar(2);
 	}
 
-	public void alterarPastelPedido(Pastel pastel, Pastel novoPastel) {
-		for (Map.Entry<Pastel, Integer> entrada : pasteis.entrySet()) {
-			if (pastel.equals(entrada.getKey())) {
-				pasteis.remove(entrada.getKey());
-				System.out.println("\nDigite a nova quantidade:");
-				int qtd = Main.ler.nextInt();
-				Main.ler.nextLine();
-				this.pedirPastel(novoPastel, qtd);
-			}
-		}
 
-	}
 
-	public void alterarBebidaPedida(Bebida bebida, Bebida novaBebida) {
-		for (Map.Entry<Bebida, Integer> entrada : bebidas.entrySet()) {
-			if (bebida.equals(entrada.getKey())) {
-				bebidas.remove(entrada.getKey());
-				System.out.println("\nDigite a nova quantidade:");
-				int qtd = Main.ler.nextInt();
-				Main.ler.nextLine();
-				this.pedirBebida(novaBebida, qtd);
-			}
-		}
-	}
 
 	public void calcularValorTotal() {
 		double valorTotal = 0;
@@ -180,130 +152,5 @@ public class Pedido {
 		this.setDataPedido(data.getTime());
 	}
 
-	public void cadastrar() {
-		System.out.println("\nQual o funcionário que realizou o pedido?");
-		Main.perillao.listarFuncionarios();
-
-		if (!Main.perillao.getFuncionarios().isEmpty()) {
-			Funcionario f = Funcionario.buscarPorID(Main.perillao.getFuncionarios());
-			this.setVendedor(f);
-		}
-
-		System.out.println("\nQual o cliente que realizou o pedido? ");
-		Main.perillao.listarClientes();
-		if (!Main.perillao.getClientes().isEmpty()) {
-			Cliente c = Cliente.buscarPorID(Main.perillao.getClientes());
-			this.setCliente(c);
-		}
-		int aux;
-		do {
-			System.out.println("\n1- Pedir pastel \n2-Sair");
-			aux = Main.ler.nextInt();
-			Main.ler.nextLine();
-			if (aux == 1) {
-				System.out.println("\nEscolha um pastel da lista para realizar o pedido");
-				Main.perillao.listarPasteis();
-				Pastel p = Pastel.buscarPorNome(Main.perillao.getPasteis());
-
-				System.out.println("Digite quantos pasteis foram pedidos: ");
-				int qtdEstoque = Main.ler.nextInt();
-				Main.ler.nextLine();
-				this.pedirPastel(p, qtdEstoque);
-				Util.pausar(1);
-			} else if (aux > 2 || aux < 1) {
-				System.out.println("\nOpção inválida");
-				Util.pausar(1);
-			}
-		} while (aux != 2);
-		do {
-			System.out.println("\n1- Pedir bebida \n2-Sair");
-			aux = Main.ler.nextInt();
-			Main.ler.nextLine();
-			if (aux == 1) {
-				System.out.println("\nEscolha uma bebida da lista para realizar o pedido");
-				Main.perillao.listarBebidas();
-				Bebida b = Bebida.buscarPorNome(Main.perillao.getBebidas());
-
-				System.out.println("Digite quantas bebidas foram pedidas: ");
-				int qtdEstoque = Main.ler.nextInt();
-				Main.ler.nextLine();
-				this.pedirBebida(b, qtdEstoque);
-				Util.pausar(1);
-			} else if (aux > 2 || aux < 1) {
-				System.out.println("\nOpção inválida");
-				Util.pausar(1);
-			}
-		} while (aux != 2);
-
-		this.calcularValorTotal();
-		System.out.println("\nValor total do pedido: ");
-		System.out.println(this.getValorTotal());
-		Util.pausar(1);
-		System.out.println("\nPedido realizado com sucesso!");
-
-	}
-
-	public void editar() {
-		System.out.println("1- Alterar pastel escolhido ");
-		System.out.println("2- Alterar bebida escolhida ");
-		System.out.println("3- Alterar tudo");
-
-		int aux = Main.ler.nextInt();
-		Main.ler.nextLine();
-		switch (aux) {
-		case 1:
-			System.out.println("\nEscolha um pastel da lista para substituir o do pedido atual");
-			Main.perillao.listarPasteis();
-			Pastel p = Pastel.buscarPorNome(Main.perillao.getPasteis());
-			p.setQtdEstoque(p.getQtdEstoque()+ p.getQtdEstoque());
-			Pastel p2 = Pastel.buscarPorNome(this.pasteis);
-
-			this.alterarPastelPedido(p2, p);
-			System.out.println("\nPastel alterado com sucesso!");
-			Util.pausar(1);
-
-			break;
-
-		case 2:
-			System.out.println("\nEscolha uma bebida da lista para substituir a do pedido atual");
-			Main.perillao.listarPasteis();
-			Bebida b = Bebida.buscarPorNome(Main.perillao.getBebidas());
-			b.setQtdEstoque(b.getQtdEstoque()+ b.getQtdEstoque());
-			Bebida b2 = Bebida.buscarPorNome(this.bebidas);
-
-			this.alterarBebidaPedida(b, b2);
-			System.out.println("\nBebida alterada com sucesso!");
-			Util.pausar(1);
-
-			break;
-
-		case 3:
-			System.out.println("\nEscolha um pastel da lista para substituir o do pedido atual");
-			Main.perillao.listarPasteis();
-			p = Pastel.buscarPorNome(Main.perillao.getPasteis());
-			p.setQtdEstoque(p.getQtdEstoque()+ p.getQtdEstoque());
-			p2 = Pastel.buscarPorNome(this.pasteis);
-
-			this.alterarPastelPedido(p2, p);
-			Util.pausar(1);
-			System.out.println("\nPastel alterado com sucesso!");
-			System.out.println("\nEscolha uma bebida da lista para substituir a do pedido atual");
-			Main.perillao.listarPasteis();
-			b = Bebida.buscarPorNome(Main.perillao.getBebidas());
-
-			b2 = Bebida.buscarPorNome(this.bebidas);
-
-			this.alterarBebidaPedida(b, b2);
-			Util.pausar(1);
-			System.out.println("\nBebida alterada com sucesso!");
-			break;
-
-		default:
-			System.out.println("\nOpção inválida");
-			Util.pausar(2);
-			this.editar();
-			break;
-		}
-
-	}
+	
 }

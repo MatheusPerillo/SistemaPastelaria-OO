@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import modelo.Cliente;
 
+
 public class ControleCliente {
 	private ArrayList<Cliente> c;
 	
@@ -19,6 +20,19 @@ public class ControleCliente {
 		}
 		
 		return s;
+	}
+	
+	public static Cliente buscarPorNome(ArrayList<Cliente> lista,String nome) {
+		try {
+			 for(Cliente p: lista) {
+				 if(p.getNome().toUpperCase().equals(nome.toUpperCase())) {
+					 return p;
+				 }
+			 }
+		} catch (Exception e) {
+			System.out.println("Cliente não encontrado");
+		}
+		return null;
 	}
 	
 }
