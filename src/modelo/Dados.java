@@ -10,6 +10,7 @@ public class Dados {
 	private ArrayList<Bebida> bebidas = new ArrayList<>();
 	private ArrayList<Venda> vendas = new ArrayList<>();
 	private Loja loja;
+	private Pedido pedido= new Pedido();
 
 	public ArrayList<Cliente> getClientes() {
 		return clientes;
@@ -57,6 +58,14 @@ public class Dados {
 
 	public void setLoja(Loja loja) {
 		this.loja = loja;
+	}
+
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
 	}
 
 	public void gerarDados() {

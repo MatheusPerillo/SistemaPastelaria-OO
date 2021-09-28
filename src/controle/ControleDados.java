@@ -38,6 +38,10 @@ public class ControleDados {
 	public ArrayList<Venda> getVendas() {
 		return this.d.getVendas();
 	}
+	public Pedido getPedido() {
+		return this.d.getPedido();
+	}
+	
 
 	public boolean inserirCliente(Cliente c) {
 		try {
@@ -167,6 +171,24 @@ public class ControleDados {
 	public boolean removerBebida(int i) {
 		try {
 			this.getBebidas().remove(i);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	public boolean inserirVenda(Venda v) {
+		try {
+			this.getVendas().add(v);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	public boolean removerVenda(Venda v) {
+		try {
+			this.getVendas().remove(v);
 			return true;
 		} catch (Exception e) {
 			return false;
