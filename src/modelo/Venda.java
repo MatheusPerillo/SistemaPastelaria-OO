@@ -49,10 +49,7 @@ public class Venda {
 		this.dataPagamento = dataPagamento;
 	}
 
-	public static Venda buscarPorId(ArrayList<Venda> lista) {
-		System.out.println("Digite o ID");
-		Integer id = Main.ler.nextInt(); 
-		Main.ler.nextLine();
+	public static Venda buscarPorId(ArrayList<Venda> lista, int id) {
 		try {
 			 for(Venda v: lista) {
 				 if(v.getId() == id) {
@@ -64,31 +61,7 @@ public class Venda {
 		}
 		return null;
 	}
-	public static void cadastrar(Pedido pedido ,List<Venda> lista) {
-		System.out.println("\nDigite a forma de pagamento: ");
-		String pag = Main.ler.nextLine(); 
-		System.out.println();
-		GregorianCalendar data = new GregorianCalendar();
-		Venda v= new Venda(pedido,pag, data.getTime());
-		lista.add(v);
-	}
 	
-	public static void cancelar(List<Venda> lista) {
-		Venda v = Venda.buscarPorId(Main.perillao.getVendas());
-		if (v != null) {
-			lista.remove(v);
-			System.out.println("\nVenda removida com sucesso!");
-		} else {
-			System.out.println("\nVenda não encontrada");
-		}
-	}
-	
-	public static void editar(Venda v) {
-		System.out.println("\nNão é permitido editar o pedido,caso deseje fazer isso exclua a venda e a cadastre novamente xD");
-		System.out.println("\nDigite a nova forma de pagamento");
-		String pag = Main.ler.nextLine();
-		v.setFormaPagamento(pag);
-	}
 	
 	@Override
 	public String toString() {

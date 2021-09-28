@@ -96,20 +96,4 @@ public class Funcionario extends Pessoa {
 
 	}
 
-	public static Funcionario buscarPorID(ArrayList<Funcionario> lista) {
-		System.out.print("\nDigite o ID do funcionário: ");
-		Integer id = Main.ler.nextInt();
-		Main.ler.nextLine();
-		try {
-			for (Funcionario f : lista) {
-				if (f.getId() == id) {
-					return f;
-				}
-			}
-		} catch (Exception e) {
-			System.out.println("Funcionário não encontrado");
-		}
-		return null;
-	}
-
 }

@@ -16,21 +16,4 @@ public enum Cargo {
 		}
 	}
 
-	public static Cargo cadastrarCargo() {
-		System.out.println("\nDigite o nº do cargo: ");
-		Cargo.listarCargos();
-		int aux = Main.ler.nextInt();
-		Main.ler.nextLine();
-		switch (aux) {
-		case 0:
-			return Cargo.Trainee;
-
-		case 1:
-			return Cargo.Vendedor;
-		case 2:
-			return Cargo.Gerente;
-		default:
-			return null;
-		}
-	}
 }

@@ -28,10 +28,7 @@ public class Cliente extends Pessoa {
 		+ "\nTelefone: " + this.getTelefone() + "\nEmail: " + this.getEmail() + "\nNúmero do Cartao: " + this.getNumCartao();
 	}
 	
-	public static Cliente buscarPorID(ArrayList<Cliente> lista) {
-		System.out.print("\nDigite o ID do cliente: ");
-		Integer id = Main.ler.nextInt(); 
-		Main.ler.nextLine();
+	public static Cliente buscarPorID(ArrayList<Cliente> lista, int id) {
 		try {
 			 for(Cliente c: lista) {
 				 if(c.getId() == id) {

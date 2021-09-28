@@ -70,23 +70,4 @@ public abstract class Produto {
 		}
 	}
 
-	public void repor() {
-		
-		int rep;
-		do {
-			System.out.println("\nDigite a quantidade para repor o produto: ");
-			 rep = Main.ler.nextInt();
-			Main.ler.nextLine();
-			if(rep>0) {break;}
-			System.out.println("\nQuantidade inválida!");
-			Util.pausar(1);
-
-		} while (rep <= 0);
-
-		this.setQtdEstoque(rep);
-		System.out.println("\nReposição feita com sucesso!");
-		Util.pausar(2);
-
-	}
-
 }
