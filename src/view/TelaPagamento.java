@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.GregorianCalendar;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -22,15 +23,20 @@ public class TelaPagamento implements ActionListener {
 	private JLabel labelPagamento = new JLabel("Digite a forma de pagamento");
 	private JLabel labelValorTotal = new JLabel("Valor total do pedido: ");
 	private JLabel valorTotal;
-	private JTextField valorPagamento = new JTextField(200);
+	private JComboBox <String> valorPagamento;
 	private JButton confirmar = new JButton("Confirmar");
 	private static ControleDados dados;
 
 	public void cadastrarVenda(ControleDados d) {
 		dados = d;
 		dados.getPedido().calcularValorTotal();
+		
+		String[] formPag = {"Pix","Dinheiro","Cartão de crédito", "Cartão de débito"};
+		
 		valorTotal = new JLabel(String.valueOf(dados.getDados().getPedido().getValorTotal()));
-
+		valorPagamento = new JComboBox <String> (formPag);
+		valorPagamento.setSelectedItem(dados.getPedido().getValorTotal());
+		
 		janela = new JFrame("Cadastro de venda");
 		janela = new JFrame("Realizar pedido");
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
@@ -59,8 +65,8 @@ public class TelaPagamento implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == confirmar) {
-			if (!valorPagamento.getText().isEmpty()) {
-				String pag = valorPagamento.getText();
+			if (!((String) valorPagamento.getSelectedItem()).isEmpty()) {
+				String pag = (String) valorPagamento.getSelectedItem();
 				GregorianCalendar data = new GregorianCalendar();
 				Venda v = new Venda(dados.getPedido(), pag, data.getTime());
 				dados.inserirVenda(v);
