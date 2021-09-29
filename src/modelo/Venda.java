@@ -49,18 +49,7 @@ public class Venda {
 		this.dataPagamento = dataPagamento;
 	}
 
-	public static Venda buscarPorId(ArrayList<Venda> lista, int id) {
-		try {
-			 for(Venda v: lista) {
-				 if(v.getId() == id) {
-					 return v;
-				 }
-			 }
-		} catch (Exception e) {
-			System.out.println("Venda não encontrada");
-		}
-		return null;
-	}
+	
 	
 	
 	@Override
