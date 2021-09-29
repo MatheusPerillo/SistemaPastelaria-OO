@@ -20,7 +20,7 @@ import modelo.Venda;
 public class TelaPagamento implements ActionListener {
 	private JFrame janela;
 	private JLabel titulo = new JLabel("Pagar pedido");
-	private JLabel labelPagamento = new JLabel("Digite a forma de pagamento");
+	private JLabel labelPagamento = new JLabel("Escolha a forma de pagamento");
 	private JLabel labelValorTotal = new JLabel("Valor total do pedido: ");
 	private JLabel valorTotal;
 	private JComboBox <String> valorPagamento;
@@ -29,11 +29,12 @@ public class TelaPagamento implements ActionListener {
 
 	public void cadastrarVenda(ControleDados d) {
 		dados = d;
+		
 		dados.getPedido().calcularValorTotal();
+		valorTotal = new JLabel(String.valueOf(dados.getDados().getPedido().getValorTotal()));
 		
 		String[] formPag = {"Pix","Dinheiro","Cartão de crédito", "Cartão de débito"};
 		
-		valorTotal = new JLabel(String.valueOf(dados.getDados().getPedido().getValorTotal()));
 		valorPagamento = new JComboBox <String> (formPag);
 		valorPagamento.setSelectedItem(dados.getPedido().getValorTotal());
 		
@@ -84,7 +85,7 @@ public class TelaPagamento implements ActionListener {
 	}
 
 	public void mensagemErro() {
-		JOptionPane.showMessageDialog(null, "Digite a forma de pagamento", null, JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Escolha a forma de pagamento", null, JOptionPane.ERROR_MESSAGE);
 		janela.dispose();
 	}
 }
