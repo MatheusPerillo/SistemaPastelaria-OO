@@ -68,7 +68,6 @@ public class ButtonColumn extends AbstractCellEditor implements TableCellRendere
 
 	public void actionPerformed(ActionEvent e) {
 		fireEditingStopped();
-		System.out.println(e.getActionCommand() + " : " + table.getSelectedRow());
 		 DefaultTableModel model = (DefaultTableModel) this.table.getModel();
 		 int id= (int) table.getValueAt(table.getSelectedRow(), 0);
 		 model.removeRow(table.getSelectedRow());
