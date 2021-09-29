@@ -80,8 +80,8 @@ public class TelaDetalhePessoa implements ActionListener {
 			valorNumero = new JTextField(String.valueOf(dados.getClientes().get(pos).getEndereco().getNumero()), 200);
 			valorEmail = new JTextField(dados.getClientes().get(pos).getEmail(), 200);
 			valorNumCartao = new JTextField(dados.getClientes().get(pos).getNumCartao(), 200);
-			valorDDD = new JTextField(dados.getClientes().get(pos).getTelefone().getDdd(), 3);
-			valorTelefone = new JTextField(dados.getClientes().get(pos).getTelefone().getNumero(), 10);
+			valorDDD = new JTextField(String.valueOf(dados.getClientes().get(pos).getTelefone().getDdd()), 3);
+			valorTelefone = new JTextField(String.valueOf(dados.getClientes().get(pos).getTelefone().getNumero()), 10);
 			valorCargo = new JComboBox<Cargo>(Cargo.values());
 			valorSalario = new JTextField(200);
 			valorDateNasc = new JTextField(200);
@@ -97,8 +97,8 @@ public class TelaDetalhePessoa implements ActionListener {
 					200);
 			valorEmail = new JTextField(dados.getFuncionarios().get(pos).getEmail(), 200);
 			valorNumCartao = new JTextField(200);
-			valorDDD = new JTextField(dados.getFuncionarios().get(pos).getTelefone().getDdd(), 3);
-			valorTelefone = new JTextField(dados.getFuncionarios().get(pos).getTelefone().getNumero(), 10);
+			valorDDD = new JTextField(String.valueOf(dados.getFuncionarios().get(pos).getTelefone().getDdd()), 3);
+			valorTelefone = new JTextField(String.valueOf(dados.getFuncionarios().get(pos).getTelefone().getNumero()), 10);
 			valorCargo = new JComboBox<Cargo>(Cargo.values());
 			valorCargo.setSelectedItem(dados.getFuncionarios().get(pos).getCargo());
 			valorSalario = new JTextField(String.valueOf(dados.getFuncionarios().get(pos).getSalario()), 200);
@@ -236,8 +236,8 @@ public class TelaDetalhePessoa implements ActionListener {
 
 				String email = valorEmail.getText();
 
-				String ddd = valorDDD.getText();
-				String numTel = valorTelefone.getText();
+				int ddd = Integer.valueOf(valorDDD.getText());
+				int numTel = Integer.valueOf(valorTelefone.getText());
 				Telefone tel = new Telefone(ddd, numTel);
 
 				if (opcao == 1) {
@@ -288,13 +288,13 @@ public class TelaDetalhePessoa implements ActionListener {
 				if (res)
 					mensagemSucessoExclusao();
 				else
-					mensagemErroExclusaoAluno();
+					mensagemErroExclusao();
 			}
 
 			if (opcao == 4){ //exclui funcionário
 				res = dados.removerFuncionario(posicao);
 				if (res) mensagemSucessoExclusao(); 
-				else mensagemErroExclusaoProf(); 
+				else mensagemErroExclusao(); 
 			}
 
 		}
@@ -316,22 +316,18 @@ public class TelaDetalhePessoa implements ActionListener {
 		JOptionPane.showMessageDialog(null,
 				"ERRO AO SALVAR OS DADOS!\n " + "Pode ter ocorrido um dos dois erros a seguir:  \n"
 						+ "1. Nem todos os campos foram preenchidos \n"
-						+ "2. CPF, identidade, DDD e telefone não contém apenas números",
+						+ "2. Campo número,DDD e telefone não contém apenas números",
 				null, JOptionPane.ERROR_MESSAGE);
+		
 	}
 
-	public void mensagemErroExclusaoAluno() {
+	public void mensagemErroExclusao() {
 		JOptionPane.showMessageDialog(null,
-				"Ocorreu um erro ao excluir o dado.\n " + "Verifique se o aluno está matriculado\n"
-						+ "em alguma disciplina. Se sim, cancele\n " + "a matricula e tente novamente.",
+				"Ocorreu um erro ao excluir o dado.\n ",
 				null, JOptionPane.ERROR_MESSAGE);
+		
 	}
 
-	public void mensagemErroExclusaoProf() {
-		JOptionPane.showMessageDialog(null,
-				"Ocorreu um erro ao excluir o dado.\n " + "Verifique se o professor está responsável\n"
-						+ "por alguma disciplina. Se sim, substitua\n " + "o professor e tente novamente.",
-				null, JOptionPane.ERROR_MESSAGE);
-	}
+	
 
 }

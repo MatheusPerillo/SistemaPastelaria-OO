@@ -72,11 +72,11 @@ public class Dados {
 		GregorianCalendar dataDeInscricao = new GregorianCalendar();
 
 		Cliente joao = new Cliente("Joao", new Endereco("Distrito federal", "Brasília", "Bandeirante", "7171525", 04),
-				new Telefone("61", "9986-3229"), "joao@joao.com", "1234");
+				new Telefone(61, 99863229), "joao@joao.com", "1234");
 		Cliente victor = new Cliente("Victor", new Endereco("Pernambuco", "Petrolina", "Guaramirá", "71346274", 02),
-				new Telefone("21", "8286-2329"), "victor@victor.com", "1233454");
+				new Telefone(21, 82862329), "victor@victor.com", "1233454");
 		Cliente eduardo = new Cliente("Eduardo", new Endereco("Alagoas", "Maceio", "Bairro 27", "71234274", 02),
-				new Telefone("11", "9286-2329"), "eduardo@dudu.com", "1233454");
+				new Telefone(11, 92862329), "eduardo@dudu.com", "1233454");
 
 		Pastel carne = new Pastel("Carnivoro", 7.44, "Pastel de carne", 14, "M", "carne");
 		Pastel carne2 = new Pastel("Carnivoro Big", 9.75, "Pastel de carne", 14, "G", "carne");
@@ -89,17 +89,17 @@ public class Dados {
 		Bebida caldo = new Bebida("Caldo de cana", 3.59, "Caldo de cana feito na hora", 15, 300, "copo");
 
 		Funcionario perillo = new Funcionario("Perillo",
-				new Endereco("Distrito federal", "Brasília", "Guara", "7365643", 14), new Telefone("61", "9231-2521"),
+				new Endereco("Distrito federal", "Brasília", "Guara", "7365643", 14), new Telefone(61, 92312521),
 				"perillo@email.com", Cargo.Gerente, 5565.88, "24/02/1999", 3);
 		Funcionario josue = new Funcionario("Josué",
-				new Endereco("Distrito federal", "Brasília", "Asa Sul", "7154643", 13), new Telefone("61", "9231-2521"),
+				new Endereco("Distrito federal", "Brasília", "Asa Sul", "7154643", 13), new Telefone(61, 9231-2521),
 				"josue@email.com", Cargo.Vendedor, 2560.98, "03/07/1987", 5);
 		Funcionario kiara = new Funcionario("Kiara",
-				new Endereco("Distrito federal", "Brasília", "Gama", "7175433", 02), new Telefone("61", "9231-2521"),
+				new Endereco("Distrito federal", "Brasília", "Gama", "7175433", 02), new Telefone(61, 92312521),
 				"kiara@email.com", Cargo.Vendedor, 2800.00, "16/09/2001", 7);
 		Funcionario bernardo = new Funcionario("Bernardo",
 				new Endereco("Distrito federal", "Brasília", "Ceilândia", "7112343", 244),
-				new Telefone("61", "9231-2521"), "bernardo@email.com", Cargo.Trainee, 1000.00, "24/02/2002", 2);
+				new Telefone(61, 92312521), "bernardo@email.com", Cargo.Trainee, 1000.00, "24/02/2002", 2);
 
 		Pedido pedido1 = new Pedido(200.0, joao, perillo, dataDeInscricao.getTime());
 		Pedido pedido2 = new Pedido(30.0, victor, josue, dataDeInscricao.getTime());
@@ -110,7 +110,7 @@ public class Dados {
 		Venda v3 = new Venda(pedido3, "Pix", dataDeInscricao.getTime());
 
 		Endereco end = new Endereco("Distrito federal", "Brasília", "Guará", "71020274", 24);
-		Telefone tel = new Telefone("61", "3086-2469");
+		Telefone tel = new Telefone(61, 30862469);
 		Loja perillao = new Loja("Perillão", end, tel);
 		this.loja = perillao;
 
