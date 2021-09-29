@@ -22,8 +22,8 @@ public class TelaDetalheProduto implements ActionListener {
 	private JTextField valorSabor;
 	private JLabel labelTipo = new JLabel("Tipo: ");
 	private JComboBox <String> valorTipo;
-	private JLabel labelVolume = new JLabel("Volume: ");
-	private JTextField valorVolume;
+	private JLabel labelVolume = new JLabel("Volume (ml): ");
+	private JComboBox <Integer> valorVolume;
 	private JLabel labelTamanho = new JLabel("Tamanho: ");
 	private JComboBox <String> valorTamanho;
 	private JLabel labelDescricao = new JLabel("Descrição: ");
@@ -46,6 +46,7 @@ public class TelaDetalheProduto implements ActionListener {
 
 		String[] tamanhos = {"P","M","G", "GG"};
 		String[] tipos = {"garrafa","copo","garapa", "vidro"};
+		Integer[] volumes = {300, 500, 600, 700, 1000, 1500, 2000};
 		
 		if (op == 1)
 			s = "Cadastro de Pastel";
@@ -69,13 +70,14 @@ public class TelaDetalheProduto implements ActionListener {
 			valorEstoque = new JTextField(String.valueOf(dados.getPasteis().get(pos).getQtdEstoque()), 9);
 			valorTipo = new JComboBox <String> (tipos);
 			valorTipo.setSelectedItem(dados.getBebidas().get(pos).getTipo());
-			valorVolume = new JTextField(5);
+			valorVolume = new JComboBox <Integer> (volumes);
+			valorVolume.setSelectedItem(dados.getBebidas().get(pos).getVolume());
 			
 			// Preenche dados com dados da bebida que foi clicada
 		} else if (op == 4) {
 			valorNome = new JTextField(dados.getBebidas().get(pos).getNome(), 200);
 			valorTipo = new JComboBox <String> (tipos);
-			valorVolume = new JTextField(String.valueOf(dados.getBebidas().get(pos).getVolume()), 5);
+			valorVolume = new JComboBox <Integer> (volumes);
 			valorDescricao = new JTextField(dados.getBebidas().get(pos).getDescricao(), 200);
 			valorPreco = new JTextField(String.valueOf(dados.getBebidas().get(pos).getValor()), 50);
 			valorEstoque = new JTextField(String.valueOf(dados.getBebidas().get(pos).getQtdEstoque()), 9);
@@ -92,7 +94,7 @@ public class TelaDetalheProduto implements ActionListener {
 			valorPreco = new JTextField(50);
 			valorEstoque = new JTextField(9);
 			valorTipo = new JComboBox <String> (tipos);
-			valorVolume = new JTextField(5);
+			valorVolume = new JComboBox <Integer> (volumes);
 
 			if (op == 1) {
 				botaoSalvar.setBounds(125, 220, 115, 30);
@@ -207,13 +209,13 @@ public class TelaDetalheProduto implements ActionListener {
 				
 				if (opcao == 2) {
 					 String tipo = (String) valorTipo.getSelectedItem();
-					 int volume = Integer.valueOf(valorVolume.getText());
+					 int volume = (int) valorVolume.getSelectedItem();
 					 Bebida b = new Bebida(nome, preco, descricao, estoque, volume, tipo);
 					 res = dados.inserirBebida(b);
 					 
 				}else if(opcao == 4) {
 					 String tipo = (String) valorTipo.getSelectedItem();
-					 int volume = Integer.valueOf(valorVolume.getText());
+					 int volume = (int) valorVolume.getSelectedItem();
 					 Bebida b = new Bebida(nome, preco, descricao, estoque, volume, tipo);
 					 res = dados.editarBebida(posicao, b);
 				}
@@ -267,7 +269,7 @@ public class TelaDetalheProduto implements ActionListener {
 
 	public void mensagemErroCadastro() {
 		JOptionPane.showMessageDialog(null,
-				"ERRO AO SALVAR OS DADOS!\n " + "Pode ter ocorrido um dos dois erros a seguir:  \n"
+				"ERRO AO SALVAR OS DADOS!\n " + "Pode ter ocorrido um dos três erros a seguir:  \n"
 						+ "1. Nem todos os campos foram preenchidos \n"
 						+ "2. Volume, Valor ou  Estoque não contém apenas números \n" 
 						+ "3. Foi digitado uma vírgula (,) no lugar de um ponto (.) em Valor ",
