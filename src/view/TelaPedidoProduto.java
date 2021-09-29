@@ -92,7 +92,7 @@ public class TelaPedidoProduto implements ActionListener {
 				int quantidade = Integer.valueOf(valorQtd.getText());
 				
 				if (op == 1) {
-					String nome = (String) pasteis.getSelectedItem();
+					String nome =  (String) pasteis.getSelectedItem();
 					Pastel p = ControlePastel.buscarPorNome(dados.getPasteis(), nome);
 					dados.getPedido().pedirPastel(p, quantidade);
 					mensagemSucessoPedido(1, p);

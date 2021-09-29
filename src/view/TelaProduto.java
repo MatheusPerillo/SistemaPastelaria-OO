@@ -101,9 +101,9 @@ public class TelaProduto implements ActionListener, ListSelectionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
-//		//Cadastro de novo aluno
-//		if(src == cadastroCliente)
-//			new TelaDetalhePessoa().inserirEditar(1, dados, this, 0);
+//		
+		if(src == cadastroPastel)
+			new TelaDetalheProduto().cadastrarEditar(1, dados, 0);
 //
 //		//Cadastro de novo professor
 //		if(src == cadastroProf)
@@ -127,10 +127,10 @@ public class TelaProduto implements ActionListener, ListSelectionListener {
 	public void valueChanged(ListSelectionEvent e) {
 		Object src = e.getSource();
 
-//		if(e.getValueIsAdjusting() && src == listaClientesCadastrados) {
-//			new TelaDetalhePessoa().inserirEditar(3, dados, this, 
-//					listaClientesCadastrados.getSelectedIndex());
-//		}
+		if(e.getValueIsAdjusting() && src == listaPasteisCadastrados) {
+			new TelaDetalheProduto().cadastrarEditar(3, dados,  
+					listaPasteisCadastrados.getSelectedIndex());
+		}
 //
 //		if(e.getValueIsAdjusting() && src == listaProfsCadastrados) {
 //			new TelaDetalhePessoa().inserirEditar(4, dados, this, 

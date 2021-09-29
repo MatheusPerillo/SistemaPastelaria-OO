@@ -38,7 +38,7 @@ public class TelaDetalheProduto implements ActionListener {
 	private int opcao;
 	private String s;
 
-	public void cadastroEditar(int op, ControleDados d, int pos) {
+	public void cadastrarEditar(int op, ControleDados d, int pos) {
 		opcao = op;
 		posicao = pos;
 		dados = d;
@@ -62,7 +62,8 @@ public class TelaDetalheProduto implements ActionListener {
 			valorDescricao = new JTextField(dados.getPasteis().get(pos).getDescricao(), 200);
 			valorPreco = new JTextField(String.valueOf(dados.getPasteis().get(pos).getValor()),50);
 			valorEstoque = new JTextField(String.valueOf(dados.getPasteis().get(pos).getQtdEstoque()),9);
-
+			valorTipo = new JTextField(100);
+			valorVolume = new JTextField(5);
 			// Preenche dados com dados da bebida que foi clicada
 		} else if (op == 4) {
 			valorNome = new JTextField(dados.getBebidas().get(pos).getNome(), 200);
@@ -71,6 +72,8 @@ public class TelaDetalheProduto implements ActionListener {
 			valorDescricao = new JTextField(dados.getBebidas().get(pos).getDescricao(), 200);
 			valorPreco = new JTextField(String.valueOf(dados.getBebidas().get(pos).getValor()),50);
 			valorEstoque = new JTextField(String.valueOf(dados.getBebidas().get(pos).getQtdEstoque()),9);
+			valorSabor = new JTextField(100);
+			valorTamanho = new JTextField(2);
 
 			// Não preenche com dados
 		} else {

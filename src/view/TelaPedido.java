@@ -33,6 +33,7 @@ public class TelaPedido implements ActionListener{
 		String[] listaClientes = new ControleCliente(dados).getNomeClientes();
 		String[] listaFuncionarios = new ControleFuncionario(dados).getNomeFuncionarios();		
 		clientes = new JComboBox<String>(listaClientes);
+	
 		funcionarios = new JComboBox<String>(listaFuncionarios);
 		
 		janela = new JFrame("Realizar pedido");
@@ -82,7 +83,7 @@ public class TelaPedido implements ActionListener{
 				String nomeCliente = (String) clientes.getSelectedItem();
 				Cliente c = ControleCliente.buscarPorNome(dados.getClientes(), nomeCliente);
 				
-				String nomeFuncionario = (String) funcionarios.getSelectedItem();
+				String nomeFuncionario =  (String) funcionarios.getSelectedItem();
 				Funcionario f = ControleFuncionario.buscarPorNome(dados.getFuncionarios(), nomeFuncionario);
 				
 				dados.getPedido().setCliente(c);
