@@ -108,6 +108,13 @@ public class Dados {
 		Venda v = new Venda(pedido1, "Dinheiro", dataDeInscricao.getTime());
 		Venda v2 = new Venda(pedido2, "Cartão de crédito", dataDeInscricao.getTime());
 		Venda v3 = new Venda(pedido3, "Pix", dataDeInscricao.getTime());
+		Venda v4 = new Venda(pedido3, "Dinheiro", dataDeInscricao.getTime());
+		Venda v5 = new Venda(pedido2, "Cartão de débito", dataDeInscricao.getTime());
+		Venda v6 = new Venda(pedido1, "Pix", dataDeInscricao.getTime());
+		Venda v7 = new Venda(pedido3, "Dinheiro", dataDeInscricao.getTime());
+		Venda v8 = new Venda(pedido3, "Pix", dataDeInscricao.getTime());
+		
+		
 
 		Endereco end = new Endereco("Distrito federal", "Brasília", "Guará", "71020274", 24);
 		Telefone tel = new Telefone(61, 30862469);
@@ -136,5 +143,13 @@ public class Dados {
 		this.getVendas().add(v);
 		this.getVendas().add(v2);
 		this.getVendas().add(v3);
+		this.getVendas().add(v4);
+		this.getVendas().add(v5);
+		this.getVendas().add(v6);
+		this.getVendas().add(v7);
+		this.getVendas().add(v8);
+		
+		
+		
 	}
 }
