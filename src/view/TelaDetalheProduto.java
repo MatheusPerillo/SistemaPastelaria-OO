@@ -2,16 +2,16 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import controle.*;
-import modelo.Pastel;
+import controle.ControleDados;
 import modelo.Bebida;
-import modelo.Produto;
+import modelo.Pastel;
 
 public class TelaDetalheProduto implements ActionListener {
 
@@ -195,10 +195,12 @@ public class TelaDetalheProduto implements ActionListener {
 				
 				// inserir e editar Pastel
 				if(opcao == 1) {
+       //			if(!valorNome.isEmpty()) {
 					 String sabor = valorSabor.getText();
 					 String tamanho = (String) valorTamanho.getSelectedItem();
 					 Pastel p = new Pastel(nome, preco, descricao, estoque, tamanho, sabor);
 					 res = dados.inserirPastel(p);
+			//		}else {mensagemErroCadastro();}
 					 
 				}else if(opcao == 3) {
 					 String sabor = valorSabor.getText();
