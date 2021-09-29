@@ -88,7 +88,7 @@ public class TelaPedido implements ActionListener{
 				
 				dados.getPedido().setCliente(c);
 				dados.getPedido().setVendedor(f);
-				
+				janela.dispose();
 				new TelaPagamento().cadastrarVenda(dados);
 			} catch (Exception e2) {
 				// TODO: handle exception
