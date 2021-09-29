@@ -101,25 +101,25 @@ public class TelaProduto implements ActionListener, ListSelectionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
-//		
+//		Cadastro de novo pastel
 		if(src == cadastroPastel)
 			new TelaDetalheProduto().cadastrarEditar(1, dados, 0);
-//
-//		//Cadastro de novo professor
-//		if(src == cadastroProf)
-//			new TelaDetalhePessoa().inserirEditar(2, dados, this, 0);
-//
-//		// Atualiza a lista de nomes de alunos mostrada no JList
-//		if(src == refreshCliente) {
-//			listaClientesCadastrados.setListData(new ControleCliente(dados).getNomeCliente());			
-//			listaClientesCadastrados.updateUI();
-//		}
-//
-//		// Atualiza a lista de nomes de professores mostrada no JList
-//		if(src == refreshProf) {
-//			listaProfsCadastrados.setListData(new ControleFuncionario(dados).getNomeProf());
-//			listaProfsCadastrados.updateUI();
-//		}
+
+//		Cadastro de nova bebida
+		if(src == cadastroBebida)
+			new TelaDetalheProduto().cadastrarEditar(2, dados, 0);
+
+//		Atualiza a lista de nomes de pasteis mostrada no JList
+		if(src == refreshPastel) {
+			listaPasteisCadastrados.setListData(new ControlePastel(dados).getNomePasteis());			
+			listaPasteisCadastrados.updateUI();
+		}
+
+//		Atualiza a lista de nomes de bebidas mostrada no JList
+		if(src == refreshBebida) {
+			listaBebidasCadastrados.setListData(new ControleBebida(dados).getNomeBebidas());
+			listaBebidasCadastrados.updateUI();
+		}
 
 	}
 
@@ -131,11 +131,11 @@ public class TelaProduto implements ActionListener, ListSelectionListener {
 			new TelaDetalheProduto().cadastrarEditar(3, dados,  
 					listaPasteisCadastrados.getSelectedIndex());
 		}
-//
-//		if(e.getValueIsAdjusting() && src == listaProfsCadastrados) {
-//			new TelaDetalhePessoa().inserirEditar(4, dados, this, 
-//					listaProfsCadastrados.getSelectedIndex());
-//		}
+
+		if(e.getValueIsAdjusting() && src == listaBebidasCadastrados) {
+			new TelaDetalheProduto().cadastrarEditar(4, dados, 
+					listaBebidasCadastrados.getSelectedIndex());
+		}
 	}
 
 }

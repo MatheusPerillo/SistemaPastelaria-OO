@@ -98,26 +98,26 @@ public class TelaDetalheProduto implements ActionListener {
 		labelNome.setBounds(30, 20, 150, 25);
 		valorNome.setBounds(180, 20, 180, 25);
 
-		labelSabor.setBounds(30, 20, 150, 25);
-		valorSabor.setBounds(180, 20, 180, 25);
+		labelSabor.setBounds(30, 50, 150, 25);
+		valorSabor.setBounds(180, 50, 180, 25);
 
-		labelTamanho.setBounds(30, 20, 150, 25);
-		valorTamanho.setBounds(180, 20, 180, 25);
+		labelTamanho.setBounds(30, 80, 150, 25);
+		valorTamanho.setBounds(180, 80, 180, 25);
 
-		labelDescricao.setBounds(30, 20, 150, 25);
-		valorDescricao.setBounds(180, 20, 180, 25);
+		labelDescricao.setBounds(30, 110, 150, 25);
+		valorDescricao.setBounds(180, 110, 180, 25);
 
-		labelPreco.setBounds(30, 20, 150, 25);
-		valorPreco.setBounds(180, 20, 180, 25);
+		labelPreco.setBounds(30, 140, 150, 25);
+		valorPreco.setBounds(180, 140, 180, 25);
 
-		labelEstoque.setBounds(30, 20, 150, 25);
-		valorEstoque.setBounds(180, 20, 180, 25);
+		labelEstoque.setBounds(30, 170, 150, 25);
+		valorEstoque.setBounds(180, 170, 180, 25);
 
-		labelTipo.setBounds(30, 20, 150, 25);
-		valorTipo.setBounds(180, 20, 180, 25);
+		labelTipo.setBounds(30, 200, 150, 25);
+		valorTipo.setBounds(180, 200, 180, 25);
 
-		labelVolume.setBounds(30, 20, 150, 25);
-		valorVolume.setBounds(180, 20, 180, 25);
+		labelVolume.setBounds(30, 230, 150, 25);
+		valorVolume.setBounds(180, 230, 180, 25);
 
 		// Coloca os campos relacionados a pastel
 		if (op == 1 || op == 3) {
@@ -159,7 +159,7 @@ public class TelaDetalheProduto implements ActionListener {
 		this.janela.setLayout(null);
 		
 		if(op== 2 || op==4) {this.janela.setSize(500, 470);}
-		else if(op==1 || op==3) {this.janela.setSize(500, 385);}
+		else if(op==1 || op==3) {this.janela.setSize(420, 270);}
 		this.janela.setVisible(true);
 		
 		botaoSalvar.addActionListener(this);
@@ -200,13 +200,13 @@ public class TelaDetalheProduto implements ActionListener {
 				if (res)
 					mensagemSucessoExclusao();
 				else
-					mensagemErroExclusaoAluno();
+					mensagemErroExclusaoPastel();
 			}
 
 			if (opcao == 4){ //exclui bebida
 				res = dados.removerBebida(posicao);
 				if (res) mensagemSucessoExclusao(); 
-				else mensagemErroExclusaoProf(); 
+				else mensagemErroExclusaoBebida(); 
 			}
 
 		}
@@ -233,14 +233,14 @@ public class TelaDetalheProduto implements ActionListener {
 				null, JOptionPane.ERROR_MESSAGE);
 	}
 
-	public void mensagemErroExclusaoAluno() {
+	public void mensagemErroExclusaoPastel() {
 		JOptionPane.showMessageDialog(null,
 				"Ocorreu um erro ao excluir o dado.\n " + "Verifique se o aluno está matriculado\n"
 						+ "em alguma disciplina. Se sim, cancele\n " + "a matricula e tente novamente.",
 				null, JOptionPane.ERROR_MESSAGE);
 	}
 
-	public void mensagemErroExclusaoProf() {
+	public void mensagemErroExclusaoBebida() {
 		JOptionPane.showMessageDialog(null,
 				"Ocorreu um erro ao excluir o dado.\n " + "Verifique se o professor está responsável\n"
 						+ "por alguma disciplina. Se sim, substitua\n " + "o professor e tente novamente.",
