@@ -69,9 +69,7 @@ public class TelaDetalheProduto implements ActionListener {
 			valorPreco = new JTextField(String.valueOf(dados.getPasteis().get(pos).getValor()), 50);
 			valorEstoque = new JTextField(String.valueOf(dados.getPasteis().get(pos).getQtdEstoque()), 9);
 			valorTipo = new JComboBox <String> (tipos);
-			valorTipo.setSelectedItem(dados.getBebidas().get(pos).getTipo());
 			valorVolume = new JComboBox <Integer> (volumes);
-			valorVolume.setSelectedItem(dados.getBebidas().get(pos).getVolume());
 			
 			// Preenche dados com dados da bebida que foi clicada
 		} else if (op == 4) {
@@ -83,6 +81,10 @@ public class TelaDetalheProduto implements ActionListener {
 			valorEstoque = new JTextField(String.valueOf(dados.getBebidas().get(pos).getQtdEstoque()), 9);
 			valorSabor = new JTextField(100);
 			valorTamanho = new JComboBox <String> (tamanhos);
+			valorTipo = new JComboBox <String> (tipos);
+			valorTipo.setSelectedItem(dados.getBebidas().get(pos).getTipo());
+			valorVolume = new JComboBox <Integer> (volumes);
+			valorVolume.setSelectedItem(dados.getBebidas().get(pos).getVolume());
 
 			// Não preenche com dados
 		} else {
