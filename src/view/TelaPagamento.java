@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import controle.ControleDados;
+import helper.Util;
 import modelo.Pedido;
 import modelo.Produto;
 import modelo.Venda;
@@ -23,21 +24,21 @@ public class TelaPagamento implements ActionListener {
 	private JLabel labelPagamento = new JLabel("Escolha a forma de pagamento");
 	private JLabel labelValorTotal = new JLabel("Valor total do pedido: ");
 	private JLabel valorTotal;
-	private JComboBox <String> valorPagamento;
+	private JComboBox<String> valorPagamento;
 	private JButton confirmar = new JButton("Confirmar");
 	private static ControleDados dados;
 
 	public void cadastrarVenda(ControleDados d) {
 		dados = d;
-		
+
 		dados.getPedido().calcularValorTotal();
-		valorTotal = new JLabel(String.valueOf(dados.getDados().getPedido().getValorTotal()));
-		
-		String[] formPag = {"Pix","Dinheiro","Cartão de crédito", "Cartão de débito"};
-		
-		valorPagamento = new JComboBox <String> (formPag);
+		valorTotal = new JLabel(Util.doubleParaString((dados.getDados().getPedido().getValorTotal())));
+
+		String[] formPag = { "Pix", "Dinheiro", "Cartão de crédito", "Cartão de débito" };
+
+		valorPagamento = new JComboBox<String>(formPag);
 		valorPagamento.setSelectedItem(dados.getPedido().getValorTotal());
-		
+
 		janela = new JFrame("Cadastro de venda");
 		janela = new JFrame("Realizar pedido");
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
@@ -72,7 +73,7 @@ public class TelaPagamento implements ActionListener {
 				Venda v = new Venda(dados.getPedido(), pag, data.getTime());
 				dados.inserirVenda(v);
 				mensagemSucesso();
-				
+
 			} else {
 				mensagemErro();
 			}
@@ -80,7 +81,7 @@ public class TelaPagamento implements ActionListener {
 	}
 
 	public void mensagemSucesso() {
-		JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!\n" , null, JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!\n", null, JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
 

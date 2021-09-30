@@ -10,14 +10,15 @@ import helper.ButtonColumn;
 import helper.Util;
 public class TelaVenda {
 	private JFrame janela;
+	JTable tabela;
 	private static ControleDados dados;
 
 	public void mostrarDados(ControleDados d) {
 		dados = d;
-		JFrame janela = new JFrame("Listagem de Vendas");
+		 janela = new JFrame("Listagem de Vendas");
 
 		DefaultTableModel tableModel = new DefaultTableModel();
-		JTable tabela = new JTable(tableModel);
+		tabela = new JTable(tableModel);
 		
 		
 		tableModel.addColumn("ID");
@@ -42,7 +43,7 @@ public class TelaVenda {
 		for (Venda v : dados.getVendas()) {
 			int i = 0;
 			tableModel.insertRow(i, new Object[] { v.getId(), v.getPedido().getCliente().getNome(), v.getPedido().getVendedor().getNome(),
-					v.getPedido().getValorTotal(), v.getFormaPagamento(), Util.dateParaString(v.getDataPagamento()) });
+					Util.doubleParaString(v.getPedido().getValorTotal()), v.getFormaPagamento(), Util.dateParaString(v.getDataPagamento()) });
 			i++;
 		}
 		janela.setSize(850, 500);
