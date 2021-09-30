@@ -64,36 +64,5 @@ public class Funcionario extends Pessoa {
 				+ this.getEmail() + "\nCargo: " + this.getCargo() + "\nSalário: " + this.getSalario()
 				+ "\nVendas no mês: " + this.getVendas();
 	}
-	public void promover() {
-		for (int i = 0; i < Cargo.list.size(); i++) {
-
-			if (this.getCargo().equals(Cargo.Gerente)) {
-				System.out.println("\nO funcionário já possui o cargo máximo");
-				break;
-			}
-			if (Cargo.list.get(i).equals(this.getCargo()) && i < 2) {
-				this.setCargo(Cargo.list.get(i + 1));
-				System.out.println("Funcionário " + this.getNome() + " promovido com sucesso");
-				break;
-			}
-		}
-
-	}
-
-	public void rebaixar() {
-		for (int i = 0; i < Cargo.list.size(); i++) {
-
-			if (this.getCargo().equals(Cargo.Trainee)) {
-				System.out.println("\nO funcionário já possui o cargo mínimo");
-				break;
-			}
-			if (Cargo.list.get(i).equals(this.getCargo()) && i > 0) {
-				this.setCargo(Cargo.list.get(i - 1));
-				System.out.println("Funcionário " + this.getNome() + " rebaixado com sucesso");
-				break;
-			}
-		}
-
-	}
-
+	
 }

@@ -106,36 +106,7 @@ public class Pedido {
 
 	}
 
-	public void listarPasteisPedidos() {
-		System.out.println("\nPasteis pedidos: ");
-		for (Map.Entry<Pastel, Integer> entrada : pasteis.entrySet()) {
-			System.out.println(entrada.getKey() + "\nQtd Pedida: " + entrada.getValue());
-		}
-
-	}
-
-	public void listarBebidasPedidas() {
-		System.out.println("\nBebidas pedidas: ");
-		for (Map.Entry<Bebida, Integer> entrada : bebidas.entrySet()) {
-			System.out.println(entrada.getKey() + "\nQtd Pedida: " + entrada.getValue());
-		}
-	}
-
-	public void exibir() {
-		System.out.println("\nPedido: ");
-		this.listarBebidasPedidas();
-		this.listarPasteisPedidos();
-		System.out.println("\nID do Pedido: " + this.id);
-		System.out.println("Valor total: " + this.getValorTotal());
-		System.out.println("Cliente: " + this.cliente.getNome() + " ID: " + this.cliente.getId());
-		System.out.println("Funcionário: " + this.vendedor.getNome() + " ID: " + this.vendedor.getId());
-		System.out.println("Data do pedido:" + Util.dateParaString(this.getDataPedido()));
-		Util.pausar(2);
-	}
-
-
-
-
+	
 	public void calcularValorTotal() {
 		double valorTotal = 0;
 		double valorBebidas = 0;

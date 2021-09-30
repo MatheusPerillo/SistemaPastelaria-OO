@@ -12,7 +12,6 @@ import modelo.Loja;
 public class TelaLoja {
 	private JFrame janela;
 	private JLabel titulo = new JLabel("Pastelaria Perillão ");;
-	private JLabel labelNome = new JLabel("Nome: ");
 	private JLabel labelPropaganda = new JLabel("Aqui fazemos os melhores pastéis da cidade ");
 	private JLabel labelEstado = new JLabel("Estado: ");
 	private JLabel estado;

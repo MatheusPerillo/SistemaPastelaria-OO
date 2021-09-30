@@ -55,7 +55,7 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 
 			break;
 
-		case 2:// Mostrar dados de professores cadastrados (JList)
+		case 2:// Mostrar dados de funcionários cadastrados (JList)
 			listaNomes = new ControleFuncionario(dados).getNomeFuncionarios();
 			listaFuncionariosCadastrados = new JList<String>(listaNomes);
 			janela = new JFrame("Funcionários");

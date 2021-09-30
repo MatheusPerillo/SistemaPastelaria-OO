@@ -6,17 +6,17 @@ import modelo.Funcionario;
 
 
 public class ControleFuncionario {
-private ArrayList<Funcionario> c;
+private ArrayList<Funcionario> f;
 	
 	
 	public ControleFuncionario(ControleDados d) {
-		c = d.getFuncionarios();		
+		f = d.getFuncionarios();		
 	}
 	
 	public String[] getNomeFuncionarios() {
-		String[] s = new String[this.c.size()];
-		for(int i = 0; i < this.c.size(); i++) {
-			s[i] = c.get(i).getNome();
+		String[] s = new String[this.f.size()];
+		for(int i = 0; i < this.f.size(); i++) {
+			s[i] = f.get(i).getNome();
 		}
 		
 		return s;

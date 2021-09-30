@@ -7,16 +7,16 @@ import java.util.Optional;
 import modelo.Bebida;
 
 public class ControleBebida {
-	private ArrayList<Bebida> c;
+	private ArrayList<Bebida> b;
 	
 	public ControleBebida(ControleDados d) {
-		c = d.getBebidas();
+		b = d.getBebidas();
 		}
 	
 	public String[] getNomeBebidas() {
-		String [] s = new String[this.c.size()];
-		for (int i = 0; i < this.c.size(); i++) {
-			s[i] = c.get(i).getNome();
+		String [] s = new String[this.b.size()];
+		for (int i = 0; i < this.b.size(); i++) {
+			s[i] = b.get(i).getNome();
 		}
 		return s;
 	}

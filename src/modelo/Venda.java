@@ -49,12 +49,8 @@ public class Venda {
 		this.dataPagamento = dataPagamento;
 	}
 
-	
-	
-	
 	@Override
 	public String toString() {
-		this.pedido.exibir();;
 		return "\nVenda: "  +"\nForma de Pagemento: " + formaPagamento + "\nDataPagamento: " + Util.dateParaString(dataPagamento);
 	}
 	

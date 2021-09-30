@@ -6,16 +6,16 @@ import java.util.Optional;
 import modelo.Pastel;
 
 public class ControlePastel {
-	private ArrayList<Pastel> c;
+	private ArrayList<Pastel> p;
 	
 	public ControlePastel(ControleDados d) {
-		c = d.getPasteis();
+		p = d.getPasteis();
 	}
 	
 	public String[] getNomePasteis() {
-		String [] s = new String[this.c.size()];
-		for (int i = 0; i < this.c.size(); i++) {
-			s[i] = c.get(i).getNome();
+		String [] s = new String[this.p.size()];
+		for (int i = 0; i < this.p.size(); i++) {
+			s[i] = p.get(i).getNome();
 		}
 		return s;
 	}

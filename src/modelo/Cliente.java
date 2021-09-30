@@ -27,22 +27,5 @@ public class Cliente extends Pessoa {
 		return "\nID: " + this.getId() + "\nNome: " + this.getNome() + "\nEndereco: " + this.getEndereco() 
 		+ "\nTelefone: " + this.getTelefone() + "\nEmail: " + this.getEmail() + "\nNúmero do Cartao: " + this.getNumCartao();
 	}
-	
-	public static Cliente buscarPorID(ArrayList<Cliente> lista, int id) {
-		try {
-			 for(Cliente c: lista) {
-				 if(c.getId() == id) {
-					 return c;
-				 }
-			 }
-		} catch (Exception e) {
-			System.out.println("Cliente não encontrada");
-		}
-		return null;
-	}	
-	
-		
-	
 
-	
 }

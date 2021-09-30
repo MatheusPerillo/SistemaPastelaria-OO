@@ -60,14 +60,4 @@ public abstract class Produto {
 		this.qtdEstoque = qtdEstoque;
 	}
 
-	public void verifDisponiblidade() {
-		System.out.println("\nProduto: " +this.nome);
-		if (getQtdEstoque() > 0) {
-			System.out.println("Quantidade em estoque disponível: " + this.getQtdEstoque());
-		} else {
-			System.out.println("Necessita-se de reposição");			
-
-		}
-	}
-
 }
