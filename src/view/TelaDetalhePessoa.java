@@ -98,7 +98,8 @@ public class TelaDetalhePessoa implements ActionListener {
 			valorEmail = new JTextField(dados.getFuncionarios().get(pos).getEmail(), 200);
 			valorNumCartao = new JTextField(200);
 			valorDDD = new JTextField(String.valueOf(dados.getFuncionarios().get(pos).getTelefone().getDdd()), 3);
-			valorTelefone = new JTextField(String.valueOf(dados.getFuncionarios().get(pos).getTelefone().getNumero()), 10);
+			valorTelefone = new JTextField(String.valueOf(dados.getFuncionarios().get(pos).getTelefone().getNumero()),
+					10);
 			valorCargo = new JComboBox<Cargo>(Cargo.values());
 			valorCargo.setSelectedItem(dados.getFuncionarios().get(pos).getCargo());
 			valorSalario = new JTextField(String.valueOf(dados.getFuncionarios().get(pos).getSalario()), 200);
@@ -226,48 +227,50 @@ public class TelaDetalhePessoa implements ActionListener {
 				boolean res = false;
 
 				String nome = valorNome.getText();
+				if (!valorNome.getText().isEmpty()) {
+					String estado = valorEstado.getText();
+					String cidade = valorCidade.getText();
+					String bairro = valorBairro.getText();
+					String cep = valorCep.getText();
+					int num = Integer.valueOf(valorNumero.getText());
+					Endereco end = new Endereco(estado, cidade, bairro, cep, num);
 
-				String estado = valorEstado.getText();
-				String cidade = valorCidade.getText();
-				String bairro = valorBairro.getText();
-				String cep = valorCep.getText();
-				int num = Integer.valueOf(valorNumero.getText());
-				Endereco end = new Endereco(estado, cidade, bairro, cep, num);
+					String email = valorEmail.getText();
 
-				String email = valorEmail.getText();
+					int ddd = Integer.valueOf(valorDDD.getText());
+					int numTel = Integer.valueOf(valorTelefone.getText());
+					Telefone tel = new Telefone(ddd, numTel);
 
-				int ddd = Integer.valueOf(valorDDD.getText());
-				int numTel = Integer.valueOf(valorTelefone.getText());
-				Telefone tel = new Telefone(ddd, numTel);
+					if (opcao == 1) {
+						String numCart = valorNumCartao.getText();
+						Cliente c = new Cliente(nome, end, tel, email, numCart);
+						res = dados.inserirCliente(c);
 
-				if (opcao == 1) {
-					String numCart = valorNumCartao.getText();
-					Cliente c = new Cliente(nome, end, tel, email, numCart);
-					res = dados.inserirCliente(c);
-					
+					} else if (opcao == 3) {
+						String numCart = valorNumCartao.getText();
+						Cliente c = new Cliente(nome, end, tel, email, numCart);
+						res = dados.editarCliente(posicao, c);
 
-				} else if (opcao == 3) {
-					String numCart = valorNumCartao.getText();
-					Cliente c = new Cliente(nome, end, tel, email, numCart);
-					res = dados.editarCliente(posicao, c);
-					
+					}
+					if (opcao == 2) {
+						String dateNasc = valorDateNasc.getText();
+						Cargo cargo = (Cargo) valorCargo.getSelectedItem();
+						Double salario = Double.valueOf(valorSalario.getText());
+						int vendas = Integer.valueOf(valorVendas.getText());
+						Funcionario f = new Funcionario(nome, end, tel, email, cargo, salario, dateNasc, vendas);
+						res = dados.inserirFuncionario(f);
+
+					} else if (opcao == 4) {
+						String dateNasc = valorDateNasc.getText();
+						Cargo cargo = (Cargo) valorCargo.getSelectedItem();
+						Double salario = Double.valueOf(valorSalario.getText());
+						int vendas = Integer.valueOf(valorVendas.getText());
+						Funcionario f = new Funcionario(nome, end, tel, email, cargo, salario, dateNasc, vendas);
+						res = dados.editarFuncionario(posicao, f);
+					}
+				} else {
+					mensagemErroCadastro();
 				}
-				if (opcao == 2) {
-					String dateNasc = valorDateNasc.getText();
-					Cargo cargo = (Cargo) valorCargo.getSelectedItem();
-					Double salario = Double.valueOf(valorSalario.getText());
-					int vendas = Integer.valueOf(valorVendas.getText());
-					Funcionario f = new Funcionario(nome, end, tel, email, cargo,salario,dateNasc,vendas);
-					res = dados.inserirFuncionario(f);
-
-			} else if (opcao == 4) {
-				String dateNasc = valorDateNasc.getText();
-				Cargo cargo = (Cargo) valorCargo.getSelectedItem();
-				Double salario = Double.valueOf(valorSalario.getText());
-				int vendas = Integer.valueOf(valorVendas.getText());
-				Funcionario f = new Funcionario(nome, end, tel, email, cargo,salario,dateNasc,vendas);
-				res = dados.editarFuncionario(posicao,f);
-			}
 				if (res) {
 					mensagemSucessoCadastro();
 				} else
@@ -291,10 +294,12 @@ public class TelaDetalhePessoa implements ActionListener {
 					mensagemErroExclusao();
 			}
 
-			if (opcao == 4){ //exclui funcionário
+			if (opcao == 4) { // exclui funcionário
 				res = dados.removerFuncionario(posicao);
-				if (res) mensagemSucessoExclusao(); 
-				else mensagemErroExclusao(); 
+				if (res)
+					mensagemSucessoExclusao();
+				else
+					mensagemErroExclusao();
 			}
 
 		}
@@ -318,16 +323,12 @@ public class TelaDetalhePessoa implements ActionListener {
 						+ "1. Nem todos os campos foram preenchidos \n"
 						+ "2. Campo número,DDD e telefone não contém apenas números",
 				null, JOptionPane.ERROR_MESSAGE);
-		
+
 	}
 
 	public void mensagemErroExclusao() {
-		JOptionPane.showMessageDialog(null,
-				"Ocorreu um erro ao excluir o dado.\n ",
-				null, JOptionPane.ERROR_MESSAGE);
-		
-	}
+		JOptionPane.showMessageDialog(null, "Ocorreu um erro ao excluir o dado.\n ", null, JOptionPane.ERROR_MESSAGE);
 
-	
+	}
 
 }

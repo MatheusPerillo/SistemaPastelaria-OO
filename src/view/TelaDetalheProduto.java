@@ -21,11 +21,11 @@ public class TelaDetalheProduto implements ActionListener {
 	private JLabel labelSabor = new JLabel("Sabor: ");
 	private JTextField valorSabor;
 	private JLabel labelTipo = new JLabel("Tipo: ");
-	private JComboBox <String> valorTipo;
+	private JComboBox<String> valorTipo;
 	private JLabel labelVolume = new JLabel("Volume (ml): ");
-	private JComboBox <Integer> valorVolume;
+	private JComboBox<Integer> valorVolume;
 	private JLabel labelTamanho = new JLabel("Tamanho: ");
-	private JComboBox <String> valorTamanho;
+	private JComboBox<String> valorTamanho;
 	private JLabel labelDescricao = new JLabel("Descrição: ");
 	private JTextField valorDescricao;
 	private JLabel labelPreco = new JLabel("Valor: ");
@@ -44,10 +44,10 @@ public class TelaDetalheProduto implements ActionListener {
 		posicao = pos;
 		dados = d;
 
-		String[] tamanhos = {"P","M","G", "GG"};
-		String[] tipos = {"garrafa","copo","garapa", "vidro"};
-		Integer[] volumes = {300, 500, 600, 700, 1000, 1500, 2000};
-		
+		String[] tamanhos = { "P", "M", "G", "GG" };
+		String[] tipos = { "garrafa", "copo", "garapa", "vidro" };
+		Integer[] volumes = { 300, 500, 600, 700, 1000, 1500, 2000 };
+
 		if (op == 1)
 			s = "Cadastro de Pastel";
 		if (op == 2)
@@ -63,27 +63,27 @@ public class TelaDetalheProduto implements ActionListener {
 		if (op == 3) {
 			valorNome = new JTextField(dados.getPasteis().get(pos).getNome(), 200);
 			valorSabor = new JTextField(dados.getPasteis().get(pos).getSabor(), 100);
-			valorTamanho = new JComboBox <String> (tamanhos);
+			valorTamanho = new JComboBox<String>(tamanhos);
 			valorTamanho.setSelectedItem(dados.getPasteis().get(pos).getTamanho());
 			valorDescricao = new JTextField(dados.getPasteis().get(pos).getDescricao(), 200);
 			valorPreco = new JTextField(String.valueOf(dados.getPasteis().get(pos).getValor()), 50);
 			valorEstoque = new JTextField(String.valueOf(dados.getPasteis().get(pos).getQtdEstoque()), 9);
-			valorTipo = new JComboBox <String> (tipos);
-			valorVolume = new JComboBox <Integer> (volumes);
-			
+			valorTipo = new JComboBox<String>(tipos);
+			valorVolume = new JComboBox<Integer>(volumes);
+
 			// Preenche dados com dados da bebida que foi clicada
 		} else if (op == 4) {
 			valorNome = new JTextField(dados.getBebidas().get(pos).getNome(), 200);
-			valorTipo = new JComboBox <String> (tipos);
-			valorVolume = new JComboBox <Integer> (volumes);
+			valorTipo = new JComboBox<String>(tipos);
+			valorVolume = new JComboBox<Integer>(volumes);
 			valorDescricao = new JTextField(dados.getBebidas().get(pos).getDescricao(), 200);
 			valorPreco = new JTextField(String.valueOf(dados.getBebidas().get(pos).getValor()), 50);
 			valorEstoque = new JTextField(String.valueOf(dados.getBebidas().get(pos).getQtdEstoque()), 9);
 			valorSabor = new JTextField(100);
-			valorTamanho = new JComboBox <String> (tamanhos);
-			valorTipo = new JComboBox <String> (tipos);
+			valorTamanho = new JComboBox<String>(tamanhos);
+			valorTipo = new JComboBox<String>(tipos);
 			valorTipo.setSelectedItem(dados.getBebidas().get(pos).getTipo());
-			valorVolume = new JComboBox <Integer> (volumes);
+			valorVolume = new JComboBox<Integer>(volumes);
 			valorVolume.setSelectedItem(dados.getBebidas().get(pos).getVolume());
 
 			// Não preenche com dados
@@ -91,12 +91,12 @@ public class TelaDetalheProduto implements ActionListener {
 
 			valorNome = new JTextField(200);
 			valorSabor = new JTextField(100);
-			valorTamanho = new JComboBox <String> (tamanhos);
+			valorTamanho = new JComboBox<String>(tamanhos);
 			valorDescricao = new JTextField(200);
 			valorPreco = new JTextField(50);
 			valorEstoque = new JTextField(9);
-			valorTipo = new JComboBox <String> (tipos);
-			valorVolume = new JComboBox <Integer> (volumes);
+			valorTipo = new JComboBox<String>(tipos);
+			valorVolume = new JComboBox<Integer>(volumes);
 
 			if (op == 1) {
 				botaoSalvar.setBounds(125, 220, 115, 30);
@@ -146,17 +146,16 @@ public class TelaDetalheProduto implements ActionListener {
 			this.janela.add(labelTipo);
 			this.janela.add(valorTipo);
 		}
-			// Coloca botoes de excluir e salvar
-			if (op == 3) {
-				botaoSalvar.setBounds(60, 217, 115, 30);
-				botaoExcluir.setBounds(190, 217, 115, 30);
-				this.janela.add(botaoExcluir);
-			} else if (op == 4) {
-				botaoSalvar.setBounds(60, 217, 115, 30);
-				botaoExcluir.setBounds(190, 217, 115, 30);
-				this.janela.add(botaoExcluir);
-			}
-		
+		// Coloca botoes de excluir e salvar
+		if (op == 3) {
+			botaoSalvar.setBounds(60, 217, 115, 30);
+			botaoExcluir.setBounds(190, 217, 115, 30);
+			this.janela.add(botaoExcluir);
+		} else if (op == 4) {
+			botaoSalvar.setBounds(60, 217, 115, 30);
+			botaoExcluir.setBounds(190, 217, 115, 30);
+			this.janela.add(botaoExcluir);
+		}
 
 		this.janela.add(labelNome);
 		this.janela.add(valorNome);
@@ -189,45 +188,48 @@ public class TelaDetalheProduto implements ActionListener {
 				boolean res = false;
 
 				String nome = valorNome.getText();
-				String descricao = valorDescricao.getText();
-				double preco = Double.valueOf(valorPreco.getText());
-				int estoque = Integer.valueOf(valorEstoque.getText());
-				
-				// inserir e editar Pastel
-				if(opcao == 1) {
-       //			if(!valorNome.isEmpty()) {
-					 String sabor = valorSabor.getText();
-					 String tamanho = (String) valorTamanho.getSelectedItem();
-					 Pastel p = new Pastel(nome, preco, descricao, estoque, tamanho, sabor);
-					 res = dados.inserirPastel(p);
-			//		}else {mensagemErroCadastro();}
-					 
-				}else if(opcao == 3) {
-					 String sabor = valorSabor.getText();
-					 String tamanho = (String) valorTamanho.getSelectedItem();
-					 Pastel p = new Pastel(nome, preco, descricao, estoque, tamanho, sabor);
-					 res = dados.editarPastel(posicao, p);
-				}
-					
-				// inserir e editar Bebida
-				
-				if (opcao == 2) {
-					 String tipo = (String) valorTipo.getSelectedItem();
-					 int volume = (int) valorVolume.getSelectedItem();
-					 Bebida b = new Bebida(nome, preco, descricao, estoque, volume, tipo);
-					 res = dados.inserirBebida(b);
-					 
-				}else if(opcao == 4) {
-					 String tipo = (String) valorTipo.getSelectedItem();
-					 int volume = (int) valorVolume.getSelectedItem();
-					 Bebida b = new Bebida(nome, preco, descricao, estoque, volume, tipo);
-					 res = dados.editarBebida(posicao, b);
-				}
-					
-					if(res) {
+				if (!valorNome.getText().isEmpty()) {
+					String descricao = valorDescricao.getText();
+					double preco = Double.valueOf(valorPreco.getText());
+					int estoque = Integer.valueOf(valorEstoque.getText());
+
+					// inserir e editar Pastel
+					if (opcao == 1) {
+
+						String sabor = valorSabor.getText();
+						String tamanho = (String) valorTamanho.getSelectedItem();
+						Pastel p = new Pastel(nome, preco, descricao, estoque, tamanho, sabor);
+						res = dados.inserirPastel(p);
+
+					} else if (opcao == 3) {
+						String sabor = valorSabor.getText();
+						String tamanho = (String) valorTamanho.getSelectedItem();
+						Pastel p = new Pastel(nome, preco, descricao, estoque, tamanho, sabor);
+						res = dados.editarPastel(posicao, p);
+					}
+
+					// inserir e editar Bebida
+
+					if (opcao == 2) {
+						String tipo = (String) valorTipo.getSelectedItem();
+						int volume = (int) valorVolume.getSelectedItem();
+						Bebida b = new Bebida(nome, preco, descricao, estoque, volume, tipo);
+						res = dados.inserirBebida(b);
+
+					} else if (opcao == 4) {
+						String tipo = (String) valorTipo.getSelectedItem();
+						int volume = (int) valorVolume.getSelectedItem();
+						Bebida b = new Bebida(nome, preco, descricao, estoque, volume, tipo);
+						res = dados.editarBebida(posicao, b);
+					}
+
+					if (res) {
 						mensagemSucessoCadastro();
 					} else
 						mensagemErroCadastro();
+				} else {
+					mensagemErroCadastro();
+				}
 
 			} catch (NullPointerException exc1) {
 				mensagemErroCadastro();
@@ -275,15 +277,13 @@ public class TelaDetalheProduto implements ActionListener {
 		JOptionPane.showMessageDialog(null,
 				"ERRO AO SALVAR OS DADOS!\n " + "Pode ter ocorrido um dos três erros a seguir:  \n"
 						+ "1. Nem todos os campos foram preenchidos \n"
-						+ "2. Volume, Valor ou  Estoque não contém apenas números \n" 
+						+ "2. Volume, Valor ou  Estoque não contém apenas números \n"
 						+ "3. Foi digitado uma vírgula (,) no lugar de um ponto (.) em Valor ",
 				null, JOptionPane.ERROR_MESSAGE);
 	}
 
 	public void mensagemErroExclusao() {
-		JOptionPane.showMessageDialog(null,
-				"Ocorreu um erro ao excluir o dado.\n ",
-				null, JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Ocorreu um erro ao excluir o dado.\n ", null, JOptionPane.ERROR_MESSAGE);
 	}
 
 }
