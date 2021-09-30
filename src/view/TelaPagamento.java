@@ -21,7 +21,7 @@ import modelo.Venda;
 public class TelaPagamento implements ActionListener {
 	private JFrame janela;
 	private JLabel titulo = new JLabel("Pagar pedido");
-	private JLabel labelPagamento = new JLabel("Escolha a forma de pagamento");
+	private JLabel labelPagamento = new JLabel("Escolha a forma de pagamento: ");
 	private JLabel labelValorTotal = new JLabel("Valor total do pedido: ");
 	private JLabel valorTotal;
 	private JComboBox<String> valorPagamento;
@@ -44,9 +44,9 @@ public class TelaPagamento implements ActionListener {
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
 		titulo.setBounds(140, 30, 250, 30);
 		labelValorTotal.setBounds(50, 60, 150, 30);
-		valorTotal.setBounds(200, 60, 150, 30);
+		valorTotal.setBounds(240, 60, 150, 30);
 		labelPagamento.setBounds(50, 90, 200, 30);
-		valorPagamento.setBounds(225, 90, 150, 30);
+		valorPagamento.setBounds(240, 90, 130, 30);
 		confirmar.setBounds(140, 140, 100, 30);
 
 		janela.add(titulo);
