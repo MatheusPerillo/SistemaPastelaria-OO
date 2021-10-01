@@ -137,7 +137,7 @@ public class TelaPedidoProduto implements ActionListener {
 	public void mensagemSemEstoque() {
 
 		JOptionPane.showMessageDialog(null,
-				"Não temos essa quantidade em estoque\n" + "Por favor peça uma quatidade menor ou outro pastel", null,
+				"Não temos essa quantidade em estoque;\n" + "Por favor peça uma quatidade menor ou outro pastel;\n" + "Faça a reposição do estoque;", null,
 				JOptionPane.ERROR_MESSAGE);
 		janela.dispose();
 
