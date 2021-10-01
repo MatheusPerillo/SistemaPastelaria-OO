@@ -57,7 +57,7 @@ public class TelaMenu implements ActionListener {
 		bebida.addActionListener(menu);
 		loja.addActionListener(menu);
 		pedido.addActionListener(menu);
-		vendas.addActionListener(menu);
+		
 	}
 	
 	public void actionPerformed(ActionEvent e) {
