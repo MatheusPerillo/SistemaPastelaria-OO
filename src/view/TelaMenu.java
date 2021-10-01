@@ -79,10 +79,10 @@ public class TelaMenu implements ActionListener {
 		if(src == loja)
 			new TelaLoja().mostrarDados(dados.getDados().getLoja());
 		
-		if(src == pedido)
-			new TelaPedido().mostrarMenu(dados);
 		if(src == vendas)
 			new TelaVenda().mostrarDados(dados);
+		if(src == pedido)
+			new TelaPedido().mostrarMenu(dados);
 	}
 }
 
