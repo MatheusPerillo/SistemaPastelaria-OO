@@ -9,7 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import controle.ControleBebida;
 import controle.ControleDados;
+import controle.ControlePastel;
 import modelo.Bebida;
 import modelo.Pastel;
 
@@ -188,12 +191,13 @@ public class TelaDetalheProduto implements ActionListener {
 				boolean res = false;
 
 				String nome = valorNome.getText();
-				if (!valorNome.getText().isEmpty()) {
-					String descricao = valorDescricao.getText();
-					double preco = Double.valueOf(valorPreco.getText());
-					int estoque = Integer.valueOf(valorEstoque.getText());
 
-					// inserir e editar Pastel
+				String descricao = valorDescricao.getText();
+				double preco = Double.valueOf(valorPreco.getText());
+				int estoque = Integer.valueOf(valorEstoque.getText());
+
+				// inserir e editar Pastel
+				if (!valorNome.getText().isEmpty() && new ControlePastel(dados).buscarPorNome(nome) == null) {
 					if (opcao == 1) {
 
 						String sabor = valorSabor.getText();
@@ -207,9 +211,12 @@ public class TelaDetalheProduto implements ActionListener {
 						Pastel p = new Pastel(nome, preco, descricao, estoque, tamanho, sabor);
 						res = dados.editarPastel(posicao, p);
 					}
+				} else {
+					mensagemErroCadastro();
+				}
 
-					// inserir e editar Bebida
-
+				// inserir e editar Bebida
+				if (!valorNome.getText().isEmpty() && new ControleBebida(dados).buscarPorNome(nome) == null) {
 					if (opcao == 2) {
 						String tipo = (String) valorTipo.getSelectedItem();
 						int volume = (int) valorVolume.getSelectedItem();
@@ -222,14 +229,14 @@ public class TelaDetalheProduto implements ActionListener {
 						Bebida b = new Bebida(nome, preco, descricao, estoque, volume, tipo);
 						res = dados.editarBebida(posicao, b);
 					}
-
-					if (res) {
-						mensagemSucessoCadastro();
-					} else
-						mensagemErroCadastro();
-				} else {
+				}else {
 					mensagemErroCadastro();
 				}
+
+				if (res) {
+					mensagemSucessoCadastro();
+				} else
+					mensagemErroCadastro();
 
 			} catch (NullPointerException exc1) {
 				mensagemErroCadastro();
@@ -278,7 +285,8 @@ public class TelaDetalheProduto implements ActionListener {
 				"ERRO AO SALVAR OS DADOS!\n " + "Pode ter ocorrido um dos três erros a seguir:  \n"
 						+ "1. Nem todos os campos foram preenchidos \n"
 						+ "2. Volume, Valor ou  Estoque não contém apenas números \n"
-						+ "3. Foi digitado uma vírgula (,) no lugar de um ponto (.) em Valor ",
+						+ "3. Foi digitado uma vírgula (,) no lugar de um ponto (.) em Valor\n"
+						+ "4. Não é possível cadastrar um nome que já exista",
 				null, JOptionPane.ERROR_MESSAGE);
 	}
 

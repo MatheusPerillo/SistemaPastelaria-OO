@@ -6,7 +6,7 @@ import modelo.Funcionario;
 
 
 public class ControleFuncionario {
-private ArrayList<Funcionario> f;
+private static ArrayList<Funcionario> f;
 	
 	
 	public ControleFuncionario(ControleDados d) {
@@ -22,9 +22,9 @@ private ArrayList<Funcionario> f;
 		return s;
 	}
 	
-	public static Funcionario buscarPorNome(ArrayList<Funcionario> lista,String nome) {
+	public  Funcionario buscarPorNome(String nome) {
 		try {
-			 for(Funcionario p: lista) {
+			 for(Funcionario p: f) {
 				 if(p.getNome().toUpperCase().equals(nome.toUpperCase())) {
 					 return p;
 				 }

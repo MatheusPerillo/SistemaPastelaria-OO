@@ -82,10 +82,10 @@ public class TelaPedido implements ActionListener {
 		if (src == finalizar) {
 			try {
 				String nomeCliente = (String) clientes.getSelectedItem();
-				Cliente c = ControleCliente.buscarPorNome(dados.getClientes(), nomeCliente);
+				Cliente c = new ControleCliente(dados).buscarPorNome(nomeCliente);
 
 				String nomeFuncionario = (String) funcionarios.getSelectedItem();
-				Funcionario f = ControleFuncionario.buscarPorNome(dados.getFuncionarios(), nomeFuncionario);
+				Funcionario f = new ControleFuncionario(dados).buscarPorNome(nomeFuncionario);
 
 				dados.getPedido().setCliente(c);
 				dados.getPedido().setVendedor(f);

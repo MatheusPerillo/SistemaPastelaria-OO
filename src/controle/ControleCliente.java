@@ -6,7 +6,7 @@ import modelo.Cliente;
 
 
 public class ControleCliente {
-	private ArrayList<Cliente> c;
+	private static ArrayList<Cliente> c;
 	
 	
 	public ControleCliente(ControleDados d) {
@@ -22,9 +22,9 @@ public class ControleCliente {
 		return s;
 	}
 	
-	public static Cliente buscarPorNome(ArrayList<Cliente> lista,String nome) {
+	public  Cliente buscarPorNome(String nome) {
 		try {
-			 for(Cliente p: lista) {
+			 for(Cliente p: c) {
 				 if(p.getNome().toUpperCase().equals(nome.toUpperCase())) {
 					 return p;
 				 }

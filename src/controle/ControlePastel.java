@@ -31,9 +31,9 @@ public class ControlePastel {
 		return null;
 	}
 	
-	public static Pastel buscarPorNome(ArrayList<Pastel> lista,String nome) {
+	public  Pastel buscarPorNome(String nome) {
 		try {
-			 for(Pastel p: lista) {
+			 for(Pastel p: p) {
 				 if(p.getNome().toUpperCase().equals(nome.toUpperCase())) {
 					 return p;
 				 }

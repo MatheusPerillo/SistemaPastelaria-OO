@@ -227,7 +227,7 @@ public class TelaDetalhePessoa implements ActionListener {
 				boolean res = false;
 
 				String nome = valorNome.getText();
-				if (!valorNome.getText().isEmpty()) {
+				
 					String estado = valorEstado.getText();
 					String cidade = valorCidade.getText();
 					String bairro = valorBairro.getText();
@@ -241,36 +241,41 @@ public class TelaDetalhePessoa implements ActionListener {
 					int numTel = Integer.valueOf(valorTelefone.getText());
 					Telefone tel = new Telefone(ddd, numTel);
 
-					if (opcao == 1) {
-						String numCart = valorNumCartao.getText();
-						Cliente c = new Cliente(nome, end, tel, email, numCart);
-						res = dados.inserirCliente(c);
+					if (valorNome.getText().isEmpty() && new ControleCliente(dados).buscarPorNome(nome) == null) {
+						if (opcao == 1) {
+							String numCart = valorNumCartao.getText();
+							Cliente c = new Cliente(nome, end, tel, email, numCart);
+							res = dados.inserirCliente(c);
 
-					} else if (opcao == 3) {
-						String numCart = valorNumCartao.getText();
-						Cliente c = new Cliente(nome, end, tel, email, numCart);
-						res = dados.editarCliente(posicao, c);
-
+						} else if (opcao == 3) {
+							String numCart = valorNumCartao.getText();
+							Cliente c = new Cliente(nome, end, tel, email, numCart);
+							res = dados.editarCliente(posicao, c);
+						}
+					} else {
+						mensagemErroCadastro();
 					}
-					if (opcao == 2) {
-						String dateNasc = valorDateNasc.getText();
-						Cargo cargo = (Cargo) valorCargo.getSelectedItem();
-						Double salario = Double.valueOf(valorSalario.getText());
-						int vendas = Integer.valueOf(valorVendas.getText());
-						Funcionario f = new Funcionario(nome, end, tel, email, cargo, salario, dateNasc, vendas);
-						res = dados.inserirFuncionario(f);
+					if (valorNome.getText().isEmpty() && new ControleFuncionario(dados).buscarPorNome(nome) == null) {
+						if (opcao == 2) {
+							String dateNasc = valorDateNasc.getText();
+							Cargo cargo = (Cargo) valorCargo.getSelectedItem();
+							Double salario = Double.valueOf(valorSalario.getText());
+							int vendas = Integer.valueOf(valorVendas.getText());
+							Funcionario f = new Funcionario(nome, end, tel, email, cargo, salario, dateNasc, vendas);
+							res = dados.inserirFuncionario(f);
 
-					} else if (opcao == 4) {
-						String dateNasc = valorDateNasc.getText();
-						Cargo cargo = (Cargo) valorCargo.getSelectedItem();
-						Double salario = Double.valueOf(valorSalario.getText());
-						int vendas = Integer.valueOf(valorVendas.getText());
-						Funcionario f = new Funcionario(nome, end, tel, email, cargo, salario, dateNasc, vendas);
-						res = dados.editarFuncionario(posicao, f);
+						} else if (opcao == 4) {
+							String dateNasc = valorDateNasc.getText();
+							Cargo cargo = (Cargo) valorCargo.getSelectedItem();
+							Double salario = Double.valueOf(valorSalario.getText());
+							int vendas = Integer.valueOf(valorVendas.getText());
+							Funcionario f = new Funcionario(nome, end, tel, email, cargo, salario, dateNasc, vendas);
+							res = dados.editarFuncionario(posicao, f);
+						}
+					} else {
+						mensagemErroCadastro();
 					}
-				} else {
-					mensagemErroCadastro();
-				}
+				
 				if (res) {
 					mensagemSucessoCadastro();
 				} else
@@ -283,26 +288,28 @@ public class TelaDetalhePessoa implements ActionListener {
 			}
 		}
 
-		if (src == botaoExcluir) {
-			boolean res = false;
+	if(src==botaoExcluir)
 
-			if (opcao == 3) {// exclui cliente
-				res = dados.removerCliente(posicao);
-				if (res)
-					mensagemSucessoExclusao();
-				else
-					mensagemErroExclusao();
-			}
+	{
+		boolean res = false;
 
-			if (opcao == 4) { // exclui funcionário
-				res = dados.removerFuncionario(posicao);
-				if (res)
-					mensagemSucessoExclusao();
-				else
-					mensagemErroExclusao();
-			}
-
+		if (opcao == 3) {// exclui cliente
+			res = dados.removerCliente(posicao);
+			if (res)
+				mensagemSucessoExclusao();
+			else
+				mensagemErroExclusao();
 		}
+
+		if (opcao == 4) { // exclui funcionário
+			res = dados.removerFuncionario(posicao);
+			if (res)
+				mensagemSucessoExclusao();
+			else
+				mensagemErroExclusao();
+		}
+
+	}
 	}
 
 	public void mensagemSucessoExclusao() {
@@ -319,9 +326,10 @@ public class TelaDetalhePessoa implements ActionListener {
 
 	public void mensagemErroCadastro() {
 		JOptionPane.showMessageDialog(null,
-				"ERRO AO SALVAR OS DADOS!\n " + "Pode ter ocorrido um dos dois erros a seguir:  \n"
+				"ERRO AO SALVAR OS DADOS!\n " + "Pode ter ocorrido um dos erros a seguir:  \n"
 						+ "1. Nem todos os campos foram preenchidos \n"
-						+ "2. Campo número,DDD e telefone não contém apenas números",
+						+ "2. Campo número,DDD e telefone não contém apenas números\n"
+						+ "Não é possível cadastrar um nome que já exista",
 				null, JOptionPane.ERROR_MESSAGE);
 
 	}

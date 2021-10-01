@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import controle.ControleBebida;
+
 import controle.ControleCliente;
 import controle.ControleDados;
 import controle.ControleFuncionario;
@@ -93,13 +94,13 @@ public class TelaPedidoProduto implements ActionListener {
 				
 				if (op == 1) {
 					String nome =  (String) pasteis.getSelectedItem();
-					Pastel p = ControlePastel.buscarPorNome(dados.getPasteis(), nome);
+					Pastel p = new ControlePastel(dados).buscarPorNome(nome);
 					dados.getPedido().pedirPastel(p, quantidade);
 					mensagemSucessoPedido(1, p);
 				}
 				if (op == 2) {
 					String nome = (String) bebidas.getSelectedItem();
-					Bebida b = ControleBebida.buscarPorNome(dados.getBebidas(), nome);
+					Bebida b =  new ControleBebida(dados).buscarPorNome(nome);
 					dados.getPedido().pedirBebida(b, quantidade);
 					mensagemSucessoPedido(1, b);
 				}

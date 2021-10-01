@@ -32,9 +32,9 @@ public class ControleBebida {
 		return null;
 	}
 
-	public static Bebida buscarPorNome(ArrayList<Bebida> lista,String nome) {
+	public  Bebida buscarPorNome(String nome) {
 		try {
-			for (Bebida b : lista) {
+			for (Bebida b : b) {
 				if (b.getNome().toUpperCase().equals(nome.toUpperCase())) {
 					return b;
 				}
