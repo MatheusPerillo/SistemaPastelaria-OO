@@ -227,55 +227,58 @@ public class TelaDetalhePessoa implements ActionListener {
 				boolean res = false;
 
 				String nome = valorNome.getText();
-				
-					String estado = valorEstado.getText();
-					String cidade = valorCidade.getText();
-					String bairro = valorBairro.getText();
-					String cep = valorCep.getText();
-					int num = Integer.valueOf(valorNumero.getText());
-					Endereco end = new Endereco(estado, cidade, bairro, cep, num);
 
-					String email = valorEmail.getText();
+				String estado = valorEstado.getText();
+				String cidade = valorCidade.getText();
+				String bairro = valorBairro.getText();
+				String cep = valorCep.getText();
+				int num = Integer.valueOf(valorNumero.getText());
+				Endereco end = new Endereco(estado, cidade, bairro, cep, num);
 
-					int ddd = Integer.valueOf(valorDDD.getText());
-					int numTel = Integer.valueOf(valorTelefone.getText());
-					Telefone tel = new Telefone(ddd, numTel);
+				String email = valorEmail.getText();
 
+				int ddd = Integer.valueOf(valorDDD.getText());
+				int numTel = Integer.valueOf(valorTelefone.getText());
+				Telefone tel = new Telefone(ddd, numTel);
+
+				if (opcao == 1) {
 					if (valorNome.getText().isEmpty() && new ControleCliente(dados).buscarPorNome(nome) == null) {
-						if (opcao == 1) {
-							String numCart = valorNumCartao.getText();
-							Cliente c = new Cliente(nome, end, tel, email, numCart);
-							res = dados.inserirCliente(c);
+						String numCart = valorNumCartao.getText();
+						Cliente c = new Cliente(nome, end, tel, email, numCart);
+						res = dados.inserirCliente(c);
 
-						} else if (opcao == 3) {
-							String numCart = valorNumCartao.getText();
-							Cliente c = new Cliente(nome, end, tel, email, numCart);
-							res = dados.editarCliente(posicao, c);
-						}
 					} else {
 						mensagemErroCadastro();
 					}
+
+				} else if (opcao == 3) {
+					String numCart = valorNumCartao.getText();
+					Cliente c = new Cliente(nome, end, tel, email, numCart);
+					res = dados.editarCliente(posicao, c);
+				}
+
+				if (opcao == 2) {
 					if (valorNome.getText().isEmpty() && new ControleFuncionario(dados).buscarPorNome(nome) == null) {
-						if (opcao == 2) {
-							String dateNasc = valorDateNasc.getText();
-							Cargo cargo = (Cargo) valorCargo.getSelectedItem();
-							Double salario = Double.valueOf(valorSalario.getText());
-							int vendas = Integer.valueOf(valorVendas.getText());
-							Funcionario f = new Funcionario(nome, end, tel, email, cargo, salario, dateNasc, vendas);
-							res = dados.inserirFuncionario(f);
+						String dateNasc = valorDateNasc.getText();
+						Cargo cargo = (Cargo) valorCargo.getSelectedItem();
+						Double salario = Double.valueOf(valorSalario.getText());
+						int vendas = Integer.valueOf(valorVendas.getText());
+						Funcionario f = new Funcionario(nome, end, tel, email, cargo, salario, dateNasc, vendas);
+						res = dados.inserirFuncionario(f);
 
-						} else if (opcao == 4) {
-							String dateNasc = valorDateNasc.getText();
-							Cargo cargo = (Cargo) valorCargo.getSelectedItem();
-							Double salario = Double.valueOf(valorSalario.getText());
-							int vendas = Integer.valueOf(valorVendas.getText());
-							Funcionario f = new Funcionario(nome, end, tel, email, cargo, salario, dateNasc, vendas);
-							res = dados.editarFuncionario(posicao, f);
-						}
 					} else {
 						mensagemErroCadastro();
 					}
-				
+
+				} else if (opcao == 4) {
+					String dateNasc = valorDateNasc.getText();
+					Cargo cargo = (Cargo) valorCargo.getSelectedItem();
+					Double salario = Double.valueOf(valorSalario.getText());
+					int vendas = Integer.valueOf(valorVendas.getText());
+					Funcionario f = new Funcionario(nome, end, tel, email, cargo, salario, dateNasc, vendas);
+					res = dados.editarFuncionario(posicao, f);
+				}
+
 				if (res) {
 					mensagemSucessoCadastro();
 				} else
@@ -288,28 +291,28 @@ public class TelaDetalhePessoa implements ActionListener {
 			}
 		}
 
-	if(src==botaoExcluir)
+		if (src == botaoExcluir)
 
-	{
-		boolean res = false;
+		{
+			boolean res = false;
 
-		if (opcao == 3) {// exclui cliente
-			res = dados.removerCliente(posicao);
-			if (res)
-				mensagemSucessoExclusao();
-			else
-				mensagemErroExclusao();
+			if (opcao == 3) {// exclui cliente
+				res = dados.removerCliente(posicao);
+				if (res)
+					mensagemSucessoExclusao();
+				else
+					mensagemErroExclusao();
+			}
+
+			if (opcao == 4) { // exclui funcionário
+				res = dados.removerFuncionario(posicao);
+				if (res)
+					mensagemSucessoExclusao();
+				else
+					mensagemErroExclusao();
+			}
+
 		}
-
-		if (opcao == 4) { // exclui funcionário
-			res = dados.removerFuncionario(posicao);
-			if (res)
-				mensagemSucessoExclusao();
-			else
-				mensagemErroExclusao();
-		}
-
-	}
 	}
 
 	public void mensagemSucessoExclusao() {

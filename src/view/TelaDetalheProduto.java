@@ -197,31 +197,37 @@ public class TelaDetalheProduto implements ActionListener {
 				int estoque = Integer.valueOf(valorEstoque.getText());
 
 				// inserir e editar Pastel
-				if (!valorNome.getText().isEmpty() && new ControlePastel(dados).buscarPorNome(nome) == null) {
+				
 					if (opcao == 1) {
-
+						if (!valorNome.getText().isEmpty() && new ControlePastel(dados).buscarPorNome(nome) == null) {
 						String sabor = valorSabor.getText();
 						String tamanho = (String) valorTamanho.getSelectedItem();
 						Pastel p = new Pastel(nome, preco, descricao, estoque, tamanho, sabor);
 						res = dados.inserirPastel(p);
 
+						} else {
+							mensagemErroCadastro();
+						}
+						
 					} else if (opcao == 3) {
 						String sabor = valorSabor.getText();
 						String tamanho = (String) valorTamanho.getSelectedItem();
 						Pastel p = new Pastel(nome, preco, descricao, estoque, tamanho, sabor);
 						res = dados.editarPastel(posicao, p);
 					}
-				} else {
-					mensagemErroCadastro();
-				}
-
+				
 				// inserir e editar Bebida
-				if (!valorNome.getText().isEmpty() && new ControleBebida(dados).buscarPorNome(nome) == null) {
+				
 					if (opcao == 2) {
+						if (!valorNome.getText().isEmpty() && new ControleBebida(dados).buscarPorNome(nome) == null) {
 						String tipo = (String) valorTipo.getSelectedItem();
 						int volume = (int) valorVolume.getSelectedItem();
 						Bebida b = new Bebida(nome, preco, descricao, estoque, volume, tipo);
 						res = dados.inserirBebida(b);
+						
+						}else {
+							mensagemErroCadastro();
+						}
 
 					} else if (opcao == 4) {
 						String tipo = (String) valorTipo.getSelectedItem();
@@ -229,9 +235,6 @@ public class TelaDetalheProduto implements ActionListener {
 						Bebida b = new Bebida(nome, preco, descricao, estoque, volume, tipo);
 						res = dados.editarBebida(posicao, b);
 					}
-				}else {
-					mensagemErroCadastro();
-				}
 
 				if (res) {
 					mensagemSucessoCadastro();
