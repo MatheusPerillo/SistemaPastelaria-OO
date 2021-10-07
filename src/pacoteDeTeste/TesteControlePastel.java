@@ -23,6 +23,7 @@ class TesteControlePastel {
 		assertEquals("ChocoLove", p.buscarPorNome("ChocoLove").getNome());
 		assertEquals("ChocoLove", p.buscarPorNome("chocoLove").getNome());
 		assertNotEquals("carne", p.buscarPorNome("chocoLove").getNome());
+
 	}
 
 	@Test

@@ -38,7 +38,7 @@ public class ControleCliente {
 				}
 			 
 		} catch (Exception e) {
-			System.out.println("Cliente não encontrado");
+			return null;
 		}
 		return null;
 	}

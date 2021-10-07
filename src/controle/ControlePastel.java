@@ -46,7 +46,7 @@ public class ControlePastel {
 				throw new NullPointerException();
 			}
 		} catch (Exception e) {
-			System.out.println("Pastel não encontrado");
+			return null;
 		}
 		return null;
 	}

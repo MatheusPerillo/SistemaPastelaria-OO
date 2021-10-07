@@ -49,7 +49,7 @@ public class ControleBebida {
 				}
 			 
 		} catch (Exception e) {
-			System.out.println("Bebida não encontrada");
+			return null;
 		}
 		return null;
 	}

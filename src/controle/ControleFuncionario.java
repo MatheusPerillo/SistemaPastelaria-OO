@@ -37,7 +37,7 @@ private static ArrayList<Funcionario> f;
 					throw new NullPointerException();
 				}
 		} catch (Exception e) {
-			System.out.println("Funcionario não encontrado");
+			return null;
 		}
 		return null;
 	}

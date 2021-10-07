@@ -26,7 +26,7 @@ public class ControleVenda {
 				throw new NullPointerException();
 			}
 		} catch (Exception e) {
-			System.out.println("Venda não encontrada");
+			return null;
 		}
 		return null;
 	}
