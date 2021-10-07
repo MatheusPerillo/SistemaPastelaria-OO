@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import modelo.Bebida;
+import modelo.Cliente;
 
 public class ControleBebida {
 	private ArrayList<Bebida> b;
@@ -33,12 +34,20 @@ public class ControleBebida {
 	}
 
 	public  Bebida buscarPorNome(String nome) {
+		boolean aux = false;
 		try {
-			for (Bebida b : b) {
-				if (b.getNome().toUpperCase().equals(nome.toUpperCase())) {
-					return b;
+			 for(Bebida beb: b) {
+				 if(beb.getNome().toUpperCase().equals(nome.toUpperCase())) {
+					 aux=true;
+					 return beb;
+				 } else {
+						aux = false;
+					}
 				}
-			}
+				if (aux == false) {
+					throw new NullPointerException();
+				}
+			 
 		} catch (Exception e) {
 			System.out.println("Bebida não encontrada");
 		}

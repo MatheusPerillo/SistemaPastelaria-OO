@@ -51,7 +51,7 @@ public class Venda {
 
 	@Override
 	public String toString() {
-		return "\nVenda: "  +"\nForma de Pagemento: " + formaPagamento + "\nDataPagamento: " + Util.dateParaString(dataPagamento);
+		return "\nVenda: " +"\nID:" +Id  +"\nForma de Pagemento: " + formaPagamento + "\nDataPagamento: " + Util.dateParaString(dataPagamento);
 	}
 	
 	

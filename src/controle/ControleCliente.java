@@ -23,12 +23,20 @@ public class ControleCliente {
 	}
 	
 	public  Cliente buscarPorNome(String nome) {
+		boolean aux = false;
 		try {
 			 for(Cliente p: c) {
 				 if(p.getNome().toUpperCase().equals(nome.toUpperCase())) {
+					 aux=true;
 					 return p;
-				 }
-			 }
+				 } else {
+						aux = false;
+					}
+				}
+				if (aux == false) {
+					throw new NullPointerException();
+				}
+			 
 		} catch (Exception e) {
 			System.out.println("Cliente não encontrado");
 		}

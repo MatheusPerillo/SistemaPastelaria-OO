@@ -23,12 +23,19 @@ private static ArrayList<Funcionario> f;
 	}
 	
 	public  Funcionario buscarPorNome(String nome) {
+		boolean aux = false;
 		try {
 			 for(Funcionario p: f) {
 				 if(p.getNome().toUpperCase().equals(nome.toUpperCase())) {
+					 aux = true;
 					 return p;
-				 }
-			 }
+				 } else {
+						aux = false;
+					}
+				}
+				if (aux == false) {
+					throw new NullPointerException();
+				}
 		} catch (Exception e) {
 			System.out.println("Funcionario não encontrado");
 		}

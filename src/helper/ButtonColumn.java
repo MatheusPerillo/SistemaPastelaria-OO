@@ -71,7 +71,7 @@ public class ButtonColumn extends AbstractCellEditor implements TableCellRendere
 		 DefaultTableModel model = (DefaultTableModel) this.table.getModel();
 		 int id= (int) table.getValueAt(table.getSelectedRow(), 0);
 		 model.removeRow(table.getSelectedRow());
-		Venda v= ControleVenda.buscarPorId(dados.getVendas(), id);
+		Venda v= new ControleVenda(dados).buscarPorId(id);
 		dados.removerVenda(v);
 		 
 		 
