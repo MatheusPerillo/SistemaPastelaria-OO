@@ -242,12 +242,13 @@ public class TelaDetalhePessoa implements ActionListener {
 				Telefone tel = new Telefone(ddd, numTel);
 
 				if (opcao == 1) {
-					if (valorNome.getText().isEmpty() && new ControleCliente(dados).buscarPorNome(nome) == null) {
+					if (!valorNome.getText().isEmpty() && new ControleCliente(dados).buscarPorNome(nome) == null) {
 						String numCart = valorNumCartao.getText();
 						Cliente c = new Cliente(nome, end, tel, email, numCart);
 						res = dados.inserirCliente(c);
 
 					} else {
+						System.out.println("entrou");
 						mensagemErroCadastro();
 					}
 
@@ -258,7 +259,7 @@ public class TelaDetalhePessoa implements ActionListener {
 				}
 
 				if (opcao == 2) {
-					if (valorNome.getText().isEmpty() && new ControleFuncionario(dados).buscarPorNome(nome) == null) {
+					if (!valorNome.getText().isEmpty() && new ControleFuncionario(dados).buscarPorNome(nome) == null) {
 						String dateNasc = valorDateNasc.getText();
 						Cargo cargo = (Cargo) valorCargo.getSelectedItem();
 						Double salario = Double.valueOf(valorSalario.getText());
