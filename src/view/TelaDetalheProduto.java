@@ -231,7 +231,7 @@ public class TelaDetalheProduto implements ActionListener {
 						}
 						
 					} else if (opcao == 3) {
-						if (!valorNome.getText().isEmpty() && new ControlePastel(dados).buscarPorNome(nome) == null) {
+						if (!valorNome.getText().isEmpty() ) {
 						String sabor = valorSabor.getText();
 						String tamanho = (String) valorTamanho.getSelectedItem();
 						Pastel p = new Pastel(nome, preco, descricao, estoque, tamanho, sabor);
@@ -254,7 +254,7 @@ public class TelaDetalheProduto implements ActionListener {
 						}
 
 					} else if (opcao == 4) {
-						if (!valorNome.getText().isEmpty() && new ControleBebida(dados).buscarPorNome(nome) == null) {
+						if (!valorNome.getText().isEmpty() ) {
 						String tipo = (String) valorTipo.getSelectedItem();
 						int volume = (int) valorVolume.getSelectedItem();
 						Bebida b = new Bebida(nome, preco, descricao, estoque, volume, tipo);

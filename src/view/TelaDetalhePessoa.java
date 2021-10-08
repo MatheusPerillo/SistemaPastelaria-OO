@@ -274,7 +274,7 @@ public class TelaDetalhePessoa implements ActionListener {
 					}
 
 				} else if (opcao == 3) {
-					if (!valorNome.getText().isEmpty() && new ControleCliente(dados).buscarPorNome(nome) == null) {
+					if (!valorNome.getText().isEmpty() ) {
 						String numCart = valorNumCartao.getText();
 						Cliente c = new Cliente(nome, end, tel, email, numCart);
 						res = dados.editarCliente(posicao, c);
@@ -298,7 +298,7 @@ public class TelaDetalhePessoa implements ActionListener {
 					}
 
 				} else if (opcao == 4) {
-					if (!valorNome.getText().isEmpty() && new ControleFuncionario(dados).buscarPorNome(nome) == null) {
+					if (!valorNome.getText().isEmpty() ) {
 						String dateNasc = valorDateNasc.getText();
 						Cargo cargo = (Cargo) valorCargo.getSelectedItem();
 						Double salario = Double.valueOf(valorSalario.getText());
