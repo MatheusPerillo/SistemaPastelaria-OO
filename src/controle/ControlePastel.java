@@ -6,7 +6,7 @@ import java.util.Optional;
 import modelo.Pastel;
 
 /**
- * Esta classe contém os parâmetros necessários para o controle de dados da classe Pastel.
+ * Esta classe contém os parâmetros e as funções necessários para o controle de dados da classe Pastel.
  * @author Matheus Perillo
  * @author João Victor Correia
  * @version 1.0 (Sep 2021)
@@ -15,16 +15,16 @@ public class ControlePastel {
 	private ArrayList<Pastel> p;
 
 	/**
-	 * 
-	 * @param d
+	 * Construtor para instanciação do objeto ControlePastel
+	 * @param d Dados presente no sistema.
 	 */
 	public ControlePastel(ControleDados d) {
 		p = d.getPasteis();
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Método para criação de um array com os nomes dos pastéis cadastrados
+	 * @return String[] Array de nomes dos pastéis cadastrados
 	 */
 	public String[] getNomePasteis() {
 		String[] s = new String[this.p.size()];
@@ -35,10 +35,10 @@ public class ControlePastel {
 	}
 
 	/**
-	 * 
-	 * @param lista
-	 * @param nome
-	 * @return
+	 * Método para buscar um objeto pelo seu atributo nome 
+	 * @param lista Map onde será feita a busca
+	 * @param nome String nome que será o parâmetro buscado
+	 * @return Objeto cujo nome é igual ao buscado 
 	 */
 	public static Pastel buscarPorNome(HashMap<Pastel, Integer> lista, String nome) {
 		try {
@@ -52,9 +52,9 @@ public class ControlePastel {
 	}
 
 	/**
-	 * 
-	 * @param nome
-	 * @return
+	 * Método para buscar um objeto pelo seu atributo nome 
+	 * @param nome String nome que será o parâmetro buscado
+	 * @return Objeto cujo nome é igual ao buscado 
 	 */
 	public Pastel buscarPorNome(String nome) {
 		boolean aux = false;

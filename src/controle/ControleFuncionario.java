@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import modelo.Funcionario;
 
 /**
- * Esta classe contém os parâmetros necessários para o controle de dados da classe Funcionário.
+ * Esta classe contém os parâmetros e as funções necessários para o controle de dados da classe Funcionário.
  * @author Matheus Perillo
  * @author João Victor Correia
  * @version 1.0 (Sep 2021)
@@ -13,17 +13,17 @@ import modelo.Funcionario;
 public class ControleFuncionario {
 private static ArrayList<Funcionario> f;
 	
-	/**
-	 * 
-	 * @param d
-	 */
+/**
+ * Construtor para instanciação do objeto ControleFuncionario
+ * @param d Dados presente no sistema.
+ */
 	public ControleFuncionario(ControleDados d) {
 		f = d.getFuncionarios();		
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Método para criação de um array com os nomes dos funcionários cadastrados
+	 * @return String[] Array de nomes dos funcionários cadastrados
 	 */
 	public String[] getNomeFuncionarios() {
 		String[] s = new String[this.f.size()];
@@ -35,9 +35,9 @@ private static ArrayList<Funcionario> f;
 	}
 	
 	/**
-	 * 
-	 * @param nome
-	 * @return
+	 * Método para buscar um objeto pelo seu atributo nome 
+	 * @param nome String nome que será o parâmetro buscado
+	 * @return Objeto cujo nome é igual ao buscado 
 	 */
 	public  Funcionario buscarPorNome(String nome) {
 		boolean aux = false;

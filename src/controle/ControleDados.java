@@ -5,14 +5,16 @@ import java.util.ArrayList;
 import modelo.*;
 
 /**
- * Esta classe contém os parâmetros necessários para o controle de dados da classe Dados.
+ * Esta classe contém os parâmetros e as funções necessários para o controle de dados da classe Dados.
  * @author Matheus Perillo
  * @author João Victor Correia
  * @version 1.0 (Sep 2021)
  */
 public class ControleDados {
 	private Dados d = new Dados();
-
+/**
+ * Construtor para instanciação do objeto ControleDados
+ */
 	public ControleDados() {
 		d.gerarDados();
 	}
@@ -50,9 +52,9 @@ public class ControleDados {
 	
 
 	/**
-	 * 
-	 * @param c
-	 * @return
+	 * Método para inserir um objeto Cliente no ArrayList de clientes do objeto Dados
+	 * @param c - Cliente a ser inserido 
+	 * @return Boolean que indicará se foi possível inserir ou não
 	 */
 	public boolean inserirCliente(Cliente c) {
 		try {
@@ -64,10 +66,10 @@ public class ControleDados {
 	}
 
 	/**
-	 * 
-	 * @param i
-	 * @param c
-	 * @return
+	 * Método para editar um objeto Cliente no ArrayList de clientes do objeto Dados
+	 * @param i - Posição do objeto no ArrayList
+	 * @param c - Objeto Cliente com os atributos que serão alterados
+	 * @return Boolean que indicará se foi possível editar ou não
 	 */
 	public boolean editarCliente(int i, Cliente c) {
 		try {
@@ -84,9 +86,9 @@ public class ControleDados {
 	}
 
 	/**
-	 * 
-	 * @param i
-	 * @return
+	 * Método para remover um objeto Cliente no ArrayList de clientes do objeto Dados
+	 * @param i - Posição do objeto no ArrayList
+	 * @return Boolean que indicará se foi possível remover ou não
 	 */
 	public boolean removerCliente(int i) {
 		try {
@@ -98,9 +100,9 @@ public class ControleDados {
 	}
 
 	/**
-	 * 
-	 * @param f
-	 * @return
+	 * Método para inserir um objeto Funcionário no ArrayList de funcionários do objeto Dados
+	 * @param f - Funcionário a ser inserido 
+	 * @return Boolean que indicará se foi possível inserir ou não
 	 */
 	public boolean inserirFuncionario(Funcionario f) {
 		try {
@@ -112,10 +114,10 @@ public class ControleDados {
 	}
 
 	/**
-	 * 
-	 * @param i
-	 * @param f
-	 * @return
+	 * Método para editar um objeto Funcionario no ArrayList de funcionários do objeto Dados
+	 * @param i - Posição do objeto no ArrayList
+	 * @param f - Objeto Funcionario com os atributos que serão alterados
+	 * @return Boolean que indicará se foi possível editar ou não
 	 */
 	public boolean editarFuncionario(int i, Funcionario f) {
 		try {
@@ -134,9 +136,9 @@ public class ControleDados {
 	}
 
 	/**
-	 * 
-	 * @param i
-	 * @return
+	 * Método para remover um objeto Funcionario no ArrayList de funcionários do objeto Dados
+	 * @param i - Posição do objeto no ArrayList
+	 * @return Boolean que indicará se foi possível remover ou não
 	 */
 	public boolean removerFuncionario(int i) {
 		try {
@@ -147,11 +149,10 @@ public class ControleDados {
 		}
 	}
 
-	// ----PASTEL----
 	/**
-	 * 
-	 * @param p
-	 * @return
+	 * Método para inserir um objeto Pastel no ArrayList de pastéis do objeto Dados
+	 * @param p - Pastel a ser inserido 
+	 * @return Boolean que indicará se foi possível inserir ou não
 	 */
 	public boolean inserirPastel(Pastel p) {
 		try {
@@ -163,10 +164,10 @@ public class ControleDados {
 	}
 
 	/**
-	 * 
-	 * @param i
-	 * @param p
-	 * @return
+	 * Método para editar um objeto Pastel no ArrayList de pastéis do objeto Dados
+	 * @param i - Posição do objeto no ArrayList
+	 * @param p - Objeto Pastel com os atributos que serão alterados
+	 * @return Boolean que indicará se foi possível editar ou não
 	 */
 	public boolean editarPastel(int i, Pastel p) {
 		try {
@@ -184,9 +185,9 @@ public class ControleDados {
 	}
 
 	/**
-	 * 
-	 * @param i
-	 * @return
+	 * Método para remover um objeto Pastel no ArrayList de pastéis do objeto Dados
+	 * @param i - Posição do objeto no ArrayList
+	 * @return Boolean que indicará se foi possível remover ou não
 	 */
 	public boolean removerPastel(int i) {
 		try {
@@ -197,11 +198,10 @@ public class ControleDados {
 		}
 	}
 
-	// ----BEBIDAS----
 	/**
-	 * 
-	 * @param b
-	 * @return
+	 * Método para inserir um objeto Bebida no ArrayList de bebidas do objeto Dados
+	 * @param b - Bebida a ser inserida 
+	 * @return Boolean que indicará se foi possível inserir ou não
 	 */
 	public boolean inserirBebida(Bebida b) {
 		try {
@@ -213,10 +213,10 @@ public class ControleDados {
 	}
 
 	/**
-	 * 
-	 * @param i
-	 * @param b
-	 * @return
+	 * Método para editar um objeto Bebida no ArrayList de bebidas do objeto Dados
+	 * @param i - Posição do objeto no ArrayList
+	 * @param b - Objeto Bebida com os atributos que serão alterados
+	 * @return Boolean que indicará se foi possível editar ou não
 	 */
 	public boolean editarBebida(int i, Bebida b) {
 		try {
@@ -234,9 +234,9 @@ public class ControleDados {
 	}
 
 	/**
-	 * 
-	 * @param i
-	 * @return
+	 * Método para remover um objeto Bebida no ArrayList de bebidas do objeto Dados
+	 * @param i - Posição do objeto no ArrayList
+	 * @return Boolean que indicará se foi possível remover ou não
 	 */
 	public boolean removerBebida(int i) {
 		try {
@@ -248,9 +248,9 @@ public class ControleDados {
 	}
 	
 	/**
-	 * 
-	 * @param v
-	 * @return
+	 * Método para inserir um objeto Venda no ArrayList de vendas do objeto Dados
+	 * @param v - Venda a ser inserido 
+	 * @return Boolean que indicará se foi possível inserir ou não
 	 */
 	public boolean inserirVenda(Venda v) {
 		try {
@@ -262,9 +262,9 @@ public class ControleDados {
 	}
 	
 	/**
-	 * 
-	 * @param v
-	 * @return
+	 * Método para remover um objeto Venda no ArrayList de vendas do objeto Dados
+	 * @param i - Posição do objeto no ArrayList
+	 * @return Boolean que indicará se foi possível remover ou não
 	 */
 	public boolean removerVenda(Venda v) {
 		try {

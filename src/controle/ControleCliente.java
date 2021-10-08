@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import modelo.Cliente;
 
 /**
- * Esta classe contém os parâmetros necessários para o controle de dados da classe Cliente.
+ * Esta classe contém os parâmetros e as funções necessários para o controle de dados da classe Cliente.
  * @author Matheus Perillo
  * @author João Victor Correia
  * @version 1.0 (Sep 2021)
@@ -14,16 +14,16 @@ public class ControleCliente {
 	private static ArrayList<Cliente> c;
 	
 	/**
-	 * 
-	 * @param d
+	 * Construtor para instanciação do objeto ControleCliente
+	 * @param d Dados presente no sistema.
 	 */
 	public ControleCliente(ControleDados d) {
 		c = d.getClientes();		
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Método para criação de um array com os nomes dos clientes cadastrados
+	 * @return String[] Array de nomes dos clientes cadastrados
 	 */
 	public String[] getNomeClientes() {
 		String[] s = new String[this.c.size()];
@@ -35,9 +35,9 @@ public class ControleCliente {
 	}
 	
 	/**
-	 * 
-	 * @param nome
-	 * @return
+	 * Método para buscar um objeto pelo seu atributo nome 
+	 * @param nome String nome que será o parâmetro buscado
+	 * @return Objeto cujo nome é igual ao buscado 
 	 */
 	public  Cliente buscarPorNome(String nome) {
 		boolean aux = false;
