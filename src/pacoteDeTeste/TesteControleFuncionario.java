@@ -14,7 +14,7 @@ import modelo.Funcionario;
 import modelo.Telefone;
 
 /**
- * Verifica se os dados fornecidos equivalem ao esperado pelo programa
+ * Teste para verificar se os métodos de busca funcionam corretamente
  * @author João Victor Correia
  * @author Matheus Perillo
  * @version 1.0 (Out 2021)
@@ -25,9 +25,8 @@ class TesteControleFuncionario {
 	ControleFuncionario f = new ControleFuncionario(d);
 
 	/**
-	 * Verifica se o nome fornecido corresponde ao esperado
-	 * @param nome uma string que contém o nome a ser verificado
-	 * @return verdadeiro ou falso, indicando se o nome verificado corresponde ao esperado
+	 * Verifica se o nome fornecido no teste corresponde ao esperado
+	 
 	 */
 	@Test
 	void testBuscarPorNome() {
@@ -37,10 +36,8 @@ class TesteControleFuncionario {
 	}
 
 	/**
-	 * Verifica se o objeto e seus atributos correspondem
-	 * @param kiara objeto que contém os atributos a serem vereficados
-	 * @return verdadeiro ou falso, indicando se o atributo passado pertence ao objeto esperado
-	 */ 
+	 * Verifica se o objeto fornecido no teste corresponde ao objeto encontrado na busca pelo nome
+	 */
 	@Test
 	void testBuscarPorNomeObjeto() {
 		Funcionario kiara = d.getFuncionarios().get(2);
