@@ -18,21 +18,22 @@ import modelo.Venda;
 
 /**
  * Teste para verificar se os métodos de busca funcionam corretamente
+ * 
  * @author João Victor Correia
  * @author Matheus Perillo
  * @version 1.0 (Out 2021)
  */
-class TesteControleVenda {
+public class TesteControleVenda {
 
 	ControleDados d = new ControleDados();
 	ControleVenda v = new ControleVenda(d);
 
 	/**
 	 * Verifica se o nome fornecido no teste corresponde ao esperado
-	 
+	 * 
 	 */
 	@Test
-	void testBuscarPorNome() {
+	public void testBuscarPorNome() {
 
 		assertEquals("Dinheiro", v.buscarPorId(10).getFormaPagamento());
 		assertEquals("Pix", v.buscarPorId(12).getFormaPagamento());
@@ -43,10 +44,11 @@ class TesteControleVenda {
 	}
 
 	/**
-	 * Verifica se o objeto fornecido no teste corresponde ao objeto encontrado na busca pelo nome
-	 */ 
+	 * Verifica se o objeto fornecido no teste corresponde ao objeto encontrado na
+	 * busca pelo nome
+	 */
 	@Test
-	void testBuscarPorNomeObjeto() {
+	public void testBuscarPorNomeObjeto() {
 		Venda v1 = d.getVendas().get(0);
 
 		GregorianCalendar dataDeInscricao = new GregorianCalendar();

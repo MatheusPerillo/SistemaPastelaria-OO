@@ -1,4 +1,4 @@
-package pacoteDeTeste; 
+package pacoteDeTeste;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,22 +14,22 @@ import modelo.Telefone;
 
 /**
  * Teste para verificar se os métodos de busca funcionam corretamente
+ * 
  * @author João Victor Correia
  * @author Matheus Perillo
  * @version 1.0 (Out 2021)
  */
-class TesteControlePastel {
+public class TesteControlePastel {
 
 	ControleDados d = new ControleDados();
 	ControlePastel p = new ControlePastel(d);
 
-
 	/**
 	 * Verifica se o nome fornecido no teste corresponde ao esperado
-	 
+	 * 
 	 */
 	@Test
-	void testBuscarPorNome() {
+	public void testBuscarPorNome() {
 
 		assertEquals("ChocoLove", p.buscarPorNome("ChocoLove").getNome());
 		assertEquals("ChocoLove", p.buscarPorNome("chocoLove").getNome());
@@ -38,13 +38,14 @@ class TesteControlePastel {
 	}
 
 	/**
-	 * Verifica se o objeto fornecido no teste corresponde ao objeto encontrado na busca pelo nome
+	 * Verifica se o objeto fornecido no teste corresponde ao objeto encontrado na
+	 * busca pelo nome
 	 */
 	@Test
-	void testBuscarPorNomeObjeto() {
+	public void testBuscarPorNomeObjeto() {
 		Pastel carne = d.getPasteis().get(0);
 		Pastel queijo = new Pastel("Minas", 7.44, "Pastel de queijo", 9, "M", "frango");
-		
+
 		assertEquals(carne, p.buscarPorNome("Carnivoro"));
 		assertEquals(carne, p.buscarPorNome("carniVorO"));
 		assertNotEquals(queijo, p.buscarPorNome("Carnivoro"));
