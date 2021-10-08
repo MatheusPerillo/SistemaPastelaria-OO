@@ -2,6 +2,15 @@ package modelo;
 
 import helper.Util;
 
+/**
+ * Contém os parâmetros necessários para a classe abstrata Produto.
+ * Portanto, ela contém os atributos de um produto como 
+ * nome, id, valor, descrição e a quantidade em estoque.
+ * Além disso, ela gera um id para cada cadastro de um produto.
+ * @author Matheus Perillo
+ * @author João Victor Correia
+ * @version 1.0 (Sep 2021)
+ */
 public abstract class Produto {
 
 	private static int contador = 1;
@@ -11,6 +20,13 @@ public abstract class Produto {
 	private String descricao;
 	private int qtdEstoque;
 
+	/**
+	 * Construtor para instanciação do objeto Produto.
+	 * @param nome String para o nome do produto.
+	 * @param valor Double para o valor.
+	 * @param descricao String para a descrição.
+	 * @param qtdEstoque Integer para a quantidade em estoque.
+	 */
 	public Produto(String nome, Double valor, String descricao, int qtdEstoque) {
 		this.id = Produto.contador;
 		this.nome = nome;

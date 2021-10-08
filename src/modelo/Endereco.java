@@ -2,6 +2,14 @@ package modelo;
 
 import helper.Util;
 
+/**
+ * Esta classe contém os parâmetros necessários para a classe Endereco.
+ * Portanto, ela contém os atributos de um endereço como 
+ * estado, cidade, bairro, cep e número da residência.
+ * @author Matheus Perillo
+ * @author João Victor Correia
+ * @version 1.0 (Sep 2021)
+ */
 public class Endereco {
 	private String estado;
 	private String cidade;
@@ -9,8 +17,15 @@ public class Endereco {
 	private String cep;
 	private int numero;
 
+	/**
+	 * Construtor para instanciação do objeto Endereco.
+	 * @param estado String para estado.
+	 * @param cidade String para cidade
+	 * @param bairro String para bairro.
+	 * @param cep String para o cep.
+	 * @param numero Integer para o número da residência.
+	 */
 	public Endereco(String estado, String cidade, String bairro, String cep, int numero) {
-		super();
 		this.estado = estado;
 		this.cidade = cidade;
 		this.bairro = bairro;

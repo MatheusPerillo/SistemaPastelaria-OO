@@ -3,6 +3,12 @@ package modelo;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
+/**
+ * Esta classe carrega dados aleatórios.
+ * @author Matheus Perillo
+ * @author João Victor Correia
+ * @version 1.0 (Sep 2021)
+ */
 public class Dados {
 	private ArrayList<Cliente> clientes = new ArrayList<>();
 	private ArrayList<Funcionario> funcionarios = new ArrayList<>();
@@ -68,6 +74,9 @@ public class Dados {
 		this.pedido = pedido;
 	}
 
+	/**
+	 * Este método gera dados prontos para visulizar funcionamento do programa.
+	 */
 	public void gerarDados() {
 		GregorianCalendar dataDeInscricao = new GregorianCalendar();
 
@@ -114,8 +123,6 @@ public class Dados {
 		Venda v7 = new Venda(pedido3, "Dinheiro", dataDeInscricao.getTime());
 		Venda v8 = new Venda(pedido3, "Pix", dataDeInscricao.getTime());
 		
-		
-
 		Endereco end = new Endereco("Distrito federal", "Brasília", "Guará", "71020274", 24);
 		Telefone tel = new Telefone(61, 30862469);
 		Loja perillao = new Loja("Perillão", end, tel);
@@ -148,8 +155,6 @@ public class Dados {
 		this.getVendas().add(v6);
 		this.getVendas().add(v7);
 		this.getVendas().add(v8);
-		
-		
 		
 	}
 }

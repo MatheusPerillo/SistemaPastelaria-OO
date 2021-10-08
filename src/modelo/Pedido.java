@@ -8,7 +8,15 @@ import java.util.Map;
 
 import helper.Util;
 
+/**
+ * Esta classe contém os parâmetros necessários para a classe Pedido.
+ * Além disso, ela gera um id para cada cadastro de um pedido.
+ * @author Matheus Perillo
+ * @author João Victor Correia
+ * @version 1.0 (Sep 2021)
+ */
 public class Pedido {
+	
 	private static int contador = 1;
 	private int id;
 	private HashMap<Pastel, Integer> pasteis = new HashMap<>();
@@ -18,6 +26,13 @@ public class Pedido {
 	private Funcionario vendedor;
 	private Date dataPedido;
 
+	/**
+	 * Construtor para instanciação do objeto Pedido.
+	 * @param valorTotal Double para o valor total do pedido.
+	 * @param cliente Cliente que fez o pedido.
+	 * @param vendedor Funcionário que realizou o pedido.
+	 * @param dataPedido Date que recebe a data que o pedido foi feito.
+	 */
 	public Pedido(Double valorTotal, Cliente cliente, Funcionario vendedor, Date dataPedido) {
 		this.id = Pedido.contador;
 		this.valorTotal = valorTotal;
@@ -81,11 +96,17 @@ public class Pedido {
 	public Date getDataPedido() {
 		return dataPedido;
 	}
-
+	
 	public void setDataPedido(Date dataPedido) {
 		this.dataPedido = dataPedido;
 	}
 
+	/**
+	 * Este método verifica se a quantidade em estoque é maior ou igual
+	 * a quantidade pedida e insere o pastel no hashmap do pedido.
+	 * @param pastel Objeto pastel a ser pedido.
+	 * @param qtd Integer que recebe a quantidade pedida.
+	 */
 	public void pedirPastel(Pastel pastel, int qtd) {
 		if (pastel.getQtdEstoque() >= qtd) {
 			this.pasteis.put(pastel, qtd);
@@ -96,6 +117,13 @@ public class Pedido {
 
 	}
 
+
+	/**
+	 * Este método verifica se a quantidade em estoque é maior ou igual
+	 * a quantidade pedida e insere a bebida no hashmap do pedido.
+	 * @param bebida Objeto bebida a ser pedido.
+	 * @param qtd Integer que recebe a quantidade pedida.
+	 */
 	public void pedirBebida(Bebida bebida, int qtd) {
 		if (bebida.getQtdEstoque() >= qtd) {
 			this.bebidas.put(bebida, qtd);
@@ -106,7 +134,11 @@ public class Pedido {
 
 	}
 
-	
+	/**
+	 * Este método calcula o valor total do pedido de acordo com os valores dos atributos definidos
+	 * dos pastéis e das bebidas pedidas. Ao calcular o atributo do objeto Pedido
+	 * ele recebe o resultado do cálculo.
+	 */
 	public void calcularValorTotal() {
 		double valorTotal = 0;
 		double valorBebidas = 0;
@@ -123,5 +155,4 @@ public class Pedido {
 		this.setDataPedido(data.getTime());
 	}
 
-	
 }

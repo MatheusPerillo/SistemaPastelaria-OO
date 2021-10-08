@@ -1,4 +1,5 @@
 package modelo;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -6,6 +7,15 @@ import java.util.List;
 
 import helper.Util;
 
+/**
+ * Esta classe contém os parâmetros necessários para a classe Venda.
+ * Portanto, ela contém os atributos de uma venda como 
+ * id, pedido, forma de pagamento e a data do pagamento.
+ * Além disso, ela gera um id para cada cadastro de uma venda.
+ * @author Matheus Perillo
+ * @author João Victor Correia
+ * @version 1.0 (Sep 2021)
+ */
 public class Venda {
 	private static int contador=1;
 	private Integer Id;
@@ -13,6 +23,12 @@ public class Venda {
 	private String formaPagamento;
 	private Date dataPagamento;
 	
+	/**
+	 * Construtor para instanciação do objeto Venda.
+	 * @param pedido Pedido a ser cadastrado.
+	 * @param formaPagamento String para a forma de pagamento.
+	 * @param dataPagamento Date para a data do pagamento.
+	 */
 	public Venda(Pedido pedido, String formaPagamento, Date dataPagamento) {
 		this.Id= Venda.contador;
 		this.pedido = pedido;

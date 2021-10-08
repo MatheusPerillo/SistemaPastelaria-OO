@@ -7,12 +7,25 @@ import java.util.Optional;
 
 import helper.Util;
 
+/**
+ * Esta classe contém os parâmetros necessários para a classe Loja.
+ * Portanto, ela contém os atributos de uma loja como nome, endereço
+ * e telefone.
+ * @author Matheus Perillo
+ * @author João Victor Correia
+ * @version 1.0 (Sep 2021)
+ */
 public class Loja {
 	private String nome;
 	private Endereco endereco;
 	private Telefone telefone;
 	
-
+/**
+ * Construtor para instanciação do objeto Loja.
+ * @param nome String para o nome da loja.
+ * @param endereco Endereço a ser cadastrado.
+ * @param telefone Telefone a ser cadastrado.
+ */
 	public Loja(String nome, Endereco endereco, Telefone telefone) {
 		this.nome = nome;
 		this.endereco = endereco;
