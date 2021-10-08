@@ -16,11 +16,22 @@ import modelo.Pedido;
 import modelo.Telefone;
 import modelo.Venda;
 
+/**
+ * Verifica se os dados fornecidos equivalem ao esperado pelo programa
+ * @author João Victor Correia
+ * @author Matheus Perillo
+ * @version 1.0 (Out 2021)
+ */
 class TesteControleVenda {
 
 	ControleDados d = new ControleDados();
 	ControleVenda v = new ControleVenda(d);
 
+	/**
+	 * Verifica se o nome fornecido corresponde ao esperado
+	 * @param nome uma string que contém o nome a ser verificado
+	 * @return verdadeiro ou falso, indicando se o nome verificado corresponde ao esperado
+	 */
 	@Test
 	void testBuscarPorNome() {
 
@@ -32,6 +43,11 @@ class TesteControleVenda {
 		assertEquals("Perillo", v.buscarPorId(10).getPedido().getVendedor().getNome());
 	}
 
+	/**
+	 * Verifica se o objeto e seus atributos correspondem
+	 * @param  objeto que contém os atributos a serem vereficados
+	 * @return verdadeiro ou falso, indicando se o atributo passado pertence ao objeto esperado
+	 */ 
 	@Test
 	void testBuscarPorNomeObjeto() {
 		Venda v1 = d.getVendas().get(0);
