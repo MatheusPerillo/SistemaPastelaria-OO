@@ -366,7 +366,7 @@ public class TelaDetalhePessoa implements ActionListener {
 	 * Possíveis erros: <br>
 	 * 1- Nem todos os campos foram preenchidos; <br>
 	 * 2- Campo número,DDD e telefone não contém apenas números; <br>	  
-	 * 4- Não é possível cadastrar um nome que já exista
+	 * 3- Não é possível cadastrar um nome que já exista
 	 */
 	public void mensagemErroCadastro() {
 		JOptionPane.showMessageDialog(null,
