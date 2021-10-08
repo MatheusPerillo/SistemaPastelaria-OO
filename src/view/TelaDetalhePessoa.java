@@ -248,14 +248,19 @@ public class TelaDetalhePessoa implements ActionListener {
 						res = dados.inserirCliente(c);
 
 					} else {
-						System.out.println("entrou");
+						
 						mensagemErroCadastro();
 					}
 
 				} else if (opcao == 3) {
-					String numCart = valorNumCartao.getText();
-					Cliente c = new Cliente(nome, end, tel, email, numCart);
-					res = dados.editarCliente(posicao, c);
+					if (!valorNome.getText().isEmpty() && new ControleCliente(dados).buscarPorNome(nome) == null) {
+						String numCart = valorNumCartao.getText();
+						Cliente c = new Cliente(nome, end, tel, email, numCart);
+						res = dados.editarCliente(posicao, c);
+					} else {
+						
+						mensagemErroCadastro();
+					}
 				}
 
 				if (opcao == 2) {
@@ -272,12 +277,16 @@ public class TelaDetalhePessoa implements ActionListener {
 					}
 
 				} else if (opcao == 4) {
-					String dateNasc = valorDateNasc.getText();
-					Cargo cargo = (Cargo) valorCargo.getSelectedItem();
-					Double salario = Double.valueOf(valorSalario.getText());
-					int vendas = Integer.valueOf(valorVendas.getText());
-					Funcionario f = new Funcionario(nome, end, tel, email, cargo, salario, dateNasc, vendas);
-					res = dados.editarFuncionario(posicao, f);
+					if (!valorNome.getText().isEmpty() && new ControleFuncionario(dados).buscarPorNome(nome) == null) {
+						String dateNasc = valorDateNasc.getText();
+						Cargo cargo = (Cargo) valorCargo.getSelectedItem();
+						Double salario = Double.valueOf(valorSalario.getText());
+						int vendas = Integer.valueOf(valorVendas.getText());
+						Funcionario f = new Funcionario(nome, end, tel, email, cargo, salario, dateNasc, vendas);
+						res = dados.editarFuncionario(posicao, f);
+					} else {
+						mensagemErroCadastro();
+					}
 				}
 
 				if (res) {
