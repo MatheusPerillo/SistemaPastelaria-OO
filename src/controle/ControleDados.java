@@ -4,6 +4,12 @@ import java.util.ArrayList;
 
 import modelo.*;
 
+/**
+ * Esta classe contém os parâmetros necessários para o controle de dados da classe Dados.
+ * @author Matheus Perillo
+ * @author João Victor Correia
+ * @version 1.0 (Sep 2021)
+ */
 public class ControleDados {
 	private Dados d = new Dados();
 
@@ -43,6 +49,11 @@ public class ControleDados {
 	}
 	
 
+	/**
+	 * 
+	 * @param c
+	 * @return
+	 */
 	public boolean inserirCliente(Cliente c) {
 		try {
 			this.getClientes().add(c);
@@ -52,6 +63,12 @@ public class ControleDados {
 		}
 	}
 
+	/**
+	 * 
+	 * @param i
+	 * @param c
+	 * @return
+	 */
 	public boolean editarCliente(int i, Cliente c) {
 		try {
 			this.getClientes().get(i).setNome(c.getNome());
@@ -66,6 +83,11 @@ public class ControleDados {
 		}
 	}
 
+	/**
+	 * 
+	 * @param i
+	 * @return
+	 */
 	public boolean removerCliente(int i) {
 		try {
 			this.getClientes().remove(i);
@@ -75,6 +97,11 @@ public class ControleDados {
 		}
 	}
 
+	/**
+	 * 
+	 * @param f
+	 * @return
+	 */
 	public boolean inserirFuncionario(Funcionario f) {
 		try {
 			this.getFuncionarios().add(f);
@@ -84,6 +111,12 @@ public class ControleDados {
 		}
 	}
 
+	/**
+	 * 
+	 * @param i
+	 * @param f
+	 * @return
+	 */
 	public boolean editarFuncionario(int i, Funcionario f) {
 		try {
 			this.getFuncionarios().get(i).setNome(f.getNome());
@@ -100,6 +133,11 @@ public class ControleDados {
 		}
 	}
 
+	/**
+	 * 
+	 * @param i
+	 * @return
+	 */
 	public boolean removerFuncionario(int i) {
 		try {
 			this.getFuncionarios().remove(i);
@@ -110,6 +148,11 @@ public class ControleDados {
 	}
 
 	// ----PASTEL----
+	/**
+	 * 
+	 * @param p
+	 * @return
+	 */
 	public boolean inserirPastel(Pastel p) {
 		try {
 			this.getPasteis().add(p);
@@ -119,6 +162,12 @@ public class ControleDados {
 		}
 	}
 
+	/**
+	 * 
+	 * @param i
+	 * @param p
+	 * @return
+	 */
 	public boolean editarPastel(int i, Pastel p) {
 		try {
 			this.getPasteis().get(i).setNome(p.getNome());
@@ -134,6 +183,11 @@ public class ControleDados {
 		}
 	}
 
+	/**
+	 * 
+	 * @param i
+	 * @return
+	 */
 	public boolean removerPastel(int i) {
 		try {
 			this.getPasteis().remove(i);
@@ -144,6 +198,11 @@ public class ControleDados {
 	}
 
 	// ----BEBIDAS----
+	/**
+	 * 
+	 * @param b
+	 * @return
+	 */
 	public boolean inserirBebida(Bebida b) {
 		try {
 			this.getBebidas().add(b);
@@ -153,6 +212,12 @@ public class ControleDados {
 		}
 	}
 
+	/**
+	 * 
+	 * @param i
+	 * @param b
+	 * @return
+	 */
 	public boolean editarBebida(int i, Bebida b) {
 		try {
 			this.getBebidas().get(i).setNome(b.getNome());
@@ -168,6 +233,11 @@ public class ControleDados {
 		}
 	}
 
+	/**
+	 * 
+	 * @param i
+	 * @return
+	 */
 	public boolean removerBebida(int i) {
 		try {
 			this.getBebidas().remove(i);
@@ -177,6 +247,11 @@ public class ControleDados {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param v
+	 * @return
+	 */
 	public boolean inserirVenda(Venda v) {
 		try {
 			this.getVendas().add(v);
@@ -186,6 +261,11 @@ public class ControleDados {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param v
+	 * @return
+	 */
 	public boolean removerVenda(Venda v) {
 		try {
 			this.getVendas().remove(v);

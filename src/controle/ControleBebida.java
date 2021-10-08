@@ -7,13 +7,27 @@ import java.util.Optional;
 import modelo.Bebida;
 import modelo.Cliente;
 
+/**
+ * Esta classe contém os parâmetros necessários para o controle de dados da classe Bebida.
+ * @author Matheus Perillo
+ * @author João Victor Correia
+ * @version 1.0 (Sep 2021)
+ */
 public class ControleBebida {
 	private ArrayList<Bebida> b;
 	
+	/**
+	 * Este método 
+	 * @param d Dados presente no sistema.
+	 */
 	public ControleBebida(ControleDados d) {
 		b = d.getBebidas();
 		}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String[] getNomeBebidas() {
 		String [] s = new String[this.b.size()];
 		for (int i = 0; i < this.b.size(); i++) {
@@ -22,6 +36,12 @@ public class ControleBebida {
 		return s;
 	}
 	
+	/**
+	 * Este método 
+	 * @param lista 
+	 * @param nome 
+	 * @return
+	 */
 	public static Bebida buscarPorNome(Map<Bebida, Integer> lista, String nome) {
 		try {
 			Optional<Bebida> x = lista.keySet().stream()
@@ -33,6 +53,11 @@ public class ControleBebida {
 		return null;
 	}
 
+	/**
+	 * 
+	 * @param nome 
+	 * @return
+	 */
 	public  Bebida buscarPorNome(String nome) {
 		boolean aux = false;
 		try {
