@@ -8,11 +8,21 @@ import controle.*;
 import modelo.Venda;
 import helper.ButtonColumn;
 import helper.Util;
+/**
+ * Classe para exibir a tela de Vendas que contém os atributos e os elementos da interface gráfica 
+ * @author Joao Victor Correia
+ * @author Matheus Perillo 
+ * @version 1.0(out,2021)
+ *
+ */
 public class TelaVenda {
 	private JFrame janela;
 	JTable tabela;
 	private static ControleDados dados;
-
+/**
+ * 
+ * @param d	dados presentes no sistema
+ */
 	public void mostrarDados(ControleDados d) {
 		dados = d;
 		 janela = new JFrame("Listagem de Vendas");

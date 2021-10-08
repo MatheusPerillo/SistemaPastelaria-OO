@@ -5,7 +5,13 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import controle.ControleDados;
-
+/**
+ * Classe para exibir o menu e onde contém a main que possibilita o funcionamento de todo o sistema 
+ * @author Joao Victor Correia
+ * @author Matheus Perillo 
+ * @version 1.0(out,2021)
+ *
+ */
 public class TelaMenu implements ActionListener {
 	
 	private static JFrame janela = new JFrame("Pastelaria Perillão");
@@ -19,7 +25,9 @@ public class TelaMenu implements ActionListener {
 	private static JButton pedido = new JButton("Realizar pedido");
 	public static ControleDados dados = new ControleDados();
 
-	
+	/**
+	 * Construtor para instanciação do objeto TelaMenu
+	 */
 	public TelaMenu() {
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
 		titulo.setBounds(180, 30, 150, 30);
@@ -46,7 +54,10 @@ public class TelaMenu implements ActionListener {
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		janela.setVisible(true);
 	}
-	
+	/**
+	 * Classe main para execução do programa
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		TelaMenu menu = new TelaMenu();
 		
@@ -59,7 +70,18 @@ public class TelaMenu implements ActionListener {
 		pedido.addActionListener(menu);
 		
 	}
-	
+	/** 
+	 * Método para realizar uma ação quando ocorre um evento: 
+	 *<br>
+	 * Ação-  Abrir a tela referente ao botão clicado: <br>
+	 * Cliente- Tela de pessoas com dados dos clientes;<br>
+	 * Funcionário - Tela de pessoas com dados dos funcionários;<br>
+	 * Pastel - Tela de produtos com dados dos pastéis; <br>
+	 * Bebida - Tela de produtos com dados das bebidas; <br> 
+	 * Loja - Tela de Loja exibindo seus respectivos dados;<br>
+	 * Venda-    Tela de vendas com dados das vendas cadastradas;<br>
+	 * Pedido- Tela de pedido para realizar pedidos
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		

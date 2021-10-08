@@ -8,7 +8,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import modelo.Loja;
-
+/**
+ * Classe para exibir a tela com os dados da loja que contém os atributos e os elementos da interface gráfica 
+ * @author Joao Victor Correia
+ * @author Matheus Perillo 
+ * @version 1.0(out,2021)
+ *
+ */
 public class TelaLoja {
 	private JFrame janela;
 	private JLabel titulo = new JLabel("Pastelaria Perillão ");;
@@ -26,7 +32,10 @@ public class TelaLoja {
 	private JLabel labelTelefone = new JLabel("Telefone: ");
 	private JLabel ddd;
 	private JLabel telefone;
-
+/**
+ * Método para exibir dados da loja, cadastrar pessoas e vender produtos 
+ * @param lj	Objeto loja com os parâmetros a serem exibidos
+ */
 	public void mostrarDados(Loja lj) {
 		janela = new JFrame("Pastelaria");
 		estado = new JLabel(lj.getEndereco().getEstado());

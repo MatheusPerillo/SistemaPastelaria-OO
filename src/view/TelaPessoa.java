@@ -5,7 +5,13 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 import controle.*;
-
+/**
+ * Classe para exibir a tela de Pessoa que contém os atributos e os elementos da interface gráfica 
+ * @author Joao Victor Correia
+ * @author Matheus Perillo 
+ * @version 1.0(out,2021)
+ *
+ */
 public class TelaPessoa implements ActionListener, ListSelectionListener {
 	private JFrame janela;
 	private JLabel titulo;
@@ -18,6 +24,13 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 	private JList<String> listaFuncionariosCadastrados;
 	private String[] listaNomes = new String[50];
 
+	/**
+	 * Método para exibir elementos da interface gráfica e a lista de Pessoas cadastradas de acordo com a operação
+	 * @param d dados presentes no sistema
+	 * @param op int para verificar qual operação será realizada <br>
+	 * 1- Lista de Clientes <br>
+	 * 2- Lista de Funcionários <br>
+	 */
 	public void mostrarDados(ControleDados d, int op) {
 		dados = d;
 
@@ -93,7 +106,16 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 
 	}
 
-	// Captura eventos relacionados aos botões da interface
+	/** 
+	 * Método para realizar uma ação quando ocorre um evento: 
+	 *<br>
+	 * Ação-  Redirecionar para a página de cadastro de Pessoa ou atualizar a lista: <br>
+	 * CadastrarCliente- Redireciona para a tela de cadastro de Cliente;<br>
+	 * CadastroFuncionario - Redireciona para a tela de cadastro de Funcionario;<br>
+	 * refreshCliente - Atualiza a tela e a lista de Clientes; <br>
+	 * refreshFuncionario - Atualiza a tela e a lista de Funcionarios; <br> 
+	 
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 
@@ -119,7 +141,15 @@ public class TelaPessoa implements ActionListener, ListSelectionListener {
 
 	}
 
-	// Captura eventos relacionados ao JList
+	/** 
+	 * Método para realizar uma ação quando ocorre uma seleção na lista: 
+	 *<br>
+	 * Ação-  Redirecionar para a página de edição da Pessoa selecionada: <br>
+	 * listaCliente- Redireciona para a tela de edição de Cliente;<br>
+	 * ListaFuncionario - Redireciona para a tela de edição de Funcionario;<br>
+	
+	 
+	 */
 	public void valueChanged(ListSelectionEvent e) {
 		Object src = e.getSource();
 

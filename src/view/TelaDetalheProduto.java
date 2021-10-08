@@ -15,7 +15,13 @@ import controle.ControleDados;
 import controle.ControlePastel;
 import modelo.Bebida;
 import modelo.Pastel;
-
+/**
+ * Classe para exibir a tela de detalhe de produto que contém os atributos e os elementos da interface gráfica 
+ * @author Joao Victor Correia
+ * @author Matheus Perillo 
+ * @version 1.0(out,2021)
+ *
+ */
 public class TelaDetalheProduto implements ActionListener {
 
 	private JFrame janela;
@@ -42,6 +48,17 @@ public class TelaDetalheProduto implements ActionListener {
 	private int opcao;
 	private String s;
 
+	
+	/**
+	 * Método para exibir elementos da interface gráfica e possibilitar cadastro e edição de produtos
+	 * @param op	int para verificar qual operação será realizada <br>
+	 * 1- Cadastro de Pastel <br>
+	 * 2- Cadastro de Bebida <br>
+	 * 3- Mostrar/Editar Pastel <br>
+	 * 4- Mostrar/Editar Bebida
+	 * @param d	dados presentes no sistema
+	 * @param pos	posição do objeto na lista de dados
+	 */
 	public void cadastrarEditar(int op, ControleDados d, int pos) {
 		opcao = op;
 		posicao = pos;
@@ -183,7 +200,11 @@ public class TelaDetalheProduto implements ActionListener {
 		botaoExcluir.addActionListener(this);
 
 	}
-
+	/** 
+	 * Método para realizar uma ação quando ocorre um evento: 
+	 *<br>
+	 * Ação-  cadastrar/editar de acordo com a operação passada na função cadastrarEditar     
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == botaoSalvar) {
@@ -276,19 +297,30 @@ public class TelaDetalheProduto implements ActionListener {
 		}
 
 	}
-
+	/**
+	 * Método para exibir uma mensagem de sucesso ao excluir um produto
+	 */
 	public void mensagemSucessoExclusao() {
 		JOptionPane.showMessageDialog(null, "Os dados foram excluidos com sucesso!", null,
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
-
+	/**
+	 * Método para exibir uma mensagem de sucesso ao cadastrar um produto
+	 */
 	public void mensagemSucessoCadastro() {
 		JOptionPane.showMessageDialog(null, "Os dados foram salvos com sucesso!", null,
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
-
+	/**
+	 * Método para exibir uma mensagem de erro ao cadastrar um produto<br>
+	 * Possíveis erros: <br>
+	 * 1- Nem todos os campos foram preenchidos; <br>
+	 * 2- Campos volume, valor ou  estoque não contém apenas números; <br>
+	 * 3- Foi digitado uma vírgula (,) no lugar de um ponto (.) em Valor; <br>
+	 * 4- Não é possível cadastrar um nome que já exista
+	 */
 	public void mensagemErroCadastro() {
 		JOptionPane.showMessageDialog(null,
 				"ERRO AO SALVAR OS DADOS!\n " + "Pode ter ocorrido um dos três erros a seguir:  \n"
@@ -298,7 +330,12 @@ public class TelaDetalheProduto implements ActionListener {
 						+ "4. Não é possível cadastrar um nome que já exista",
 				null, JOptionPane.ERROR_MESSAGE);
 	}
-
+	/**
+	 * Método para exibir uma mensagem de erro ao cadastrar um produto<br>
+	 * Possíveis erros: <br>
+	 * 1- Não existe na lista o produto selecionado 
+	 
+	 */
 	public void mensagemErroExclusao() {
 		JOptionPane.showMessageDialog(null, "Ocorreu um erro ao excluir o dado.\n ", null, JOptionPane.ERROR_MESSAGE);
 	}

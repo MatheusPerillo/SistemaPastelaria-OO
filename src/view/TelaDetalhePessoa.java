@@ -16,6 +16,13 @@ import modelo.Endereco;
 import modelo.Funcionario;
 import modelo.Telefone;
 
+/**
+ * Classe para exibir a tela de detalhe de pessoa que contém os atributos e os elementos da interface gráfica 
+ * @author Joao Victor Correia
+ * @author Matheus Perillo 
+ * @version 1.0(out,2021)
+ *
+ */
 public class TelaDetalhePessoa implements ActionListener {
 
 	private JFrame janela;
@@ -52,7 +59,17 @@ public class TelaDetalhePessoa implements ActionListener {
 	private int posicao;
 	private int opcao;
 	private String s;
-
+	
+	/**
+	 * Método para exibir elementos da interface gráfica e possibilitar cadastro e ediação de produtos
+	 * @param op	int para verificar qual operação será realizada <br>
+	 * 1- Cadastro de Cliente <br>
+	 * 2- Cadastro de Funcionário <br>
+	 * 3- Mostrar/Editar Cliente <br>
+	 * 4- Mostrar/Editar Funcionário
+	 * @param d	dados presentes no sistema
+	 * @param pos	posição do objeto na lista de dados
+	 */
 	public void cadastrarEditar(int op, ControleDados d, int pos) {
 
 		opcao = op;
@@ -219,7 +236,11 @@ public class TelaDetalhePessoa implements ActionListener {
 		botaoSalvar.addActionListener(this);
 		botaoExcluir.addActionListener(this);
 	}
-
+	/** 
+	 * Método para realizar uma ação quando ocorre um evento: 
+	 *<br>
+	 * Ação-  cadastrar/editar de acordo com a operação passada na função cadastrarEditar     
+	 */
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		if (src == botaoSalvar) {
@@ -324,19 +345,29 @@ public class TelaDetalhePessoa implements ActionListener {
 
 		}
 	}
-
+	/**
+	 * Método para exibir uma mensagem de sucesso ao excluir uma pessoa
+	 */
 	public void mensagemSucessoExclusao() {
 		JOptionPane.showMessageDialog(null, "Os dados foram excluidos com sucesso!", null,
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
-
+	/**
+	 * Método para exibir uma mensagem de sucesso ao cadastrar uma pessoa
+	 */
 	public void mensagemSucessoCadastro() {
 		JOptionPane.showMessageDialog(null, "Os dados foram salvos com sucesso!", null,
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
-
+	/**
+	 * Método para exibir uma mensagem de erro ao cadastrar uma pessoa<br>
+	 * Possíveis erros: <br>
+	 * 1- Nem todos os campos foram preenchidos; <br>
+	 * 2- Campo número,DDD e telefone não contém apenas números; <br>	  
+	 * 4- Não é possível cadastrar um nome que já exista
+	 */
 	public void mensagemErroCadastro() {
 		JOptionPane.showMessageDialog(null,
 				"ERRO AO SALVAR OS DADOS!\n " + "Pode ter ocorrido um dos erros a seguir:  \n"
@@ -346,7 +377,12 @@ public class TelaDetalhePessoa implements ActionListener {
 				null, JOptionPane.ERROR_MESSAGE);
 
 	}
-
+	/**
+	 * Método para exibir uma mensagem de erro ao cadastrar uma pessoa<br>
+	 * Possíveis erros: <br>
+	 * 1- Não existe na lista o produto selecionado 
+	 
+	 */
 	public void mensagemErroExclusao() {
 		JOptionPane.showMessageDialog(null, "Ocorreu um erro ao excluir o dado.\n ", null, JOptionPane.ERROR_MESSAGE);
 

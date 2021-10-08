@@ -22,7 +22,13 @@ import modelo.Funcionario;
 import modelo.Pastel;
 import modelo.Pedido;
 import modelo.Produto;
-
+/**
+ * Classe para exibir a tela de pedir produto que contém os atributos e os elementos da interface gráfica 
+ * @author Joao Victor Correia
+ * @author Matheus Perillo 
+ * @version 1.0(out,2021)
+ *
+ */
 public class TelaPedidoProduto implements ActionListener {
 	private JFrame janela;
 	private  JLabel labelPastel = new JLabel("Escolha seu pastel:");
@@ -36,7 +42,15 @@ public class TelaPedidoProduto implements ActionListener {
 	private String s;
 	private int op;
 	private ControleDados dados;
-
+	/**
+	 * Método para exibir elementos da interface gráfica e possibilitar pedido de produtos
+	 * @param op	int para verificar qual operação será realizada <br>
+	 * 1- Pedir Pastel <br>
+	 * 2- Pedir Bebida <br>
+	 
+	 * @param d	dados presentes no sistema
+	
+	 */
 	public void fazerPedido(ControleDados d, int op) {
 		this.op = op;
 		this.dados = d;
@@ -84,7 +98,11 @@ public class TelaPedidoProduto implements ActionListener {
 
 		confirmar.addActionListener(this);
 	}
-
+	/** 
+	 * Método para realizar uma ação quando ocorre um evento: 
+	 *<br>
+	 * Ação-  realizar pedido de acordo com a operação passada na função cadastrarEditar     
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
@@ -115,7 +133,13 @@ public class TelaPedidoProduto implements ActionListener {
 		}
 
 	}
-
+	/**
+	 * Método para exibir uma mensagem de sucesso ao pedir produtos
+	 * @param op	int para verificar qual operação será realizada <br>
+	 * 1- Pedir Pastel <br>
+	 * 2- Pedir Bebida <br>
+	 * @param p - Produto pedido
+	 */
 	public void mensagemSucessoPedido(int op,Produto p) {
 		if (op == 1) {
 			JOptionPane.showMessageDialog(null, "Pastel pedido com sucesso!\n" + p , null, JOptionPane.INFORMATION_MESSAGE);
@@ -126,14 +150,23 @@ public class TelaPedidoProduto implements ActionListener {
 			janela.dispose();
 		}
 	}
-
+	/**
+	 * Método para exibir uma mensagem de erro ao pedir produto<br>
+	 * Possíveis erros: <br>
+	 * 1- Foi digitado valores não numéricos no campo quantidade; <br>
+	
+	 */
 	public void mensagemErro() {
 
 		JOptionPane.showMessageDialog(null, "Digite apenas números na quantidade", null, JOptionPane.ERROR_MESSAGE);
 		janela.dispose();
 
 	}
-
+	/**
+	 * Método para exibir uma mensagem de erro ao pedir um produto com a quantidade em estoque menor do que a digitada<br>
+	
+	
+	 */
 	public void mensagemSemEstoque() {
 
 		JOptionPane.showMessageDialog(null,

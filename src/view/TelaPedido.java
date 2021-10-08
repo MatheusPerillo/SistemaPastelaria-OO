@@ -15,7 +15,13 @@ import controle.ControleDados;
 import controle.ControleFuncionario;
 import modelo.Cliente;
 import modelo.Funcionario;
-
+/**
+ * Classe para exibir o menu de Pedido  que contém os atributos e os elementos da interface gráfica 
+ * @author Joao Victor Correia
+ * @author Matheus Perillo 
+ * @version 1.0(out,2021)
+ *
+ */
 public class TelaPedido implements ActionListener {
 	private JFrame janela;
 	private static JLabel titulo = new JLabel("Faça aqui o seu pedido");
@@ -28,6 +34,10 @@ public class TelaPedido implements ActionListener {
 	private JComboBox<String> funcionarios;
 	private static ControleDados dados;
 
+	/**
+	 * Método para exibição do menu que redirecionará para a tela de pedir produto
+	 * @param d	dados presentes no sistema
+	 */
 	public void mostrarMenu(ControleDados d) {
 		TelaPedido.dados = d;
 
@@ -67,6 +77,15 @@ public class TelaPedido implements ActionListener {
 		finalizar.addActionListener(this);
 	}
 
+	
+	/** 
+	 * Método para realizar uma ação quando ocorre um evento: 
+	 *<br>
+	  * Ação-  Abrir a tela referente ao botão clicado: <br>
+	 * Pastel - Tela para realizar pedido de Pastel; <br>
+	 * Bebida - Tela para realizar pedido de Bebida; <br> 
+	  * Finalizar - Realiza o pedido e redireciona para a tela de pagamento;  
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -105,7 +124,12 @@ public class TelaPedido implements ActionListener {
 		}
 
 	}
-
+	/**
+	 * Método para exibir uma mensagem de erro ao realizar pedido<br>
+	 * Possíveis erros: <br>
+	 * 1- Nenhum produto foi pedido 
+	 
+	 */
 	public void mensagemErro() {
 		JOptionPane.showMessageDialog(null, "É necessário pedir pelo menos um produto", null, JOptionPane.ERROR_MESSAGE);
 		janela.dispose();

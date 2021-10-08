@@ -17,7 +17,13 @@ import helper.Util;
 import modelo.Pedido;
 import modelo.Produto;
 import modelo.Venda;
-
+/**
+ * Classe para exibir a tela de pagamento que contém os atributos e os elementos da interface gráfica 
+ * @author Joao Victor Correia
+ * @author Matheus Perillo 
+ * @version 1.0(out,2021)
+ *
+ */
 public class TelaPagamento implements ActionListener {
 	private JFrame janela;
 	private JLabel titulo = new JLabel("Pagar pedido");
@@ -27,7 +33,10 @@ public class TelaPagamento implements ActionListener {
 	private JComboBox<String> valorPagamento;
 	private JButton confirmar = new JButton("Confirmar");
 	private static ControleDados dados;
-
+/**
+ * Método para exibir elementos da interface gráfica e possibilitar cadastro de vendas
+ * @param d dados presentes no sistema
+ */
 	public void cadastrarVenda(ControleDados d) {
 		dados = d;
 
@@ -62,7 +71,11 @@ public class TelaPagamento implements ActionListener {
 
 		confirmar.addActionListener(this);
 	}
-
+	/** 
+	 * Método para realizar uma ação quando ocorre um evento: 
+	 *<br>
+	 * Ação-  cadastrar venda     
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
@@ -79,12 +92,19 @@ public class TelaPagamento implements ActionListener {
 			}
 		}
 	}
-
+	/**
+	 * Método para exibir uma mensagem de sucesso ao cadastrar uma venda
+	 */
 	public void mensagemSucesso() {
 		JOptionPane.showMessageDialog(null, "Venda cadastrada com sucesso!\n", null, JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
-
+	/**
+	 * Método para exibir uma mensagem de erro ao cadastrar uma venda<br>
+	 * Possíveis erros: <br>
+	 * 1- Não foi escolhida a forma de pagamento; <br>
+	
+	 */
 	public void mensagemErro() {
 		JOptionPane.showMessageDialog(null, "Escolha a forma de pagamento", null, JOptionPane.ERROR_MESSAGE);
 		janela.dispose();
