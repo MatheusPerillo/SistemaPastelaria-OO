@@ -263,7 +263,7 @@ public class ControleDados {
 	
 	/**
 	 * Método para remover um objeto Venda no ArrayList de vendas do objeto Dados
-	 * @param i - Posição do objeto no ArrayList
+	 * @param v  Objeto a ser removido do ArrayList
 	 * @return Boolean que indicará se foi possível remover ou não
 	 */
 	public boolean removerVenda(Venda v) {
